@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="68.579" height="68.579" viewBox="0 0 68.579 68.579">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="-0.286" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#b4b4b4"/>
+      <stop offset="1" stop-color="#1b4b8d"/>
+    </linearGradient>
+  </defs>
+  <path id="Icon_material-monetization-on" data-name="Icon material-monetization-on" d="M37.29,3a34.29,34.29,0,1,0,34.29,34.29A34.3,34.3,0,0,0,37.29,3Zm4.835,55.172v6.549H32.969V58.1C27.106,56.869,22.134,53.1,21.756,46.445h6.721c.343,3.6,2.812,6.412,9.087,6.412,6.721,0,8.229-3.36,8.229-5.452,0-2.846-1.509-5.521-9.155-7.338-8.5-2.057-14.333-5.555-14.333-12.584,0-5.9,4.766-9.738,10.664-11.007V9.858h9.155v6.686A12.122,12.122,0,0,1,51.9,28.169H45.176c-.171-3.806-2.195-6.412-7.612-6.412-5.143,0-8.229,2.332-8.229,5.623,0,2.88,2.229,4.766,9.155,6.549S52.823,38.7,52.823,47.336C52.788,53.611,48.091,57.04,42.124,58.172Z" transform="translate(-3 -3)" fill="url(#linear-gradient)"/>
+</svg>
