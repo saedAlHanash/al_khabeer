@@ -50,13 +50,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const NotFoundWidget(
-            text: 'يجب تسجبل الدخول لرؤية الإعدادات',
+            text: 'لا توجد أخبار ',
             icon: Assets.iconsNoSearch,
           ),
-          MyButton(
-            text: 'تسجيل الدخول ؟',
-            onTap: () => Navigator.pushNamed(context, RouteName.login),
-          )
         ],
       );
     }

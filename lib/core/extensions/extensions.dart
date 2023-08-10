@@ -4,7 +4,6 @@ import 'package:al_khabeer/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 import '../strings/app_string_manager.dart';
 import '../strings/enum_manager.dart';
 import 'package:http/http.dart' as http;
@@ -72,12 +71,12 @@ extension FixMobile on String {
   }
 }
 
-final oCcy = NumberFormat("#,##", "en_US");
+final oCcy = NumberFormat("#,###", "en_US");
 
 extension MaxInt on num {
   int get max => 2147483647;
 
-  String get formatPrice => 'IQD ${oCcy.format(this)}';
+  String get formatPrice => '${oCcy.format(this)}.0';
 }
 
 extension EnumHelper on Enum {
@@ -94,8 +93,8 @@ extension EnumHelper on Enum {
           return 'الأخبار';
       }
     }
-    if(this is HomeCards){
-      switch(this as HomeCards){
+    if (this is HomeCards) {
+      switch (this as HomeCards) {
         case HomeCards.students:
           return 'أرصدة الطلاب';
         case HomeCards.cashPayment:
@@ -118,20 +117,20 @@ extension EnumHelper on Enum {
   }
 
   String get icon {
-    if(this is HomeCards){
-      switch(this as HomeCards){
+    if (this is HomeCards) {
+      switch (this as HomeCards) {
         case HomeCards.students:
-          return Assets.iconsSDolar;;
+          return Assets.iconsSDolar;
         case HomeCards.cashPayment:
-          return Assets.iconsReportSDolar;;
+          return Assets.iconsReportSDolar;
         case HomeCards.inventory:
-          return Assets.iconsReportProducts;;
+          return Assets.iconsReportProducts;
         case HomeCards.examTable:
           return Assets.iconsAPlus;
         case HomeCards.audit:
-          return Assets.iconsSDolarWithDb;;
+          return Assets.iconsSDolarWithDb;
         case HomeCards.debit:
-          return Assets.iconsCash;;
+          return Assets.iconsCash;
         case HomeCards.teachers:
           return Assets.iconsReportInfo;
         case HomeCards.employees:
@@ -140,7 +139,6 @@ extension EnumHelper on Enum {
     }
     return '';
   }
-
 }
 
 extension UpdateTypeHelper on UpdateType {
@@ -157,8 +155,6 @@ extension UpdateTypeHelper on UpdateType {
     }
   }
 }
-
-
 
 extension ResponseHelper on http.Response {
   Map<String, dynamic> get jsonBody => jsonDecode(body);

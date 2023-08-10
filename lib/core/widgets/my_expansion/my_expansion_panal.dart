@@ -448,6 +448,9 @@ class _MyExpansionPanelListState extends State<MyExpansionPanelList> {
           key: _SaltedKey<BuildContext, int>(context, index * 2),
           child: widget.decoration == null
               ? MyCardWidget(
+                  withSideRed: (widget.children[index].isExpanded &&
+                      (widget.children[index].withSideColor ?? false)),
+                  shadowColor: AppColorManager.gray.withOpacity(0.6),
                   padding: const EdgeInsets.only(bottom: 10.0).h,
                   cardColor: widget.children[index].backgroundColor ?? Colors.white,
                   elevation: 10.0,

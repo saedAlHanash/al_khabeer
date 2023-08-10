@@ -1,22 +1,25 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
-import 'package:al_khabeer/core/extensions/extensions.dart';
+import 'package:al_khabeer/core/util/my_style.dart';
+import 'package:al_khabeer/features/cash_account/ui/pages/cash_account_page.dart';
 import 'package:drawable_text/drawable_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/util/my_style.dart';
-import '../../../../core/widgets/app_bar/app_bar_widget.dart';
+import '../../../../core/widgets/my_button.dart';
 import '../../../../core/widgets/saed_taple_widget.dart';
 import '../../../../core/widgets/spinner_widget.dart';
 import '../../../exam_table/ui/pages/exam_table_page.dart';
 
-class CashAccount extends StatelessWidget {
-  const CashAccount({super.key});
+class DebitPage extends StatelessWidget {
+  const DebitPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(titleText: 'حساب النقدية'),
+      appBar: AppBarWidget(titleText: 'صافي المصاريف'),
       body: Padding(
         padding: const EdgeInsets.all(20.0).r,
         child: Column(
@@ -24,12 +27,12 @@ class CashAccount extends StatelessWidget {
           children: [
             SpinnerWidget(items: accountsSpinnerItems, width: .9.sw),
             10.0.verticalSpace,
-            10.0.verticalSpace,
+
             Container(
               decoration: MyStyle.roundBox,
               padding: EdgeInsets.all(20.0).r,
               child: DrawableText(
-                text: 'اسم المجموعة',
+                text: 'اسم الحساب',
                 matchParent: true,
               ),
             ),
@@ -78,9 +81,3 @@ class CashAccount extends StatelessWidget {
     );
   }
 }
-final accountsSpinnerItems = [
-  SpinnerItem(id: -1, name: 'اسم الحساب'),
-  SpinnerItem(id: 1, name: 'حساب البنك'),
-  SpinnerItem(id: 2, name: 'حساب بنك البركة'),
-  SpinnerItem(id: 3, name: 'حساب الاتحاد'),
-];

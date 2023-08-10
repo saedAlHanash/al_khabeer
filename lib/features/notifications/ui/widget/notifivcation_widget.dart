@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/features/notifications/data/response/notifications_response.dart';
+import 'package:image_multi_type/image_multi_type.dart';
+
+import '../../../../generated/assets.dart';
 
 
 class NotificationWidget extends StatelessWidget {
@@ -20,25 +23,38 @@ class NotificationWidget extends StatelessWidget {
         color: AppColorManager.f6,
         borderRadius: BorderRadius.circular(12.0.r),
       ),
-      child: Column(
+      child: Row(
+
         children: [
-          DrawableText(
-            text: not.message,
-            matchParent: true,
-            textAlign: TextAlign.start,
+          ImageMultiType(
+            url: Assets.iconsLogoWithoutText,
+            height: 30.0.r,
+            width: 30.0.r,
           ),
-          10.0.verticalSpace,
-          DrawableText(
-            text: not.createdAt?.formatDateTime??'',
-            matchParent: true,
-            color: Colors.grey,
-            size: 12.0.spMin,
-            textAlign: TextAlign.start,
-            drawablePadding: 10.0.w,
-            drawableStart: Icon(
-              Icons.access_time_outlined,
-              color: AppColorManager.mainColor,
-              size: 14.0.r,
+          20.0.horizontalSpace,
+          Expanded(
+            child: Column(
+              children: [
+                DrawableText(
+                  text: not.message,
+                  matchParent: true,
+                  textAlign: TextAlign.start,
+                ),
+                10.0.verticalSpace,
+                DrawableText(
+                  text: not.createdAt?.formatDateTime??'',
+                  matchParent: true,
+                  color: Colors.grey,
+                  size: 12.0.spMin,
+                  textAlign: TextAlign.start,
+                  drawablePadding: 10.0.w,
+                  drawableStart: Icon(
+                    Icons.access_time_outlined,
+                    color: AppColorManager.mainColor,
+                    size: 14.0.r,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

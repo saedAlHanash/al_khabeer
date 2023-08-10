@@ -58,10 +58,13 @@ final appTheme = ThemeData(
             ),
           ))),
     ),
-  listTileTheme: ListTileThemeData(
-    iconColor: Colors.white,
-    minLeadingWidth: 20.0.r
-  ),
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+      },
+    ),
+    listTileTheme: ListTileThemeData(iconColor: Colors.white, minLeadingWidth: 20.0.r),
     dividerTheme: DividerThemeData(
       color: AppColorManager.dividerColor,
       endIndent: 36.0.w,

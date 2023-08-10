@@ -4,12 +4,12 @@ import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:al_khabeer/features/notifications/ui/widget/notifivcation_widget.dart';
 
-import '../../../../../core/util/my_style.dart';
-import '../../../../../core/util/shared_preferences.dart';
-import '../../../../../core/widgets/not_found_widget.dart';
-import '../../../../../generated/assets.dart';
-import '../../../../notifications/bloc/notification_count_cubit/notification_count_cubit.dart';
-import '../../../../notifications/bloc/notifications_cubit/notifications_cubit.dart';
+import '../../../../core/util/my_style.dart';
+import '../../../../core/util/shared_preferences.dart';
+import '../../../../core/widgets/not_found_widget.dart';
+import '../../../../generated/assets.dart';
+import '../../bloc/notification_count_cubit/notification_count_cubit.dart';
+import '../../bloc/notifications_cubit/notifications_cubit.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});

@@ -13,15 +13,20 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({
     Key? key,
     this.titleText,
+    this.title,
     this.elevation,
     this.action,
-    this.zeroHeight, this.actions,
+    this.zeroHeight,
+    this.actions,
+    this.color,
   }) : super(key: key);
 
   final String? titleText;
+  final Widget? title;
   final List<Widget>? action;
   final bool? zeroHeight;
   final double? elevation;
+  final Color? color;
   final List<Widget>? actions;
 
   @override
@@ -29,14 +34,16 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return WillPopScope(
       onWillPop: () async => context.read<LoadingCubit>().isLoadingForPop(),
       child: AppBar(
-        backgroundColor: Color(0xFFE2EEF6),
+        backgroundColor: color ?? Color(0xFFE2EEF6),
         toolbarHeight: (zeroHeight ?? false) ? 0 : 80.0.h,
-        title: DrawableText(
-          text: titleText ?? '',
-          size: 24.0.spMin,
-          color: AppColorManager.mainColor,
-          fontFamily: FontManager.cairoBold,
-        ),
+        title: title == null
+            ? DrawableText(
+                text: titleText ?? '',
+                size: 24.0.spMin,
+                color: color != null ? Colors.white : AppColorManager.mainColor,
+                fontFamily: FontManager.cairoBold,
+              )
+            : title,
         leading: Navigator.canPop(context) ? const BackBtnWidget() : null,
         actions: actions,
         elevation: elevation ?? 0.0,
@@ -48,5 +55,5 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size(1.0.sw,(zeroHeight ?? false) ? 0 : 80.0.h);
+  Size get preferredSize => Size(1.0.sw, (zeroHeight ?? false) ? 0 : 80.0.h);
 }

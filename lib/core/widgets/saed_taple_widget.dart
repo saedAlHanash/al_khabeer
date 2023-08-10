@@ -15,7 +15,8 @@ class SaedTableWidget extends StatelessWidget {
       required this.data,
       this.command,
       this.onChangePage,
-      this.fullSizeIndex});
+      this.fullSizeIndex,
+      this.onTapItem});
 
   final List<dynamic> title;
   final List<int>? fullSizeIndex;
@@ -24,6 +25,7 @@ class SaedTableWidget extends StatelessWidget {
   final Command? command;
 
   final Function(Command command)? onChangePage;
+  final Function(List<dynamic> list, int i)? onTapItem;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class SaedTableWidget extends StatelessWidget {
                 (i, e) {
                   final widget = e is String
                       ? DrawableText(
-                          size: 18.0.sp,
+                          size: 16.0.sp,
                           matchParent: true,
                           textAlign: TextAlign.center,
                           text: e,
@@ -61,44 +63,48 @@ class SaedTableWidget extends StatelessWidget {
               ).toList(),
             ),
           ),
-          10.0.verticalSpace,
+
           ...data.mapIndexed((i1, e) {
-            return Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0).r,
-              margin: EdgeInsets.symmetric(vertical: 8.0).r,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.0.r),
-                color: AppColorManager.tableTitleItem,
-              ),
-              child: Row(
-                children: e.mapIndexed(
-                  (i, e) {
-                    final widget = e is String
-                        ? Directionality(
-                            textDirection:
-                                e.contains('spy') ? TextDirection.ltr : TextDirection.rtl,
-                            child: DrawableText(
-                              size: 16.0.sp,
-                              matchParent: !(fullSizeIndex?.contains(i) ?? true),
-                              textAlign: TextAlign.center,
-                              text: e.isEmpty ? '-' : e.replaceAll('spy', ''),
-                              color: Colors.black,
-                            ),
-                          )
-                        : e is Widget
-                            ? e
-                            : Container(
-                                height: 10,
-                                color: Colors.red,
-                              );
+            return InkWell(
+              onTap: onTapItem == null ? null : () => onTapItem?.call(e, i1),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0).r,
+                margin: EdgeInsets.symmetric(vertical: 3.0).r,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.0.r),
+                  color: AppColorManager.tableTitleItem,
+                ),
+                child: Row(
+                  children: e.mapIndexed(
+                    (i, e) {
+                      final widget = e is String
+                          ? Directionality(
+                              textDirection: e.contains('spy')
+                                  ? TextDirection.ltr
+                                  : TextDirection.rtl,
+                              child: DrawableText(
+                                size: 16.0.sp,
+                                matchParent: !(fullSizeIndex?.contains(i) ?? true),
+                                textAlign: TextAlign.center,
+                                text: e.isEmpty ? '-' : e.replaceAll('spy', ''),
+                                color: Colors.black,
+                              ),
+                            )
+                          : e is Widget
+                              ? e
+                              : Container(
+                                  height: 10,
+                                  color: Colors.red,
+                                );
 
-                    if (fullSizeIndex?.contains(i) ?? false) {
-                      return widget;
-                    }
+                      if (fullSizeIndex?.contains(i) ?? false) {
+                        return widget;
+                      }
 
-                    return Expanded(child: widget);
-                  },
-                ).toList(),
+                      return Expanded(child: widget);
+                    },
+                  ).toList(),
+                ),
               ),
             );
           }).toList(),
@@ -148,7 +154,7 @@ class SaedTableWidget1 extends StatelessWidget {
                   (i, e) {
                     final widget = e is String
                         ? DrawableText(
-                            size: 18.0.sp,
+                            size: 16.0.sp,
                             matchParent: true,
                             textAlign: TextAlign.center,
                             text: e,
@@ -170,7 +176,7 @@ class SaedTableWidget1 extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(top: 15.0).h,
                               width: 1.0.h,
-                              color: AppColorManager.dividerColor,
+                              color: AppColorManager.lightGrayEd,
                             ),
                         ],
                       ),
@@ -184,12 +190,14 @@ class SaedTableWidget1 extends StatelessWidget {
             height: 0.0,
             indent: 0.0,
             endIndent: 0.0,
+            color: AppColorManager.lightGrayEd,
           ),
           ...data.mapIndexed((i1, e) {
+            var key = GlobalKey();
             return Column(
               children: [
                 Container(
-                  height: 40.0.h,
+                  key: key,
                   child: Row(
                     children: e.mapIndexed(
                       (i, e) {
@@ -199,6 +207,7 @@ class SaedTableWidget1 extends StatelessWidget {
                                     ? TextDirection.ltr
                                     : TextDirection.rtl,
                                 child: DrawableText(
+                                  padding: EdgeInsets.symmetric(vertical: 10.0),
                                   size: 16.0.sp,
                                   matchParent: !(fullSizeIndex?.contains(i) ?? true),
                                   textAlign: TextAlign.center,
@@ -222,9 +231,19 @@ class SaedTableWidget1 extends StatelessWidget {
                             children: [
                               Expanded(child: widget),
                               if (i != title.length - 1)
-                                Container(
-                                  width: 1.0.h,
-                                  color: AppColorManager.dividerColor,
+                                FutureBuilder(
+                                  future: Future.delayed(Duration(milliseconds: 50), () {
+                                    return key.currentContext?.size;
+                                  }),
+                                  builder: (context, snapshot) {
+                                    if (!snapshot.hasData) return 0.0.verticalSpace;
+                                    print(snapshot.requireData);
+                                    return Container(
+                                      width: 1.0.w,
+                                      height: snapshot.requireData?.height,
+                                      color: AppColorManager.lightGrayEd,
+                                    );
+                                  },
                                 ),
                             ],
                           ),
@@ -238,6 +257,7 @@ class SaedTableWidget1 extends StatelessWidget {
                     height: 0.0,
                     indent: 0.0,
                     endIndent: 0.0,
+                    color: AppColorManager.lightGrayEd,
                   ),
               ],
             );

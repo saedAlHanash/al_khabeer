@@ -1,6 +1,7 @@
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/core/widgets/my_button.dart';
 import 'package:al_khabeer/generated/assets.dart';
+import 'package:al_khabeer/router/app_router.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,13 +10,14 @@ import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_multi_type/image_multi_type.dart';
 
+import '../../../../core/util/snack_bar_message.dart';
 import '../../../../core/widgets/bottom_nav_widget.dart';
 import '../../../cart/bloc/add_to_cart_cubit/add_to_cart_cubit.dart';
 
-
+import '../../../students/ui/pages/students_page.dart';
 import '../widget/screens/home_screen.dart';
 import '../../../settings/ui/pages/settings_screen.dart';
-import '../widget/screens/notifications_screen.dart';
+import '../../../notifications/ui/pages/notifications_screen.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -60,24 +62,18 @@ class _HomepageState extends State<Homepage> {
         },
         child: Scaffold(
           appBar: AppBarWidget(
-            titleText: 'لوحة التبليغات',
-            actions: [
-              Padding(
-                padding: const EdgeInsets.all(25.0).r,
-                child: ImageMultiType(
-                  url: Assets.iconsLogo,
-                  height: 45.0.r,
-                  width: 45.0.r,
-                ),
-              ),
-            ],
+            title: ImageMultiType(
+              url: Assets.iconsLogoWithoutText,
+              height: 60.0.r,
+              width: 60.0.r,
+            ),
+            actions: [],
           ),
           drawer: SafeArea(
             child: Drawer(
               width: 208.0.w,
               backgroundColor: AppColorManager.mainColor.withOpacity(0.6),
               elevation: 0.01,
-
               shadowColor: Colors.transparent,
               child: Column(
                 children: [
@@ -105,6 +101,9 @@ class _HomepageState extends State<Homepage> {
                       color: Colors.white,
                     ),
                     minLeadingWidth: 5.0.r,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteName.demo);
+                    },
                     leading: ImageMultiType(
                       url: Assets.iconsInfo,
                       height: 20.0.r,
@@ -117,6 +116,12 @@ class _HomepageState extends State<Homepage> {
                       color: Colors.white,
                     ),
                     minLeadingWidth: 5.0.r,
+                    onTap: () {
+                      NoteMessage.showMyDialog(
+                        context,
+                        child: LanWidget(),
+                      );
+                    },
                     leading: ImageMultiType(
                       url: Assets.iconsLang,
                       height: 20.0.r,
@@ -128,6 +133,9 @@ class _HomepageState extends State<Homepage> {
                       text: 'سياسة الخصوصية والأحكام',
                       color: Colors.white,
                     ),
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteName.policy);
+                    },
                     minLeadingWidth: 5.0.r,
                     leading: ImageMultiType(
                       url: Assets.iconsShiled,
@@ -166,16 +174,107 @@ class _HomepageState extends State<Homepage> {
           body: SizedBox.expand(
             child: PageView(
               controller: _pageController,
-              physics:  NeverScrollableScrollPhysics(),
-              children:  [
+              physics: NeverScrollableScrollPhysics(),
+              children: [
                 HomeScreen(),
-                Container(),
+                StudentsPage(withAppBar: false),
                 NotificationsScreen(),
                 SettingsScreen(),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class LanWidget extends StatefulWidget {
+  const LanWidget({super.key});
+
+  @override
+  State<LanWidget> createState() => _LanWidgetState();
+}
+
+class _LanWidgetState extends State<LanWidget> {
+  var select = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 250.0.h,
+      width: 300.0.w,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          DrawableText(
+            text: 'اللغة',
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () => setState(() => select = 0),
+                child: Container(
+                  height: 130.0.r,
+                  width: 120.0.r,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0.r),
+                    color: select == 0 ? Colors.lightBlue : Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      DrawableText(
+                        text: 'English',
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        height: 70.0.r,
+                        width: 70.0.r,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColorManager.mainColorLight),
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: DrawableText(text: 'EN'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () => setState(() => select = 1),
+                child: Container(
+                  height: 130.0.r,
+                  width: 120.0.r,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColorManager.mainColorLight),
+                    borderRadius: BorderRadius.circular(20.0.r),
+                    color: select != 0 ? Colors.lightBlue : Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      DrawableText(
+                        text: 'العربية',
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        height: 70.0.r,
+                        width: 70.0.r,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColorManager.lightGray,
+                        ),
+                        child: DrawableText(text: 'ع'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

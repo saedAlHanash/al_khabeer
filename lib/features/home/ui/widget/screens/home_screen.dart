@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       child: GridView(
         padding: EdgeInsets.symmetric(horizontal: 10.0).w,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, mainAxisExtent: 155.0.h),
+            crossAxisCount: 2, mainAxisExtent: 140.0.h),
         children: [
           ItemCardWidget(item: HomeCards.students),
           ItemCardWidget(item: HomeCards.cashPayment),
@@ -62,6 +62,7 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
         switch (widget.item) {
           case HomeCards.students:
             {
+              Navigator.pushNamed(context, RouteName.students);
               break;
             }
           case HomeCards.cashPayment:
@@ -81,18 +82,22 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
             }
           case HomeCards.audit:
             {
+              Navigator.pushNamed(context, RouteName.audit);
               break;
             }
           case HomeCards.debit:
             {
+              Navigator.pushNamed(context, RouteName.debit);
               break;
             }
           case HomeCards.teachers:
             {
+              Navigator.pushNamed(context, RouteName.teachers);
               break;
             }
           case HomeCards.employees:
             {
+              Navigator.pushNamed(context, RouteName.employees);
               break;
             }
         }

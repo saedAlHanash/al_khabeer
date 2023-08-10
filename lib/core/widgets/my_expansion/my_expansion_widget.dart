@@ -1,11 +1,8 @@
-
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/core/widgets/my_expansion/my_expansion_panal.dart';
-
-import '../../../generated/assets.dart';
 
 import 'item_expansion.dart';
 
@@ -16,12 +13,12 @@ class MyExpansionWidget extends StatefulWidget {
     this.onTapItem,
     this.elevation,
     this.onExpansion,
-       this.decoration,
+    this.decoration,
   }) : super(key: key);
 
   final List<ItemExpansion> items;
   final double? elevation;
-    final BoxDecoration? decoration;
+  final BoxDecoration? decoration;
   final Function(int)? onTapItem;
   final ItemExpansionOption Function(ItemExpansion)? onExpansion;
 
@@ -44,13 +41,18 @@ class _MyExpansionWidgetState extends State<MyExpansionWidget> {
           headerBuilder: (_, isExpanded) {
             if (e.headerText != null) {
               return DrawableText(
+                selectable: false,
                 text: e.headerText!,
                 fontFamily: FontManager.cairoBold,
                 color: Colors.black,
                 drawablePadding: 10.0.w,
               );
             }
-            return e.header ?? const DrawableText(text: 'header');
+            return e.header ??
+                const DrawableText(
+                  text: 'header',
+                  selectable: false,
+                );
           },
           body: e.body,
           enable: e.enable,
@@ -67,8 +69,7 @@ class _MyExpansionWidgetState extends State<MyExpansionWidget> {
       dividerColor: Colors.transparent,
       expansionCallback: (panelIndex, isExpanded) {
         setState(() {
-          widget.items[panelIndex].isExpanded =
-              !widget.items[panelIndex].isExpanded;
+          widget.items[panelIndex].isExpanded = !widget.items[panelIndex].isExpanded;
         });
       },
     );

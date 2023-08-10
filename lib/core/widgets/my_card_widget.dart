@@ -13,14 +13,20 @@ class MyCardWidget extends StatelessWidget {
     required this.child,
     this.elevation = 2,
     this.radios,
+    this.withSideRed,
+    this.shadowColor,
+    this.sideColor = AppColorManager.mainColor,
   }) : super(key: key);
 
   final EdgeInsets? margin;
   final EdgeInsets? padding;
   final Color cardColor;
+  final Color sideColor;
   final Widget child;
   final double elevation;
   final double? radios;
+  final bool? withSideRed;
+  final Color? shadowColor;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +40,30 @@ class MyCardWidget extends StatelessWidget {
       color: cardColor,
       clipBehavior: Clip.hardEdge,
       elevation: elevation,
-      shadowColor: AppColorManager.lightGray,
+      shadowColor: shadowColor ?? AppColorManager.lightGray,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radios ?? MyStyle.cardRadios),
       ),
-      child: cardChild,
+      child: (withSideRed ?? false)
+          ? ClipPath(
+              clipper: ShapeBorderClipper(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(3),
+                ),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    left: BorderSide(
+                      color: sideColor,
+                      width: 50.w,
+                    ),
+                  ),
+                ),
+                child: cardChild,
+              ),
+            )
+          : cardChild,
     );
   }
 }

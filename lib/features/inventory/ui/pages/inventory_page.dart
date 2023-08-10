@@ -1,3 +1,4 @@
+import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/util/my_style.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +26,7 @@ class InventoryPage extends StatelessWidget {
           children: [
             SpinnerWidget(items: tempSpinnerItems, width: .9.sw),
             10.0.verticalSpace,
-            SpinnerWidget(items: tempSpinnerItems, width: .9.sw),
+            SpinnerWidget(items: matirialSpinnerItems, width: .9.sw),
             10.0.verticalSpace,
             MyButton(
               text: 'معاينة',
@@ -36,7 +37,7 @@ class InventoryPage extends StatelessWidget {
               decoration: MyStyle.roundBox,
               padding: EdgeInsets.all(20.0).r,
               child: DrawableText(
-                text: 'group name',
+                text: 'اسم المجموعة',
                 matchParent: true,
               ),
             ),
@@ -44,20 +45,25 @@ class InventoryPage extends StatelessWidget {
             Expanded(
               child: SaedTableWidget1(
                 title: [
-                  'name',
-                  'item',
-                  'count',
+                  'اسم المادة',
+                  'الوحدة',
+                  'الكمية',
                 ],
                 data: [
                   [
-                    'date',
-                    'day',
-                    'time',
+                    'قلم',
+                    'باكيت',
+                    '60',
                   ],
                   [
-                    'date',
-                    'day',
-                    'time',
+                    'ممحاة',
+                    'باكيت',
+                    '60',
+                  ],
+                  [
+                    'كراسة',
+                    '',
+                    '60',
                   ],
                 ],
               ),
@@ -66,15 +72,15 @@ class InventoryPage extends StatelessWidget {
               decoration: MyStyle.roundBox,
               padding: EdgeInsets.all(20.0).r,
               child: DrawableText(
-                text: 'group name',
+                text: 'مجموع المواد',
                 matchParent: true,
                 drawableEnd: Column(
                   children: [
                     DrawableText(
-                      text: 'count',
+                      text: 'الكميات',
                     ),
                     DrawableText(
-                      text: '3215',
+                      text: 200000.0.formatPrice,
                       fontFamily: FontManager.cairoBold,
                     ),
                   ],
@@ -87,3 +93,16 @@ class InventoryPage extends StatelessWidget {
     );
   }
 }
+final tempSpinnerItems = [
+  SpinnerItem(id: -1, name: 'اسم المجموعة'),
+  SpinnerItem(id: 1, name: 'القرطاسية'),
+  SpinnerItem(id: 2, name: 'مواد الفصول'),
+  SpinnerItem(id: 3, name: 'المنظفات'),
+];
+
+final matirialSpinnerItems = [
+  SpinnerItem(id: -1, name: 'اسم المادة'),
+  SpinnerItem(id: 1, name: 'أقلام'),
+  SpinnerItem(id: 2, name: 'محايات'),
+  SpinnerItem(id: 3, name: 'طبشور'),
+];

@@ -5,6 +5,8 @@ import 'package:al_khabeer/core/widgets/spinner_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../students/ui/pages/students_page.dart';
+
 class ExamTablePage extends StatelessWidget {
   const ExamTablePage({super.key});
 
@@ -19,9 +21,9 @@ class ExamTablePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             10.0.verticalSpace,
-            SpinnerWidget(items: tempSpinnerItems, width: .9.sw),
+            SpinnerWidget(items: stageSpinnerItems, width: .9.sw),
             10.0.verticalSpace,
-            SpinnerWidget(items: tempSpinnerItems, width: .9.sw),
+            SpinnerWidget(items: classSpinnerItems, width: .9.sw),
             10.0.verticalSpace,
             MyButton(
               text: 'معاينة',
@@ -29,27 +31,42 @@ class ExamTablePage extends StatelessWidget {
             ),     10.0.verticalSpace,
             SaedTableWidget(
               title: [
-                'date',
-                'day',
-                'time',
-                'type',
-                'name',
+                'تاريخ',
+                'يوم',
+                'فترة الامتحان',
+                'نوع الامتحان',
+                'اسم المادة',
               ],
               data: [
                 [
-                  'date',
-                  'day',
-                  'time',
-                  'type',
-                  'name',
+                  '01/jun',
+                  'السبت',
+                  'شهري',
+                  'شفوي',
+                  'عربي',
                 ],
                 [
-                  'date',
-                  'day',
-                  'time',
-                  'type',
-                  'name',
+                  '01/jun',
+                  'أحد',
+                  'يومي',
+                  'كتابي',
+                  'رياضيات',
                 ],
+                [
+                  '01/jun',
+                  'إثنين',
+                  'شهري',
+                  'تحريري',
+                  'علوم',
+                ],
+                [
+                  '01/jun',
+                  'ثلاثاء',
+                  'اسبوعي',
+                  'شفوي',
+                  'قراءة',
+                ],
+
               ],
             ),
           ],

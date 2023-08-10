@@ -1,4 +1,3 @@
-
 class NotificationsResponse {
   NotificationsResponse({
     required this.data,
@@ -25,7 +24,6 @@ class NotificationModel {
     required this.id,
     required this.message,
     required this.type,
-
     required this.createdAt,
     required this.updatedAt,
   });
@@ -42,9 +40,18 @@ class NotificationModel {
       id: json["id"] ?? 0,
       message: json["message"] ?? "",
       type: json["type"] ?? "",
-
       createdAt: DateTime.tryParse(json["created_at"] ?? ""),
       updatedAt: DateTime.tryParse(json["updated_at"] ?? ""),
+    );
+  }
+
+  factory NotificationModel.initial() {
+    return NotificationModel(
+      id: 1,
+      message: 'اختبار الاشعار',
+      type: 'temp',
+      createdAt: DateTime.now(),
+      updatedAt: null,
     );
   }
 
@@ -52,7 +59,6 @@ class NotificationModel {
         "id": id,
         "message": message,
         "type": type,
-
         "created_at": createdAt,
         "updated_at": updatedAt,
       };

@@ -58,7 +58,7 @@ class SpinnerWidget extends StatelessWidget {
             state(() => selectedItem = value!);
           },
           buttonWidth: width,
-          buttonHeight: 60.0.h,
+          buttonHeight: 50.0.h,
           dropdownWidth: dropdownWidth,
           customButton: customButton,
           underline: 0.0.verticalSpace,
