@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../strings/app_color_manager.dart';
 
-class SpinnerWidget extends StatelessWidget {
+class SpinnerWidget<T> extends StatelessWidget {
   const SpinnerWidget({
     Key? key,
     required this.items,
@@ -15,14 +15,20 @@ class SpinnerWidget extends StatelessWidget {
     this.customButton,
     this.width,
     this.dropdownWidth,
+    this.sedFirstItem,
+    this.expanded,
+    this.decoration,
   }) : super(key: key);
 
   final List<SpinnerItem> items;
   final Widget? hint;
   final Widget? customButton;
-  final Function(SpinnerItem)? onChanged;
+  final Function(SpinnerItem item)? onChanged;
   final double? width;
   final double? dropdownWidth;
+  final bool? sedFirstItem;
+  final bool? expanded;
+  final BoxDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -34,34 +40,41 @@ class SpinnerWidget extends StatelessWidget {
 
         return DropdownMenuItem(
           value: item,
+          enabled: (item.id ?? 0) > 0,
           child: DrawableText(
+            selectable: false,
             text: item.name ?? '',
-            padding: const EdgeInsets.symmetric(horizontal: 15.0).w,
-            color: (item.id != 0) ? Colors.white : AppColorManager.gray.withOpacity(0.7),
+            color: (item.id != 0) ? Colors.white : AppColorManager.mainColorLight,
             fontFamily: FontManager.cairoBold,
-            size: 18.0.sp,
+            drawableStart: item.icon,
+            drawablePadding: 7.0.w,
           ),
         );
       },
     ).toList();
 
-    selectedItem ??= items.isEmpty ? null : items[0];
+    if (hint == null) selectedItem ??= items.firstOrNull;
+
+    if ((sedFirstItem ?? false) && selectedItem != null) {
+      if (onChanged != null) onChanged!(selectedItem!);
+    }
 
     return StatefulBuilder(
       builder: (_, state) {
         return DropdownButton2(
           items: list,
-          value: hint != null ? null : selectedItem,
+          value: selectedItem,
           hint: hint,
           onChanged: (value) {
             if (onChanged != null) onChanged!(value!);
             state(() => selectedItem = value!);
           },
           buttonWidth: width,
-          buttonHeight: 50.0.h,
+          isExpanded: expanded ?? false,
           dropdownWidth: dropdownWidth,
           customButton: customButton,
           underline: 0.0.verticalSpace,
+          buttonHeight: 50.0.h,
           dropdownMaxHeight: 300.0.h,
           dropdownDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0.r),
@@ -74,11 +87,16 @@ class SpinnerWidget extends StatelessWidget {
           buttonPadding: EdgeInsets.symmetric(horizontal: 20.0).w,
           buttonElevation: 0,
           dropdownElevation: 2,
-          iconEnabledColor: Colors.white,
-          iconDisabledColor: Colors.white,
-          iconSize: 30.0.r,
-          // icon: const Icon(Icons.arrow_drop_down_outlined),
-          // iconSize: 20.0.spMin,
+          icon: Row(
+            children: [
+              const Icon(
+                Icons.expand_more,
+                color: AppColorManager.whit,
+              ),
+              5.0.horizontalSpace,
+            ],
+          ),
+          iconSize: 25.0.spMin,
         );
       },
     );
@@ -89,13 +107,17 @@ class SpinnerItem {
   SpinnerItem({
     this.name,
     this.id,
+    this.guid,
     this.isSelected = false,
     this.item,
+    this.icon,
     this.enable,
   });
 
   String? name;
   int? id;
+  Widget? icon;
+  String? guid;
   bool isSelected;
   bool? enable;
   dynamic item;

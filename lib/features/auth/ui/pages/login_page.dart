@@ -1,4 +1,3 @@
-import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/strings/app_string_manager.dart';
 import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:al_khabeer/core/widgets/my_button.dart';
@@ -34,11 +33,11 @@ class _LoginPageState extends State<LoginPage> {
       },
       child: Scaffold(
         appBar: const AppBarWidget(zeroHeight: true),
-        body: Container(
+        body: SizedBox(
           width: 1.0.sw,
           height: 1.0.sh,
-          padding: MyStyle.authPagesPadding,
           child: SingleChildScrollView(
+            padding: MyStyle.authPagesPadding,
             child: Column(
               children: [
                 140.verticalSpace,
@@ -50,10 +49,9 @@ class _LoginPageState extends State<LoginPage> {
                 50.0.verticalSpace,
                 MyTextFormOutLineWidget(
                   textDirection: TextDirection.ltr,
-                  keyBordType: TextInputType.phone,
-                  initialValue: request.phone,
-                  label: AppStringManager.phoneNumber,
-                  onChanged: (val) => request.phone = val,
+                  initialValue: request.username,
+                  label: AppStringManager.userName,
+                  onChanged: (val) => request.username = val,
                 ),
                 20.0.verticalSpace,
                 MyTextFormOutLineWidget(

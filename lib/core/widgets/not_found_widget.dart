@@ -12,7 +12,7 @@ class NotFoundWidget extends StatelessWidget {
     required this.icon,
   }) : super(key: key);
   final String text;
-  final String icon;
+  final String? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +22,12 @@ class NotFoundWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ImageMultiType(
-              url: icon,
-              height: 250.0.spMin,
-              width: 250.0.spMin,
-            ),
+            if (icon != null)
+              ImageMultiType(
+                url: icon!,
+                height: 250.0.spMin,
+                width: 250.0.spMin,
+              ),
             DrawableText(
               text: 'آسف !',
               fontFamily: FontManager.cairoBold,

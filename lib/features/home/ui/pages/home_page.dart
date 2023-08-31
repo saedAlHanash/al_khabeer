@@ -14,9 +14,10 @@ import '../../../../core/util/snack_bar_message.dart';
 import '../../../../core/widgets/bottom_nav_widget.dart';
 import '../../../cart/bloc/add_to_cart_cubit/add_to_cart_cubit.dart';
 
+import '../../../news/ui/pages/news_page.dart';
 import '../../../students/ui/pages/students_page.dart';
 import '../widget/screens/home_screen.dart';
-import '../../../settings/ui/pages/settings_screen.dart';
+
 import '../../../notifications/ui/pages/notifications_screen.dart';
 
 class Homepage extends StatefulWidget {
@@ -179,7 +180,7 @@ class _HomepageState extends State<Homepage> {
                 HomeScreen(),
                 StudentsPage(withAppBar: false),
                 NotificationsScreen(),
-                SettingsScreen(),
+                NewsPage(),
               ],
             ),
           ),

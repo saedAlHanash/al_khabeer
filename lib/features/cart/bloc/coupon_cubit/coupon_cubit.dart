@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:al_khabeer/core/api_manager/api_service.dart';
 import 'package:al_khabeer/core/api_manager/api_url.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
-import 'package:al_khabeer/features/settings/services/setting_service.dart';
 
 import '../../../../core/error/error_manager.dart';
 import '../../../../core/injection/injection_container.dart';

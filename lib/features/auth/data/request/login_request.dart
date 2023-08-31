@@ -2,33 +2,30 @@ import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/main.dart';
 
 class LoginRequest {
-  String phone;
+  String username;
   String password;
 
-  String? fcm;
+
 
   LoginRequest({
-    this.phone = '',
+    this.username = '',
     this.password = '',
-  }) {
-    // getFireToken().then((value) => fcm = value);
-  }
+  });
 
   LoginRequest copyWith({
     String? phone,
     String? password,
   }) {
     return LoginRequest(
-      phone: phone ?? this.phone,
+      username: phone ?? this.username,
       password: password ?? this.password,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'phone': phone,
+      'username': username,
       'password': password,
-      'fcm_token': fcm,
     };
   }
 }

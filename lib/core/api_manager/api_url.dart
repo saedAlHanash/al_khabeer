@@ -35,18 +35,45 @@ class GetUrl {
 
   static const offers = 'products/offers';
   static const bestSeller = 'products/best-seller';
-  static var setting = 'setting';
+  static const setting = 'setting';
 
-  static var orders = 'orders';
+  static const orders = 'orders';
 
-  static var categoryById = 'category';
-  static var subCategoryById = 'subCategory';
+  static const categoryById = 'category';
+  static const subCategoryById = 'subCategory';
 
-  static var coupon ='coupon';
+  static const coupon = 'coupon';
+
+  static const getMaterial = 'storage_material';
+  static const getGroup = 'material_group';
+
+  static const getInventory = 'inventory';
+
+  static const getEmployees = 'employees';
+
+  static const getTeachers = 'newTeachers';
+
+  static const getStudent = 'student_transactions';
+
+  static const getStudentTransactions = 'student_transactions';
+
+  static const getClass = 'class';
+
+  static const getClassLevel = 'classlevel';
+
+  static var getStage = 'stage';
+
+  static var getTransactions = 'transactions';
+
+  static var getAccounts ='accounts';
+
+  static var exam ='exams-admin';
+
+  static var getNews ='news';
 }
 
 class PostUrl {
-  static const loginUrl = 'login';
+  static const loginUrl = 'auth/sync/login';
   static const signup = 'register';
 
   static const forgetPassword = 'auth/forget-password';
@@ -66,9 +93,10 @@ class PostUrl {
 
   static const restPass = 'reset-password';
 
-  static var createOrder = 'orders';
+  static const createOrder = 'orders';
 }
 
+//{"username":"KH01","password":"123456"}
 class PutUrl {
   static const updateName = 'update-name';
   static const updatePhone = 'update-phone';
@@ -81,4 +109,4 @@ class DeleteUrl {
 
 //https://robin-medical.com/Snail/public/api/v1
 const additionalConst = 'api/v1/';
-const baseUrl = 'snailstoreiq.com';
+const baseUrl = 'kh-sites.com';

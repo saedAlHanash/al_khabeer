@@ -32,25 +32,26 @@ class AppSharedPreference {
     if (token == null) return;
 
     _prefs.setString(_token, token);
+    APIService.reInitial();
   }
 
   static String getToken() {
     return _prefs.getString(_token) ?? '';
   }
 
-  static cashUser(ConfirmCodeData? model) {
+  static cashUser(User? model) {
     if (model == null) return;
 
     _prefs.setString(_user, jsonEncode(model.toJson()));
   }
 
-  static ConfirmCodeData getUserModel() {
+  static User getUserModel() {
     var json = _prefs.getString(_user) ?? '{}';
-    return ConfirmCodeData.fromJson(jsonDecode(json));
+    return User.fromJson(jsonDecode(json));
   }
 
   static cashPhoneNumber(String phone) async {
-    loggerObject.v(phone);
+
     await _prefs.setString(_phoneNumber, phone);
   }
 

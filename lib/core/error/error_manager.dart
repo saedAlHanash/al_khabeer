@@ -28,46 +28,27 @@ class ErrorManager {
 
 class ErrorBody {
   ErrorBody({
-    required this.result,
+    required this.status,
     required this.message,
-    required this.data,
   });
 
-  final bool result;
+  final String status;
   final String message;
-  final Data? data;
+
 
   factory ErrorBody.fromJson(Map<String, dynamic> json){
     return ErrorBody(
-      result: json["result"] ?? false,
+      status: json["status"] ?? '',
       message: json["message"] ?? "",
-      data: json["data"] == null ? null : Data.fromJson(json["data"]),
+
     );
   }
 
   Map<String, dynamic> toJson() => {
-    "result": result,
+    "status": status,
     "message": message,
-    "data": data?.toJson(),
   };
 
 }
 
-class Data {
-  Data({
-    required this.phone,
-  });
 
-  final List<String> phone;
-
-  factory Data.fromJson(Map<String, dynamic> json){
-    return Data(
-      phone: json["phone"] == null ? [] : List<String>.from(json["phone"]!.map((x) => x)),
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-    "phone": phone.map((x) => x).toList(),
-  };
-
-}

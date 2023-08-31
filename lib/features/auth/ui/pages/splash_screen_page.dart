@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_multi_type/image_multi_type.dart';
 
 import '../../../../core/util/my_style.dart';
 import '../../../../core/util/shared_preferences.dart';
@@ -22,6 +23,13 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
 
+    Future.delayed(
+      const Duration(milliseconds: 1500),
+      () => Navigator.pushReplacementNamed(
+        context,
+        AppSharedPreference.isLogin ? RouteName.home : RouteName.login,
+      ),
+    );
     super.initState();
   }
 
@@ -35,27 +43,17 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 
   @override
   Widget build(BuildContext context) {
-    Timer(
-      const Duration(milliseconds: 1500),
-      () async {
-        Navigator.pushReplacementNamed(
-            context, AppSharedPreference.isLogin ? RouteName.home : RouteName.login);
-      },
-    );
-
     return Scaffold(
       body: Container(
         width: 1.0.sw,
         height: 1.0.sh,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(Assets.iconsBackCover),
-            fit: BoxFit.fill,
-          ),
-        ),
         padding: MyStyle.authPagesPadding,
         child: Center(
-          child: Image.asset(Assets.iconsLogo),
+          child: ImageMultiType(
+            height: 150.0.r,
+            width: 150.0.r,
+            url: Assets.iconsLogo,
+          ),
         ),
       ),
     );

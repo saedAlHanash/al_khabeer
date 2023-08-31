@@ -56,7 +56,6 @@ class APIService {
   }) async {
     url = additionalConst + url;
     query = query ?? {};
-    query['user_id'] = AppSharedPreference.getMyId;
     query.removeWhere((key, value) => value == null);
     query.forEach((key, value) => query![key] = value.toString());
 
@@ -117,7 +116,6 @@ class APIService {
           (key, value) => value == null || (value is String && value.isEmpty));
     }
     query = query ?? {};
-    query['user_id'] = AppSharedPreference.getMyId;
     query.removeWhere((key, value) => value == null);
     query.forEach((key, value) => query![key] = value.toString());
 
@@ -126,7 +124,7 @@ class APIService {
 
     final uri = Uri.https(baseUrl, url, query);
 
-    logRequest(url, body?..addAll(query));
+    logRequest(url, (body??{})..addAll(query));
 
     final response =
         await http.post(uri, body: jsonEncode(body), headers: innerHeader).timeout(
@@ -148,7 +146,6 @@ class APIService {
     url = additionalConst + url;
     if (body != null) body.removeWhere((key, value) => value == null);
     query = query ?? {};
-    query['user_id'] = AppSharedPreference.getMyId;
     query.removeWhere((key, value) => value == null);
     query.forEach((key, value) => query![key] = value.toString());
 
@@ -178,7 +175,6 @@ class APIService {
     url = additionalConst + url;
     if (body != null) body.removeWhere((key, value) => value == null);
     query = query ?? {};
-    query['user_id'] = AppSharedPreference.getMyId;
     query.removeWhere((key, value) => value == null);
     query.forEach((key, value) => query![key] = value.toString());
 

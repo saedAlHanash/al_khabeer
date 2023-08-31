@@ -44,7 +44,7 @@ class SaedTableWidget extends StatelessWidget {
                 (i, e) {
                   final widget = e is String
                       ? DrawableText(
-                          size: 16.0.sp,
+                          size: 15.0.sp,
                           matchParent: true,
                           textAlign: TextAlign.center,
                           text: e,
@@ -83,7 +83,7 @@ class SaedTableWidget extends StatelessWidget {
                                   ? TextDirection.ltr
                                   : TextDirection.rtl,
                               child: DrawableText(
-                                size: 16.0.sp,
+                                size: 15.0.sp,
                                 matchParent: !(fullSizeIndex?.contains(i) ?? true),
                                 textAlign: TextAlign.center,
                                 text: e.isEmpty ? '-' : e.replaceAll('spy', ''),
@@ -154,7 +154,7 @@ class SaedTableWidget1 extends StatelessWidget {
                   (i, e) {
                     final widget = e is String
                         ? DrawableText(
-                            size: 16.0.sp,
+                            size: 15.0.sp,
                             matchParent: true,
                             textAlign: TextAlign.center,
                             text: e,
@@ -208,7 +208,7 @@ class SaedTableWidget1 extends StatelessWidget {
                                     : TextDirection.rtl,
                                 child: DrawableText(
                                   padding: EdgeInsets.symmetric(vertical: 10.0),
-                                  size: 16.0.sp,
+                                  size: 15.0.sp,
                                   matchParent: !(fullSizeIndex?.contains(i) ?? true),
                                   textAlign: TextAlign.center,
                                   text: e.isEmpty ? '-' : e.replaceAll('spy', ''),
@@ -237,7 +237,6 @@ class SaedTableWidget1 extends StatelessWidget {
                                   }),
                                   builder: (context, snapshot) {
                                     if (!snapshot.hasData) return 0.0.verticalSpace;
-                                    print(snapshot.requireData);
                                     return Container(
                                       width: 1.0.w,
                                       height: snapshot.requireData?.height,

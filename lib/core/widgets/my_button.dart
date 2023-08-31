@@ -1,10 +1,8 @@
-
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:al_khabeer/core/app_theme.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
-
 
 class MyButton extends StatelessWidget {
   const MyButton({
@@ -16,6 +14,7 @@ class MyButton extends StatelessWidget {
     this.elevation,
     this.width,
     this.height,
+    this.enable = true,
     this.borderRadius,
   }) : super(key: key);
 
@@ -26,6 +25,7 @@ class MyButton extends StatelessWidget {
   final double? height;
   final double? borderRadius;
   final double? elevation;
+  final bool enable;
   final Function()? onTap;
 
   @override
@@ -40,30 +40,31 @@ class MyButton extends StatelessWidget {
         );
 
     return SizedBox(
-      width: width??.8.sw,
+      width: width ?? .8.sw,
       height: height ?? 47.0.h,
       child: ElevatedButton(
-        onPressed: onTap,
+        onPressed: !enable ? null : onTap,
         style: ButtonStyle(
-            alignment: Alignment.center,
-            backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
-                if (states.contains(MaterialState.pressed)) {
-                  return color ?? AppColorManager.mainColor.withOpacity(0.8);
-
-                }
-                return color ?? AppColorManager.mainColor; // Use the component's default.
-              },
-            ),
-            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) => secondaryColor.withOpacity(0.3),
-            ),
-            shape:
-            MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+          alignment: Alignment.center,
+          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+              if (states.contains(MaterialState.pressed)) {
+                return color ?? AppColorManager.mainColor.withOpacity(0.8);
+              }
+              return color ?? AppColorManager.mainColor; // Use the component's default.
+            },
+          ),
+          overlayColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) => secondaryColor.withOpacity(0.3),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                 borderRadius ?? 15.0.r,
               ),
-            ))),
+            ),
+          ),
+        ),
         child: child,
       ),
     );
@@ -111,7 +112,7 @@ class MyOutlineButton extends StatelessWidget {
         style: ButtonStyle(
           alignment: Alignment.center,
           backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
+            (Set<MaterialState> states) {
               if (states.contains(MaterialState.pressed)) {
                 return color ?? AppColorManager.whit.withOpacity(0.1);
               }
@@ -119,7 +120,7 @@ class MyOutlineButton extends StatelessWidget {
             },
           ),
           overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) => AppColorManager.lightGray,
+            (Set<MaterialState> states) => AppColorManager.lightGray,
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(

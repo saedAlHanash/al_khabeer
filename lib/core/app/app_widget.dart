@@ -1,24 +1,25 @@
+import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:drawable_text/drawable_text.dart';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:al_khabeer/core/api_manager/api_service.dart';
-import 'package:al_khabeer/core/strings/app_color_manager.dart';
-import 'package:al_khabeer/features/home/ui/widget/new_nav.dart';
 
+import '../../features/accounts/bloc/accounts_cubit/accounts_cubit.dart';
+import '../../features/accounts/bloc/transactions_cubit/transactions_cubit.dart';
 import '../../features/cart/bloc/add_to_cart_cubit/add_to_cart_cubit.dart';
-
-
-import '../../features/notifications/bloc/notification_count_cubit/notification_count_cubit.dart';
-import '../../main.dart';
+import '../../features/employees/bloc/employees_cubit/employees_cubit.dart';
+import '../../features/filter_data/bloc/class_cubit/class_cubit.dart';
+import '../../features/filter_data/bloc/class_level_cubit/class_level_cubit.dart';
+import '../../features/filter_data/bloc/group_cubit/group_cubit.dart';
+import '../../features/filter_data/bloc/material_cubit/material_cubit.dart';
+import '../../features/filter_data/bloc/stage_cubit/stage_cubit.dart';
+import '../../features/news/bloc/news_cubit/news_cubit.dart';
+import '../../features/students/bloc/student_cubit/student_cubit.dart';
+import '../../features/teachers/bloc/teachers_cubit/teachers_cubit.dart';
 import '../../router/app_router.dart';
-
 import '../app_theme.dart';
 import '../injection/injection_container.dart' as di;
-import '../util/shared_preferences.dart';
 import 'bloc/loading_cubit.dart';
 
 class MyApp extends StatefulWidget {
@@ -31,7 +32,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-
     super.initState();
   }
 
@@ -76,10 +76,22 @@ class _MyAppState extends State<MyApp> {
             return MultiBlocProvider(
               providers: [
                 BlocProvider(create: (_) => di.sl<LoadingCubit>()),
-
-
                 BlocProvider(create: (_) => di.sl<AddToCartCubit>()),
-
+                BlocProvider(create: (_) => di.sl<StageCubit>()..getStage(_)),
+                BlocProvider(create: (_) => di.sl<NewsCubit>()..getNews(_)),
+                BlocProvider(create: (_) => di.sl<ClassCubit>()..getClass(_)),
+                BlocProvider(create: (_) => di.sl<GroupCubit>()..getGroups(_)),
+                BlocProvider(create: (_) => di.sl<StudentCubit>()..getStudent(_)),
+                BlocProvider(create: (_) => di.sl<TeachersCubit>()..getTeachers(_)),
+                BlocProvider(create: (_) => di.sl<EmployeesCubit>()..getEmployees(_)),
+                BlocProvider(create: (_) => di.sl<ClassLevelCubit>()..getClassLevel(_)),
+                BlocProvider(create: (_) => di.sl<AccountsCubit>()..getAccounts(_)),
+                BlocProvider(
+                  create: (_) => di.sl<TransactionsCubit>()..getTransactions(_),
+                ),
+                BlocProvider(
+                  create: (_) => di.sl<MaterialCubit>()..getMaterials(_, groupGuid: null),
+                ),
               ],
               child: Directionality(
                 textDirection: TextDirection.rtl,

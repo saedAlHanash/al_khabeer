@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:al_khabeer/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 import '../strings/app_string_manager.dart';
@@ -180,26 +181,34 @@ extension DateUtcHelper on DateTime {
 
   DateTime get getUtc => DateTime.utc(year, month, day);
 
-  String get formatDate => DateFormat('yyyy/MM/dd').format(this);
+  String get formatDate => DateFormat.yMd().format(this);
+  String get formatDateMD => DateFormat.Md().format(this);
 
-  String get formatDateAther => DateFormat('yyyy/MM/dd HH:MM').format(this);
+  String get formatTime {
+    var t = DateFormat('h:mm a').format(this);
 
-  String get formatTime => DateFormat('h:mm a').format(this);
+    return t.replaceAll('PM', 'م').replaceAll('AM', 'ص');
+  }
 
-  String get formatDateTime => '$formatTime $formatDate';
+  String get formatDateTime => '$formatDate $formatTime';
 
-  DateTime addFromNow({int? year, int? month, int? day, int? hour}) {
+  String get formatFullDate => '$formatDayName  $formatDate  $formatTime';
+
+  String get formatDayName {
+    initializeDateFormatting();
+    return DateFormat('EEEE', 'ar_SA').format(this);
+  }
+
+  DateTime addFromNow({int? year, int? month, int? day}) {
     return DateTime(
-      this.year + (year ?? 0),
-      this.month + (month ?? 0),
-      this.day + (day ?? 0),
-      this.hour + (hour ?? 0),
-    );
+        this.year + (year ?? 0), this.month + (month ?? 0), this.day + (day ?? 0));
   }
 
   DateTime initialFromDateTime({required DateTime date, required TimeOfDay time}) {
     return DateTime(date.year, date.month, date.day, time.hour, time.minute);
   }
+
+  String get formatDateAther => DateFormat('yyyy/MM/dd HH:MM').format(this);
 }
 
 extension FirstItem<E> on Iterable<E> {
