@@ -96,21 +96,21 @@ class _HomepageState extends State<Homepage> {
                     endIndent: 0.0,
                     indent: 0.0,
                   ),
-                  ListTile(
-                    title: DrawableText(
-                      text: 'عن الديمو',
-                      color: Colors.white,
-                    ),
-                    minLeadingWidth: 5.0.r,
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteName.demo);
-                    },
-                    leading: ImageMultiType(
-                      url: Assets.iconsInfo,
-                      height: 20.0.r,
-                      width: 20.0.r,
-                    ),
-                  ),
+                  // ListTile(
+                  //   title: DrawableText(
+                  //     text: 'عن الديمو',
+                  //     color: Colors.white,
+                  //   ),
+                  //   minLeadingWidth: 5.0.r,
+                  //   onTap: () {
+                  //     Navigator.pushNamed(context, RouteName.demo);
+                  //   },
+                  //   leading: ImageMultiType(
+                  //     url: Assets.iconsInfo,
+                  //     height: 20.0.r,
+                  //     width: 20.0.r,
+                  //   ),
+                  // ),
                   ListTile(
                     title: DrawableText(
                       text: 'اختيار اللغة',

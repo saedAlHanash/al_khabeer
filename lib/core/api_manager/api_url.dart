@@ -73,7 +73,8 @@ class GetUrl {
 }
 
 class PostUrl {
-  static const loginUrl = 'auth/sync/login';
+  static const loginUrl = 'auth/director/login';
+  static const logOutUrl = 'auth/logout';
   static const signup = 'register';
 
   static const forgetPassword = 'auth/forget-password';

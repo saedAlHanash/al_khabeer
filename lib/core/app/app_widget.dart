@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../features/accounts/bloc/accounts_cubit/accounts_cubit.dart';
 import '../../features/accounts/bloc/transactions_cubit/transactions_cubit.dart';
 import '../../features/cart/bloc/add_to_cart_cubit/add_to_cart_cubit.dart';
