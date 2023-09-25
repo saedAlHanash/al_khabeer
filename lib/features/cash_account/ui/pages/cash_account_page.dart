@@ -1,5 +1,4 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
-import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:collection/collection.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ import '../../../../core/util/my_style.dart';
 import '../../../../core/widgets/app_bar/app_bar_widget.dart';
 import '../../../../core/widgets/saed_taple_widget.dart';
 import '../../../../core/widgets/spinner_widget.dart';
+import '../../../../generated/l10n.dart';
 import '../../../accounts/bloc/accounts_cubit/accounts_cubit.dart';
 import '../../../accounts/bloc/transactions_cubit/transactions_cubit.dart';
 
@@ -30,7 +30,7 @@ class _CashAccountState extends State<CashAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(titleText: 'حساب النقدية'),
+      appBar: AppBarWidget(titleText: S.of(context).studentAccounts),
       body: Padding(
         padding: const EdgeInsets.all(20.0).r,
         child: Column(
@@ -42,7 +42,8 @@ class _CashAccountState extends State<CashAccount> {
                   return MyStyle.loadingWidget();
                 }
                 return SpinnerWidget(
-                  hint: DrawableText(text: 'اسم الحساب', color: Colors.white),
+                  hint:
+                      DrawableText(text: S.of(context).accountName, color: Colors.white),
                   items: state.getSpinnerItems(),
                   width: .9.sw,
                   onChanged: (val) {
@@ -63,9 +64,9 @@ class _CashAccountState extends State<CashAccount> {
                   }
                   return SaedTableWidget1(
                     title: [
-                      'اسم الحساب',
-                      'الرصيد',
-                      'ملاحظات',
+                      S.of(context).accountName,
+                      S.of(context).balance,
+                      S.of(context).notes,
                     ],
                     data: state.result
                         .mapIndexed(
@@ -90,7 +91,7 @@ class _CashAccountState extends State<CashAccount> {
                   decoration: MyStyle.roundBox,
                   padding: EdgeInsets.all(20.0).r,
                   child: DrawableText(
-                    text: 'مجموع',
+                    text: S.of(context).total,
                     matchParent: true,
                     drawableEnd: DrawableText(
                       text: sum.formatPrice,

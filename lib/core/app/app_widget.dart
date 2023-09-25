@@ -1,12 +1,14 @@
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
+import 'package:al_khabeer/core/util/shared_preferences.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../features/accounts/bloc/accounts_cubit/accounts_cubit.dart';
 import '../../features/accounts/bloc/transactions_cubit/transactions_cubit.dart';
-import '../../features/cart/bloc/add_to_cart_cubit/add_to_cart_cubit.dart';
 import '../../features/employees/bloc/employees_cubit/employees_cubit.dart';
 import '../../features/filter_data/bloc/class_cubit/class_cubit.dart';
 import '../../features/filter_data/bloc/class_level_cubit/class_level_cubit.dart';
@@ -16,6 +18,7 @@ import '../../features/filter_data/bloc/stage_cubit/stage_cubit.dart';
 import '../../features/news/bloc/news_cubit/news_cubit.dart';
 import '../../features/students/bloc/student_cubit/student_cubit.dart';
 import '../../features/teachers/bloc/teachers_cubit/teachers_cubit.dart';
+import '../../generated/l10n.dart';
 import '../../router/app_router.dart';
 import '../app_theme.dart';
 import '../injection/injection_container.dart' as di;
@@ -26,12 +29,24 @@ class MyApp extends StatefulWidget {
 
   @override
   State<MyApp> createState() => _MyAppState();
+
+  static Future<void> setLocale(BuildContext context, Locale newLocale) async {
+    final state = context.findAncestorStateOfType<_MyAppState>();
+    await state?.setLocale(newLocale);
+  }
 }
 
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
+    S.load(Locale(AppSharedPreference.getLocal));
     super.initState();
+  }
+
+  Future<void> setLocale(Locale locale) async {
+    AppSharedPreference.cashLocal(locale.languageCode);
+    await S.load(locale);
+    setState(() {});
   }
 
   @override
@@ -71,11 +86,19 @@ class _MyAppState extends State<MyApp> {
         );
 
         return MaterialApp(
+          locale: Locale(AppSharedPreference.getLocal),
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          navigatorKey: di.sl<GlobalKey<NavigatorState>>(),
           builder: (_, child) {
             return MultiBlocProvider(
               providers: [
                 BlocProvider(create: (_) => di.sl<LoadingCubit>()),
-                BlocProvider(create: (_) => di.sl<AddToCartCubit>()),
                 BlocProvider(create: (_) => di.sl<StageCubit>()..getStage(_)),
                 BlocProvider(create: (_) => di.sl<NewsCubit>()..getNews(_)),
                 BlocProvider(create: (_) => di.sl<ClassCubit>()..getClass(_)),
@@ -92,11 +115,8 @@ class _MyAppState extends State<MyApp> {
                   create: (_) => di.sl<MaterialCubit>()..getMaterials(_, groupGuid: null),
                 ),
               ],
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: Stack(
-                  children: [child!, loading],
-                ),
+              child: Stack(
+                children: [child!, loading],
               ),
             );
           },

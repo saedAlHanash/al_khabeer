@@ -1,10 +1,8 @@
+import 'package:al_khabeer/core/strings/app_color_manager.dart';
+import 'package:al_khabeer/core/widgets/my_card_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:al_khabeer/core/strings/app_color_manager.dart';
-import 'package:al_khabeer/core/widgets/my_card_widget.dart';
-
-
 import 'package:image_multi_type/image_multi_type.dart';
 
 

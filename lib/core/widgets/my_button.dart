@@ -1,8 +1,8 @@
+import 'package:al_khabeer/core/app_theme.dart';
+import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:al_khabeer/core/app_theme.dart';
-import 'package:al_khabeer/core/strings/app_color_manager.dart';
 
 class MyButton extends StatelessWidget {
   const MyButton({

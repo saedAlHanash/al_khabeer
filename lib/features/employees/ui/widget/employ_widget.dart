@@ -6,6 +6,7 @@ import 'package:image_multi_type/circle_image_widget.dart';
 
 import '../../../../core/widgets/my_card_widget.dart';
 import '../../../../generated/assets.dart';
+import '../../../../generated/l10n.dart';
 import '../../data/response/emploees_response.dart';
 
 class EmployWidget extends StatelessWidget {
@@ -33,7 +34,7 @@ class EmployWidget extends StatelessWidget {
           DrawableText(
             matchParent: true,
             drawableAlin: DrawableAlin.between,
-            text: 'الشهادة او الاختصاص',
+            text: S.of(context).certificateOrSpecialization,
             drawableEnd: DrawableText(
               text: data.certificateName,
             ),
@@ -41,7 +42,7 @@ class EmployWidget extends StatelessWidget {
           DrawableText(
             matchParent: true,
             drawableAlin: DrawableAlin.between,
-            text: 'الصفة الإدارية',
+            text: S.of(context).administrativePosition,
             drawableEnd: DrawableText(
               text: data.epithet,
             ),
@@ -49,7 +50,7 @@ class EmployWidget extends StatelessWidget {
           DrawableText(
             matchParent: true,
             drawableAlin: DrawableAlin.between,
-            text: 'نوع الراتب',
+            text: S.of(context).salaryType,
             drawableEnd: DrawableText(
               text: data.salaryType,
             ),
@@ -57,7 +58,7 @@ class EmployWidget extends StatelessWidget {
           DrawableText(
             matchParent: true,
             drawableAlin: DrawableAlin.between,
-            text: 'تاريخ المباشرة',
+            text: S.of(context).employmentDate,
             drawableEnd: DrawableText(
               text: data.dateEmployment?.formatDate ?? '-',
             ),

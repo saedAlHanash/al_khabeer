@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/util/my_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../../student_transactions/bloc/student_transactions_cubit/student_transactions_cubit.dart';
 import '../../../student_transactions/data/response/student_transactions_response.dart';
 
@@ -21,8 +22,8 @@ class StudentInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(
-        titleText: 'معلومات الطالب',
+      appBar:  AppBarWidget(
+        titleText: S.of(context).studentInformation,
       ),
       body: SizedBox.expand(
         child: BlocBuilder<StudentTransactionsCubit, StudentTransactionsInitial>(
@@ -31,7 +32,7 @@ class StudentInfoPage extends StatelessWidget {
               return MyStyle.loadingWidget();
             }
             if (state.result.isEmpty) {
-              return NotFoundWidget(text: 'لا يوجد تفاصيل', icon: null);
+              return NotFoundWidget(text: S.of(context).noDetailsAvailable, icon: null);
             }
             final item = state.result.first;
             var sumCaught = 0.0;
@@ -46,9 +47,9 @@ class StudentInfoPage extends StatelessWidget {
                 10.0.verticalSpace,
                 SaedTableWidget(
                   title: [
-                    'الاسم',
-                    'الصف',
-                    'الرصيد',
+                    S.of(context).name,
+                    S.of(context).grade,
+                       S.of(context).balance,
                   ],
                   data: [
                     [
@@ -60,14 +61,14 @@ class StudentInfoPage extends StatelessWidget {
                 ),
                 Container(
                   width: .9.sw,
-                  padding: EdgeInsets.all(20.0).r,
+                  padding: const EdgeInsets.all(20.0).r,
                   decoration: MyStyle.roundBox,
                   child: Column(
                     children: [
                       DrawableText(
                         fontFamily: FontManager.cairoBold,
                         matchParent: true,
-                        text: 'مجموع مبلغ الدفعات',
+                        text: S.of(context).totalPaymentAmount,
                         drawableEnd: DrawableText(
                           fontFamily: FontManager.cairoBold,
                           text: sumPaid.formatPrice,
@@ -76,13 +77,13 @@ class StudentInfoPage extends StatelessWidget {
                       DrawableText(
                         color: AppColorManager.mainColor.withOpacity(0.6),
                         matchParent: true,
-                        text: '(أجر المرحله + الاضافيات)',
+                        text: S.of(context).stageAndAdditions,
                       ),
                       10.0.verticalSpace,
                       DrawableText(
                         fontFamily: FontManager.cairoBold,
                         matchParent: true,
-                        text: 'متبقي مبلغ الاقساط ',
+                        text: S.of(context).remainingInstallmentAmount,
                         drawableEnd: DrawableText(
                           fontFamily: FontManager.cairoBold,
                           text: sumCaught.formatPrice,
@@ -91,12 +92,12 @@ class StudentInfoPage extends StatelessWidget {
                       DrawableText(
                         color: AppColorManager.mainColor.withOpacity(0.6),
                         matchParent: true,
-                        text: '(أجر المرحله + الاضافيات)',
+                        text: S.of(context).stageAndAdditions,
                       ),
                     ],
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 Expanded(child: MyStepper(list: state.result)),
               ],
             );
@@ -119,7 +120,7 @@ class MyStepper extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20.0).r,
       child: ListView(
-        padding: EdgeInsets.only(bottom: 20.0).h,
+        padding: const EdgeInsets.only(bottom: 20.0).h,
         children: list
             .mapIndexed((i, e) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,7 +140,7 @@ class MyStepper extends StatelessWidget {
                     if (i < list.length - 1)
                       Container(
                         height: 50.0.h,
-                        margin: EdgeInsets.only(right: 10.0).r,
+                        margin: const EdgeInsets.only(right: 10.0).r,
                         color: Colors.grey,
                         width: 2.0.w,
                       ),

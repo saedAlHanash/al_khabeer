@@ -1,11 +1,9 @@
 import 'dart:convert';
 
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:al_khabeer/core/api_manager/api_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/auth/data/response/login_response.dart';
-
-import '../injection/injection_container.dart';
 import '../strings/enum_manager.dart';
 
 class AppSharedPreference {
@@ -21,6 +19,7 @@ class AppSharedPreference {
   static const _activeNoti = '11';
   static const _myId = '12';
   static const _cart = '13';
+  static const _lang = '14';
 
   static late SharedPreferences _prefs;
 
@@ -51,7 +50,6 @@ class AppSharedPreference {
   }
 
   static cashPhoneNumber(String phone) async {
-
     await _prefs.setString(_phoneNumber, phone);
   }
 
@@ -143,11 +141,17 @@ class AppSharedPreference {
     _prefs.setInt(_myId, id);
   }
 
+  static int get getMyId => _prefs.getInt(_myId) ?? 0;
+
+  static void cashLocal(String langCode) {
+    _prefs.setString(_lang, langCode);
+  }
+
+  static String get getLocal => _prefs.getString(_lang) ?? 'ar';
+
   static void updateCart(List<String> jsonCart) {
     _prefs.setStringList(_cart, jsonCart);
   }
 
   static List<String> getJsonListCart() => _prefs.getStringList(_cart) ?? <String>[];
-
-  static int get getMyId => _prefs.getInt(_myId) ?? 0;
 }

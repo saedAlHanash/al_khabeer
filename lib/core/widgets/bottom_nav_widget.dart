@@ -27,7 +27,7 @@ class _NewNavState extends State<NewNav> {
 
   @override
   Widget build(BuildContext context) {
-   return  Container(
+    return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(30.0.r), topLeft: Radius.circular(30.0.r)),
@@ -106,7 +106,6 @@ class _NewNavState extends State<NewNav> {
             },
             type: BottomNavigationBarType.fixed,
           ),
-        )
-    );
+        ));
   }
 }

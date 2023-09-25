@@ -1,28 +1,8 @@
 {
-  "status": "Success",
-  "message": null,
-  "data": [
-    {
-      "id": 12,
-      "stage": "رياض أطفال",
-      "stage_en": "Kindergartens",
-      "level": "حضانة",
-      "level_en": "Nursery",
-      "division": "س",
-      "division_en": "س",
-      "date": "2023-05-30",
-      "exam_no": "1",
-      "exam_type": "آخر السنة",
-      "exams": [
-        {
-          "material": "التربية الأسلامية",
-          "material_en": "Religion",
-          "date": "2023-05-30",
-          "exam_day": "Tuesday",
-          "type": "شفهي",
-          "note": ""
-        }
-      ]
-    }
-  ]
+  "en": {
+    "key name": "value with english languge "
+  },
+  "ar": {
+    "key name": "باللغة العربية"
+  }
 }

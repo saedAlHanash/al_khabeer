@@ -1,10 +1,8 @@
-import 'dart:io';
-
+import 'package:al_khabeer/core/util/my_style.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:al_khabeer/core/util/my_style.dart';
 
 import '../../app/bloc/loading_cubit.dart';
 import '../../strings/app_color_manager.dart';
@@ -34,16 +32,14 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return WillPopScope(
       onWillPop: () async => context.read<LoadingCubit>().isLoadingForPop(),
       child: AppBar(
-        backgroundColor: color ?? Color(0xFFE2EEF6),
+        backgroundColor: color ?? const Color(0xFFE2EEF6),
         toolbarHeight: (zeroHeight ?? false) ? 0 : 80.0.h,
-        title: title == null
-            ? DrawableText(
+        title: title ?? DrawableText(
                 text: titleText ?? '',
                 size: 24.0.spMin,
                 color: color != null ? Colors.white : AppColorManager.mainColor,
                 fontFamily: FontManager.cairoBold,
-              )
-            : title,
+              ),
         leading: Navigator.canPop(context) ? const BackBtnWidget() : null,
         actions: actions,
         elevation: elevation ?? 0.0,

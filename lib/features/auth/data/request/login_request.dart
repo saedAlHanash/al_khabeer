@@ -1,5 +1,4 @@
-import 'package:al_khabeer/core/extensions/extensions.dart';
-import 'package:al_khabeer/main.dart';
+
 
 class LoginRequest {
   String username;

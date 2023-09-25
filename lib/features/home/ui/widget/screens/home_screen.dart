@@ -1,3 +1,4 @@
+import 'package:al_khabeer/core/api_manager/api_service.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/core/strings/enum_manager.dart';
@@ -15,12 +16,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    loggerObject.wtf(HomeCards.cashPayment.arabicName);
     return SizedBox.expand(
       child: GridView(
-        padding: EdgeInsets.symmetric(horizontal: 10.0).w,
+        padding: const EdgeInsets.symmetric(horizontal: 10.0).w,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, mainAxisExtent: 140.0.h),
-        children: [
+        children:  [
           ItemCardWidget(item: HomeCards.students),
           ItemCardWidget(item: HomeCards.cashPayment),
           ItemCardWidget(item: HomeCards.inventory),
@@ -45,15 +47,6 @@ class ItemCardWidget extends StatefulWidget {
 }
 
 class _ItemCardWidgetState extends State<ItemCardWidget> {
-  late final String icon;
-  late final String text;
-
-  @override
-  void initState() {
-    text = widget.item.arabicName;
-    icon = widget.item.icon;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +99,7 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
           cardColor: AppColorManager.textFieldColor,
           elevation: 0.0,
           padding: EdgeInsets.zero,
-          margin: EdgeInsets.all(10.0).r,
+          margin: const EdgeInsets.all(10.0).r,
           child: SizedBox(
             height: 152.0.h,
             width: 170.0.w,
@@ -114,13 +107,13 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ImageMultiType(
-                  url: icon,
+                  url: widget.item.icon,
                   height: 70.0.r,
                   width: 70.0.r,
                 ),
                 10.0.verticalSpace,
                 DrawableText(
-                  text: text,
+                  text: widget.item.arabicName,
                   color: AppColorManager.mainColorDark,
                   fontFamily: FontManager.cairoBold,
                 ),

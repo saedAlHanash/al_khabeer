@@ -1,21 +1,17 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/util/my_style.dart';
-import 'package:al_khabeer/features/cash_account/ui/pages/cash_account_page.dart';
+import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:collection/collection.dart';
 import 'package:drawable_text/drawable_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/widgets/my_button.dart';
 import '../../../../core/widgets/saed_taple_widget.dart';
 import '../../../../core/widgets/spinner_widget.dart';
+import '../../../../generated/l10n.dart';
 import '../../../accounts/bloc/accounts_cubit/accounts_cubit.dart';
 import '../../../accounts/bloc/transactions_cubit/transactions_cubit.dart';
-import '../../../exam_table/ui/pages/exam_table_page.dart';
 
 class AuditPage extends StatefulWidget {
   const AuditPage({super.key});
@@ -34,7 +30,7 @@ class _AuditPageState extends State<AuditPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(titleText: 'صافي الإيرادات'),
+      appBar: AppBarWidget(titleText: S.of(context).netRevenue),
       body: Padding(
         padding: const EdgeInsets.all(20.0).r,
         child: Column(
@@ -46,7 +42,7 @@ class _AuditPageState extends State<AuditPage> {
                   return MyStyle.loadingWidget();
                 }
                 return SpinnerWidget(
-                  hint: DrawableText(text: 'اسم الحساب', color: Colors.white),
+                  hint: DrawableText(text: S.of(context).accountName, color: Colors.white),
                   items: state.getSpinnerItems(),
                   width: .9.sw,
                   onChanged: (val) {
@@ -67,9 +63,9 @@ class _AuditPageState extends State<AuditPage> {
                 return Expanded(
                   child: SaedTableWidget1(
                     title: [
-                      'اسم الحساب',
-                      'الإيراد',
-                      'ملاحظات',
+                      S.of(context).accountName,
+                      S.of(context).revenue,
+                      S.of(context).notes,
                     ],
                     data: state.result
                         .mapIndexed(
@@ -95,9 +91,9 @@ class _AuditPageState extends State<AuditPage> {
                 }
                 return Container(
                   decoration: MyStyle.roundBox,
-                  padding: EdgeInsets.all(20.0).r,
+                  padding: const EdgeInsets.all(20.0).r,
                   child: DrawableText(
-                    text: 'مجموع',
+                    text: S.of(context).total,
                     matchParent: true,
                     drawableEnd: DrawableText(
                       text: sum.formatPrice,

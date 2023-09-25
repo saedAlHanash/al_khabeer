@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/util/snack_bar_message.dart';
-import '../../../../main.dart';
+import 'package:flutter/material.dart';
 
 class SignupRequest {
   SignupRequest({

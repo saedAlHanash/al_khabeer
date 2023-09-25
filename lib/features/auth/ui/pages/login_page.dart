@@ -1,8 +1,8 @@
-import 'package:al_khabeer/core/strings/app_string_manager.dart';
 import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:al_khabeer/core/widgets/my_button.dart';
 import 'package:al_khabeer/core/widgets/my_text_form_widget.dart';
 import 'package:al_khabeer/generated/assets.dart';
+import 'package:al_khabeer/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocListener<LoginCubit, LoginInitial>(
       listenWhen: (p, c) => c.statuses == CubitStatuses.done,
       listener: (context, state) {
@@ -50,12 +51,12 @@ class _LoginPageState extends State<LoginPage> {
                 MyTextFormOutLineWidget(
                   textDirection: TextDirection.ltr,
                   initialValue: request.username,
-                  label: AppStringManager.userName,
+                  label: S.of(context).userName,
                   onChanged: (val) => request.username = val,
                 ),
                 20.0.verticalSpace,
                 MyTextFormOutLineWidget(
-                  label: AppStringManager.password,
+                  label: S.of(context).password,
                   obscureText: true,
                   onChanged: (val) => request.password = val,
                   textDirection: TextDirection.ltr,
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                     }
                     //تسجيل الدخول
                     return MyButton(
-                      text: AppStringManager.login,
+                      text: S.of(context).login,
                       onTap: () {
                         context.read<LoginCubit>().login(context, request: request);
                       },

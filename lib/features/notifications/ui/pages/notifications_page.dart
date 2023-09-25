@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:al_khabeer/features/notifications/ui/widget/notifivcation_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/util/my_style.dart';
 import '../../../../core/util/shared_preferences.dart';
 import '../../../../core/widgets/not_found_widget.dart';
 import '../../../../generated/assets.dart';
+import '../../../../generated/l10n.dart';
 import '../../bloc/notification_count_cubit/notification_count_cubit.dart';
 import '../../bloc/notifications_cubit/notifications_cubit.dart';
 
@@ -29,17 +30,17 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(titleText: 'الإشعارات'),
+      appBar:  AppBarWidget(titleText: S.of(context).notifications),
       body: BlocBuilder<NotificationsCubit, NotificationsInitial>(
         builder: (context, state) {
           if (state.statuses.loading) {
             return MyStyle.loadingWidget();
           }
           if (state.result.isEmpty) {
-            return const Expanded(
+            return  Expanded(
               child: NotFoundWidget(
                 icon: Assets.iconsNoNotifications,
-                text: 'لا يوجد إشعارات',
+                text: S.of(context).noNotifications,
               ),
             );
           }

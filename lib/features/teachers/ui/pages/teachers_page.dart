@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/util/my_style.dart';
 import '../../../../core/widgets/not_found_widget.dart';
+import '../../../../generated/l10n.dart';
 import '../../../employees/ui/widget/employ_widget.dart';
 import '../../bloc/teachers_cubit/teachers_cubit.dart';
 
@@ -15,14 +16,14 @@ class TeachersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(titleText: 'ذاتية الموظفين'),
+      appBar: AppBarWidget(titleText: S.of(context).staffProfile),
       body: BlocBuilder<TeachersCubit, TeachersInitial>(
         builder: (context, state) {
           if (state.statuses.loading) {
             return MyStyle.loadingWidget();
           }
           if (state.result.isEmpty) {
-            return NotFoundWidget(text: 'لا يوجد نتائج', icon: null);
+            return NotFoundWidget(text: S.of(context).noResults, icon: null);
           }
           return ListView.builder(
             itemCount: state.result.length,

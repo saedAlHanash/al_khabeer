@@ -2,11 +2,9 @@ import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:image_multi_type/image_multi_type.dart';
 
 import '../strings/app_color_manager.dart';
-import '../strings/app_string_manager.dart';
 import '../util/my_style.dart';
 
 class MyTextFormWidget extends StatelessWidget {

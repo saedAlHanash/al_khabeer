@@ -1,12 +1,10 @@
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
-import 'package:al_khabeer/core/widgets/spinner_widget.dart';
 import 'package:collection/collection.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../api_manager/request_models/command.dart';
-import 'my_card_widget.dart';
 
 class SaedTableWidget extends StatelessWidget {
   const SaedTableWidget(

@@ -1,9 +1,9 @@
-import 'package:drawable_text/drawable_text.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/features/notifications/data/response/notifications_response.dart';
+import 'package:drawable_text/drawable_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_multi_type/image_multi_type.dart';
 
 import '../../../../generated/assets.dart';

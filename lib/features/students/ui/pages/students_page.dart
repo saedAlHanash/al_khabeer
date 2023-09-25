@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/util/my_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../router/app_router.dart';
 import '../../../filter_data/bloc/class_cubit/class_cubit.dart';
 import '../../../filter_data/bloc/class_level_cubit/class_level_cubit.dart';
@@ -39,8 +40,8 @@ class _StudentsPageState extends State<StudentsPage> {
     return Scaffold(
       appBar: (!widget.withAppBar)
           ? null
-          : const AppBarWidget(
-              titleText: 'أرصدة الطلاب',
+          : AppBarWidget(
+              titleText: S.of(context).studentBalances,
             ),
       body: SizedBox.expand(
         child: SingleChildScrollView(
@@ -53,7 +54,7 @@ class _StudentsPageState extends State<StudentsPage> {
                     return MyStyle.loadingWidget();
                   }
                   return SpinnerWidget(
-                    hint: DrawableText(text: 'المرحلة', color: Colors.white),
+                    hint: DrawableText(text: S.of(context).stage, color: Colors.white),
                     items: state.getSpinnerItems(selectedId: request.classGuid),
                     width: .9.sw,
                     onChanged: (val) {
@@ -73,7 +74,7 @@ class _StudentsPageState extends State<StudentsPage> {
                     return MyStyle.loadingWidget();
                   }
                   return SpinnerWidget(
-                    hint: DrawableText(text: 'الصف', color: Colors.white),
+                    hint: DrawableText(text: S.of(context).grade, color: Colors.white),
                     items: state.getSpinnerItems(selectedId: request.classLevelGuid),
                     width: .9.sw,
                     onChanged: (val) => request.classLevelGuid = val.guid,
@@ -84,7 +85,7 @@ class _StudentsPageState extends State<StudentsPage> {
               BlocBuilder<StudentCubit, StudentInitial>(
                 builder: (context, state) {
                   return MyButton(
-                    text: 'معاينة',
+                    text: S.of(context).preview,
                     width: 240.0.w,
                     enable: !state.statuses.loading,
                     onTap: () {
@@ -104,9 +105,9 @@ class _StudentsPageState extends State<StudentsPage> {
                   }
                   return SaedTableWidget(
                     title: [
-                      'الاسم',
-                      'الصف',
-                      'الرصيد',
+                      S.of(context).name,
+                      S.of(context).grade,
+                      S.of(context).balance,
                     ],
                     data: state.result.mapIndexed((i, e) {
                       return [
@@ -132,17 +133,3 @@ class _StudentsPageState extends State<StudentsPage> {
     );
   }
 }
-
-final stageSpinnerItems = [
-  SpinnerItem(id: -1, name: 'المرحلة'),
-  SpinnerItem(id: 1, name: 'إعدادي'),
-  SpinnerItem(id: 2, name: 'ابتدائي '),
-  SpinnerItem(id: 3, name: 'ثانوي'),
-];
-
-final classSpinnerItems = [
-  SpinnerItem(id: -1, name: 'الصف'),
-  SpinnerItem(id: 1, name: 'أول'),
-  SpinnerItem(id: 2, name: 'ثاني '),
-  SpinnerItem(id: 3, name: 'ثالث'),
-];

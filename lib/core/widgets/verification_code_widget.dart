@@ -1,11 +1,9 @@
-import 'package:al_khabeer/core/strings/app_string_manager.dart';
+import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 
 import '../strings/app_color_manager.dart';
-import '../strings/enum_manager.dart';
-import 'package:drawable_text/drawable_text.dart';
 
 class PinCodeWidget extends StatelessWidget {
   const PinCodeWidget({Key? key, this.onCompleted, this.onChange}) : super(key: key);

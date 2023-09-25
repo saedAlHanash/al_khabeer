@@ -10,11 +10,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/util/my_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../../filter_data/bloc/class_cubit/class_cubit.dart';
 import '../../../filter_data/bloc/class_level_cubit/class_level_cubit.dart';
 import '../../../filter_data/bloc/stage_cubit/stage_cubit.dart';
-import '../../../students/data/request/student_request.dart';
-import '../../../students/ui/pages/students_page.dart';
 import '../../bloc/exam_cubit/exam_cubit.dart';
 import '../../data/request/exam_request.dart';
 
@@ -31,8 +30,8 @@ class _ExamTablePageState extends State<ExamTablePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(
-        titleText: 'جدول الامتحانات',
+      appBar:  AppBarWidget(
+        titleText:    S.of(context).examsSchedule,
       ),
       body: SizedBox.expand(
         child: SingleChildScrollView(
@@ -45,7 +44,7 @@ class _ExamTablePageState extends State<ExamTablePage> {
                     return MyStyle.loadingWidget();
                   }
                   return SpinnerWidget(
-                    hint: DrawableText(text: 'المرحلة', color: Colors.white),
+                    hint: DrawableText(text: S.of(context).stage, color: Colors.white),
                     items: state.getSpinnerItems(selectedId: request.classGuid),
                     width: .9.sw,
                     onChanged: (val) {
@@ -71,7 +70,7 @@ class _ExamTablePageState extends State<ExamTablePage> {
                     return MyStyle.loadingWidget();
                   }
                   return SpinnerWidget(
-                    hint: DrawableText(text: 'الصف', color: Colors.white),
+                    hint: DrawableText(text: S.of(context).grade, color: Colors.white),
                     items: state.getSpinnerItems(selectedId: request.classLevelGuid),
                     width: .9.sw,
                     onChanged: (val) {
@@ -90,7 +89,7 @@ class _ExamTablePageState extends State<ExamTablePage> {
                     return MyStyle.loadingWidget();
                   }
                   return SpinnerWidget(
-                    hint: DrawableText(text: 'الشعبة', color: Colors.white),
+                    hint: DrawableText(text: S.of(context).section, color: Colors.white),
                     items: state.getSpinnerItems(selectedId: request.stageGuid),
                     width: .9.sw,
                     onChanged: (val) => request.stageGuid = val.guid,
@@ -102,7 +101,7 @@ class _ExamTablePageState extends State<ExamTablePage> {
                 builder: (context, state) {
                   return MyButton(
                     enable: !state.statuses.loading,
-                    text: 'معاينة',
+                    text: S.of(context).preview,
                     width: 240.0.w,
                     onTap: () =>
                         context.read<ExamCubit>().exam(context, request: request),
@@ -117,11 +116,11 @@ class _ExamTablePageState extends State<ExamTablePage> {
                   }
                   return SaedTableWidget(
                     title: [
-                      'تاريخ',
-                      'يوم',
-                      'نوع الامتحان',
-                      'اسم المادة',
-                      'ملاحظات',
+                      S.of(context).date,
+                      S.of(context).day,
+                      S.of(context).examType,
+                      S.of(context).subjectName,
+                      S.of(context).notes,
                     ],
                     data: state.result
                         .mapIndexed(
@@ -146,8 +145,3 @@ class _ExamTablePageState extends State<ExamTablePage> {
   }
 }
 
-final tempSpinnerItems = [
-  SpinnerItem(id: 1, name: 'saed1 test'),
-  SpinnerItem(id: 2, name: 'saed2 test'),
-  SpinnerItem(id: 3, name: 'saed3 test'),
-];

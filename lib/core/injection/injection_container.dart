@@ -12,27 +12,19 @@ import '../../features/auth/bloc/logout/logout_cubit.dart';
 import '../../features/auth/bloc/resend_code_cubit/resend_code_cubit.dart';
 import '../../features/auth/bloc/reset_password_cubit/reset_password_cubit.dart';
 import '../../features/auth/bloc/signup_cubit/signup_cubit.dart';
-
-import '../../features/cart/bloc/add_to_cart_cubit/add_to_cart_cubit.dart';
-
-import '../../features/cart/bloc/coupon_cubit/coupon_cubit.dart';
-
+import '../../features/employees/bloc/employees_cubit/employees_cubit.dart';
 import '../../features/exam_table/bloc/exam_cubit/exam_cubit.dart';
 import '../../features/filter_data/bloc/class_cubit/class_cubit.dart';
 import '../../features/filter_data/bloc/class_level_cubit/class_level_cubit.dart';
-import '../../features/filter_data/bloc/stage_cubit/stage_cubit.dart';
-import '../../features/inventory/bloc/inventory_cubit/inventory_cubit.dart';
 import '../../features/filter_data/bloc/group_cubit/group_cubit.dart';
 import '../../features/filter_data/bloc/material_cubit/material_cubit.dart';
+import '../../features/filter_data/bloc/stage_cubit/stage_cubit.dart';
 import '../../features/firebase/bloc/insert_firebase_token_cubit/insert_firebase_token_cubit.dart';
-
 import '../../features/home/bloc/slider_cubit/slider_cubit.dart';
-
-import '../../features/employees/bloc/employees_cubit/employees_cubit.dart';
+import '../../features/inventory/bloc/inventory_cubit/inventory_cubit.dart';
 import '../../features/news/bloc/news_cubit/news_cubit.dart';
 import '../../features/notifications/bloc/notification_count_cubit/notification_count_cubit.dart';
 import '../../features/notifications/bloc/notifications_cubit/notifications_cubit.dart';
-
 import '../../features/student_transactions/bloc/student_transactions_cubit/student_transactions_cubit.dart';
 import '../../features/students/bloc/student_cubit/student_cubit.dart';
 import '../../features/teachers/bloc/teachers_cubit/teachers_cubit.dart';
@@ -46,7 +38,6 @@ Future<void> init() async {
 
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(connectionChecker: sl()));
   sl.registerLazySingleton(() => InternetConnectionChecker());
-
   sl.registerFactory(() => NotificationCountCubit());
 
   sl.registerLazySingleton(() => LoadingCubit());
@@ -101,8 +92,8 @@ Future<void> init() async {
 
   //endregion
 
-  sl.registerFactory(() => AddToCartCubit());
-  sl.registerFactory(() => CouponCubit());
+
+
   sl.registerFactory(() => ClassCubit());
   sl.registerFactory(() => ClassLevelCubit());
   sl.registerFactory(() => StageCubit());

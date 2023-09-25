@@ -1,22 +1,16 @@
 import 'dart:io';
 
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'core/api_manager/api_service.dart';
 import 'core/app/app_widget.dart';
 import 'core/app/bloc/loading_cubit.dart';
 import 'core/injection/injection_container.dart' as di;
-import 'core/injection/injection_container.dart';
 import 'core/util/shared_preferences.dart';
-
-import 'features/firebase/bloc/insert_firebase_token_cubit/insert_firebase_token_cubit.dart';
 import 'features/notifications/bloc/notification_count_cubit/notification_count_cubit.dart';
 
 //adb shell setprop debug.firebase.analytics.app com.slf.al_khabeer

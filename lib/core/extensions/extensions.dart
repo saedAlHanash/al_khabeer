@@ -1,14 +1,15 @@
 import 'dart:convert';
 
+import 'package:al_khabeer/core/api_manager/api_service.dart';
 import 'package:al_khabeer/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
-import '../strings/app_string_manager.dart';
+import '../../generated/l10n.dart';
+import '../injection/injection_container.dart';
 import '../strings/enum_manager.dart';
-import 'package:http/http.dart' as http;
-
 import '../util/snack_bar_message.dart';
 
 extension SplitByLength on String {
@@ -57,10 +58,10 @@ extension FixMobile on String {
   String? checkPhoneNumber(BuildContext context, String phone) {
     if (phone.startsWith('00964') && phone.length > 11) return phone;
     if (phone.length < 10) {
-      NoteMessage.showSnakeBar(context: context, message: AppStringManager.wrongPhone);
+      NoteMessage.showSnakeBar(context: context, message: S.of(context).wrongPhone);
       return null;
     } else if (phone.startsWith("0") && phone.length < 11) {
-      NoteMessage.showSnakeBar(context: context, message: AppStringManager.wrongPhone);
+      NoteMessage.showSnakeBar(context: context, message: S.of(context).wrongPhone);
       return null;
     }
 
@@ -85,33 +86,34 @@ extension EnumHelper on Enum {
     if (this is NavItems) {
       switch (this as NavItems) {
         case NavItems.home:
-          return 'الرئيسية';
+          return S().home;
         case NavItems.students:
-          return 'أرصدة الطلاب';
+          return S().studentBalances;
         case NavItems.notifications:
-          return 'التبليغات';
+          return S().notifications;
         case NavItems.news:
-          return 'الأخبار';
+          return S().news;
       }
     }
     if (this is HomeCards) {
+      loggerObject.w(S().studentBalances);
       switch (this as HomeCards) {
         case HomeCards.students:
-          return 'أرصدة الطلاب';
+          return S().studentBalances;
         case HomeCards.cashPayment:
-          return 'حساب النقدية';
+          return S().studentAccounts;
         case HomeCards.inventory:
-          return 'جرد المخازن';
+          return S().inventory;
         case HomeCards.examTable:
-          return 'جدول الامتحانات';
+          return S().examsSchedule;
         case HomeCards.audit:
-          return 'صافي الإيرادات';
+          return S().netRevenue;
         case HomeCards.debit:
-          return 'صافي المصاريف';
+          return S().netExpenses;
         case HomeCards.teachers:
-          return 'ذاتية المدرسين';
+          return S().teacherProfile;
         case HomeCards.employees:
-          return 'ذاتية الموظفين';
+          return S().staffProfile;
       }
     }
     return '';
@@ -146,13 +148,13 @@ extension UpdateTypeHelper on UpdateType {
   String get getName {
     switch (this) {
       case UpdateType.name:
-        return 'تغيير الاسم';
+        return S().changeName;
       case UpdateType.phone:
-        return 'تغير رقم الهاتف';
+        return S().changePhone;
       case UpdateType.address:
-        return 'تغير العنوان';
+        return S().changeAddress;
       case UpdateType.pass:
-        return 'تغير كلمه المرور';
+        return S().changePassword;
     }
   }
 }
@@ -182,6 +184,7 @@ extension DateUtcHelper on DateTime {
   DateTime get getUtc => DateTime.utc(year, month, day);
 
   String get formatDate => DateFormat.yMd().format(this);
+
   String get formatDateMD => DateFormat.Md().format(this);
 
   String get formatTime {
@@ -233,18 +236,4 @@ extension GetDateTimesBetween on DateTime {
   }
 }
 
-// /// Returns a list of [DateTime]s between (but not including) [start] and
-// /// [end], spaced by [period] intervals.
-// List<DateTime> getDateTimesBetween1({
-//   required DateTime start,
-//   required DateTime end,
-//   required Duration period,
-// }) {
-//   var dateTimes = <DateTime>[];
-//   var current = start.add(period);
-//   while (current.isBefore(end)) {
-//     dateTimes.add(current);
-//     current = current.add(period);
-//   }
-//   return dateTimes;
-// }
+BuildContext? get currentContext => sl<GlobalKey<NavigatorState>>().currentState?.context;

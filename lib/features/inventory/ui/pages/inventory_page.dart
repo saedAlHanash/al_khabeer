@@ -1,22 +1,18 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/util/my_style.dart';
+import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:al_khabeer/features/filter_data/bloc/material_cubit/material_cubit.dart';
 import 'package:collection/collection.dart';
 import 'package:drawable_text/drawable_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/widgets/my_button.dart';
 import '../../../../core/widgets/saed_taple_widget.dart';
 import '../../../../core/widgets/spinner_widget.dart';
-import '../../bloc/inventory_cubit/inventory_cubit.dart';
-import '../../../exam_table/ui/pages/exam_table_page.dart';
+import '../../../../generated/l10n.dart';
 import '../../../filter_data/bloc/group_cubit/group_cubit.dart';
-
+import '../../bloc/inventory_cubit/inventory_cubit.dart';
 import '../../data/request/inventory_request.dart';
 
 class InventoryPage extends StatefulWidget {
@@ -47,15 +43,15 @@ class _InventoryPageState extends State<InventoryPage> {
           return Container(
             height: 75.0.h,
             decoration: MyStyle.roundBox,
-            padding: EdgeInsets.all(5.0).r,
-            margin: EdgeInsets.all(15.0).r,
+            padding: const EdgeInsets.all(5.0).r,
+            margin: const EdgeInsets.all(15.0).r,
             child: Row(
               children: [
                 Expanded(
                   child: Column(
                     children: [
                       DrawableText(
-                        text: 'مجموع المواد',
+                        text: S.of(context).totalSubjects,
                       ),
                       DrawableText(
                         text: state.result.length.formatPrice,
@@ -68,7 +64,7 @@ class _InventoryPageState extends State<InventoryPage> {
                   child: Column(
                     children: [
                       DrawableText(
-                        text: 'الكميات',
+                        text: S.of(context).quantities,
                       ),
                       DrawableText(
                         text: state.getQuantity.formatPrice,
@@ -82,7 +78,9 @@ class _InventoryPageState extends State<InventoryPage> {
           );
         },
       ),
-      appBar: AppBarWidget(titleText: 'جرد المخازن'),
+      appBar: AppBarWidget(
+        titleText: S.of(context).inventory,
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0).r,
         child: Column(
@@ -94,7 +92,7 @@ class _InventoryPageState extends State<InventoryPage> {
                   return MyStyle.loadingWidget();
                 }
                 return SpinnerWidget(
-                  hint: DrawableText(text: 'المجموعة', color: Colors.white),
+                  hint: DrawableText(text: S.of(context).group, color: Colors.white),
                   items: state.getSpinnerItems(selectedId: request.groupGuid),
                   width: .9.sw,
                   onChanged: (val) {
@@ -121,7 +119,7 @@ class _InventoryPageState extends State<InventoryPage> {
                   return MyStyle.loadingWidget();
                 }
                 return SpinnerWidget(
-                  hint: DrawableText(text: 'المادة', color: Colors.white),
+                  hint: DrawableText(text: S.of(context).subjectName, color: Colors.white),
                   items: state.getSpinnerItems(selectedId: request.materialGuid),
                   width: .9.sw,
                   onChanged: (val) {
@@ -146,7 +144,7 @@ class _InventoryPageState extends State<InventoryPage> {
                     10.0.verticalSpace,
                     Container(
                       decoration: MyStyle.roundBox,
-                      padding: EdgeInsets.all(20.0).r,
+                      padding: const EdgeInsets.all(20.0).r,
                       child: DrawableText(
                         text: groupCubit.state.getNameByGuid(request.groupGuid ?? ''),
                         matchParent: true,
@@ -155,17 +153,13 @@ class _InventoryPageState extends State<InventoryPage> {
                     10.0.verticalSpace,
                     SaedTableWidget1(
                       title: [
-                        'اسم المادة',
-                        'الوحدة',
-                        'الكمية',
+                        S.of(context).subjectName,
+                        S.of(context).unit,
+                        S.of(context).quantity,
                       ],
-                        data: state.result.mapIndexed((i, e) {
-                          return [
-                            e.materialName,
-                            e.unit,
-                            e.quantity
-                          ];
-                        }).toList(),
+                      data: state.result.mapIndexed((i, e) {
+                        return [e.materialName, e.unit, e.quantity];
+                      }).toList(),
                     ),
                   ],
                 );

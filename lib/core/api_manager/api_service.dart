@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:intl/intl.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 
 import '../util/shared_preferences.dart';
@@ -42,6 +42,7 @@ class APIService {
   final innerHeader = {
     'Content-Type': 'application/json',
     'Accept': 'Application/json',
+    'language_code': AppSharedPreference.getLocal,
     'Authorization': 'Bearer ${AppSharedPreference.getToken()}',
   };
 
