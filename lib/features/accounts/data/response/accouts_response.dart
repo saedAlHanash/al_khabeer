@@ -1,3 +1,5 @@
+import '../../../../core/util/cheker_helper.dart';
+
 class AccountsResponse {
   AccountsResponse({
     required this.data,
@@ -5,49 +7,55 @@ class AccountsResponse {
 
   final List<AccountsData> data;
 
-  factory AccountsResponse.fromJson(Map<String, dynamic> json){
+  factory AccountsResponse.fromJson(Map<String, dynamic> json) {
     return AccountsResponse(
-      data: json["data"] == null ? [] : List<AccountsData>.from(json["data"]!.map((x) => AccountsData.fromJson(x))),
+      data: json["data"] == null
+          ? []
+          : List<AccountsData>.from(json["data"]!.map((x) => AccountsData.fromJson(x))),
     );
   }
 
   Map<String, dynamic> toJson() => {
-    "data": data.map((x) => x?.toJson()).toList(),
-  };
-
+        "data": data.map((x) => x.toJson()).toList(),
+      };
 }
 
 class AccountsData {
-  AccountsData({
+  AccountsData(
+    this._name, {
     required this.id,
     required this.guid,
-    required this.name,
     required this.latinName,
     required this.parentGuid,
   });
 
   final int id;
   final String guid;
-  final String name;
+  final String _name;
   final String latinName;
   final String parentGuid;
 
-  factory AccountsData.fromJson(Map<String, dynamic> json){
+  String get name => isAr
+      ? _name
+      : latinName.isEmpty
+          ? _name
+          : latinName;
+
+  factory AccountsData.fromJson(Map<String, dynamic> json) {
     return AccountsData(
+      json["name"] ?? "",
       id: json["id"] ?? 0,
       guid: json["guid"] ?? "",
-      name: json["name"] ?? "",
       latinName: json["latin_name"] ?? "",
       parentGuid: json["parent_guid"] ?? "",
     );
   }
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "guid": guid,
-    "name": name,
-    "latin_name": latinName,
-    "parent_guid": parentGuid,
-  };
-
+        "id": id,
+        "guid": guid,
+        "name": _name,
+        "latin_name": latinName,
+        "parent_guid": parentGuid,
+      };
 }

@@ -1,6 +1,5 @@
 
-
-
+import 'package:al_khabeer/core/util/shared_preferences.dart';
 
 bool checkEmail(String? email) {
   final bool emailValid =
@@ -8,3 +7,5 @@ bool checkEmail(String? email) {
           .hasMatch(email ?? '');
   return emailValid;
 }
+
+bool get isAr => AppSharedPreference.isAr;

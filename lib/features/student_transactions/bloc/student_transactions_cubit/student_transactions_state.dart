@@ -3,7 +3,7 @@ part of 'student_transactions_cubit.dart';
 class StudentTransactionsInitial extends Equatable {
   final CubitStatuses statuses;
   final StudentTransactionsRequest request;
-  final List<StudentTransactionsData> result;
+  final List<StudentData> result;
   final String error;
 
   const StudentTransactionsInitial({
@@ -29,7 +29,7 @@ class StudentTransactionsInitial extends Equatable {
   StudentTransactionsInitial copyWith({
     CubitStatuses? statuses,
     StudentTransactionsRequest? request,
-    List<StudentTransactionsData>? result,
+    List<StudentData>? result,
     String? error,
   }) {
     return StudentTransactionsInitial(

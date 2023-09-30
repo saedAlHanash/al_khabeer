@@ -1,3 +1,5 @@
+import '../../../../core/util/cheker_helper.dart';
+
 class ExamResponse {
   ExamResponse({
     required this.data,
@@ -79,25 +81,31 @@ class ExamData {
 
 class Exam {
   Exam({
-    required this.material,
-    required this.materialEn,
+    required this.materialName,
+    required this.materialNameEn,
     required this.date,
     required this.examDay,
     required this.type,
     required this.note,
   });
 
-  final String material;
-  final String materialEn;
+  final String materialName;
+  final String materialNameEn;
   final DateTime? date;
   final String examDay;
   final String type;
   final String note;
 
+  String get material => isAr
+      ? materialName
+      : materialNameEn.isEmpty
+      ? materialName
+      : materialNameEn;
+
   factory Exam.fromJson(Map<String, dynamic> json) {
     return Exam(
-      material: json["material"] ?? "",
-      materialEn: json["material_en"] ?? "",
+      materialName: json["material"] ?? "",
+      materialNameEn: json["material_en"] ?? "",
       date: DateTime.tryParse(json["date"] ?? ""),
       examDay: json["exam_day"] ?? "",
       type: json["type"] ?? "",
@@ -106,8 +114,8 @@ class Exam {
   }
 
   Map<String, dynamic> toJson() => {
-        "material": material,
-        "material_en": materialEn,
+        "material": materialName,
+        "material_en": materialNameEn,
         "exam_day": examDay,
         "type": type,
         "note": note,

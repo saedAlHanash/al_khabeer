@@ -37,6 +37,7 @@ class LoginCubit extends Cubit<LoginInitial> {
     } else {
       AppSharedPreference.cashToken(pair.first!.token);
       AppSharedPreference.cashUser(pair.first!.user);
+      AppSharedPreference.cashLoginData(pair.first!);
       AppSharedPreference.cashMyId(pair.first!.user.id);
 
       emit(state.copyWith(statuses: CubitStatuses.done, result: pair.first));

@@ -13,6 +13,7 @@ import '../../../../core/util/my_style.dart';
 import '../../../../generated/l10n.dart';
 import '../../../student_transactions/bloc/student_transactions_cubit/student_transactions_cubit.dart';
 import '../../../student_transactions/data/response/student_transactions_response.dart';
+import '../../data/response/students_respose.dart';
 
 class StudentInfoPage extends StatelessWidget {
   const StudentInfoPage({super.key});
@@ -53,7 +54,7 @@ class StudentInfoPage extends StatelessWidget {
                   ],
                   data: [
                     [
-                      item.studentname,
+                      item.studentName,
                       item.className,
                       (sumCaught - sumPaid).toString(),
                     ]
@@ -111,11 +112,11 @@ class StudentInfoPage extends StatelessWidget {
 class MyStepper extends StatelessWidget {
   const MyStepper({super.key, required this.list});
 
-  final List<StudentTransactionsData> list;
+  final List<StudentData> list;
 
   @override
   Widget build(BuildContext context) {
-    final list = <StudentTransactionsData>[...this.list]
+    final list = <StudentData>[...this.list]
       ..removeWhere((e) => num.parse(e.paid) <= 0);
     return Padding(
       padding: const EdgeInsets.all(20.0).r,

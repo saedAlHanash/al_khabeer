@@ -16,7 +16,7 @@ class TeachersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(titleText: S.of(context).staffProfile),
+      appBar: AppBarWidget(titleText: S.of(context).teacherProfile),
       body: BlocBuilder<TeachersCubit, TeachersInitial>(
         builder: (context, state) {
           if (state.statuses.loading) {

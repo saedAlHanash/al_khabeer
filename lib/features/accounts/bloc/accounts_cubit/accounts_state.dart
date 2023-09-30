@@ -5,12 +5,14 @@ class AccountsInitial extends Equatable {
   final List<AccountsData> result;
   final List<AccountsData> filtered;
   final String error;
+  final AccountRequest request;
 
   const AccountsInitial({
     required this.statuses,
     required this.result,
     required this.filtered,
     required this.error,
+    required this.request,
   });
 
   factory AccountsInitial.initial() {
@@ -18,6 +20,7 @@ class AccountsInitial extends Equatable {
       result: [],
       filtered: [],
       error: '',
+      request: AccountRequest(),
       statuses: CubitStatuses.init,
     );
   }
@@ -45,12 +48,14 @@ class AccountsInitial extends Equatable {
     List<AccountsData>? result,
     List<AccountsData>? filtered,
     String? error,
+    AccountRequest? request,
   }) {
     return AccountsInitial(
       statuses: statuses ?? this.statuses,
       result: result ?? this.result,
       filtered: filtered ?? this.filtered,
       error: error ?? this.error,
+      request: request ?? this.request,
     );
   }
 }

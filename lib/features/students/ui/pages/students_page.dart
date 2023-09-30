@@ -9,7 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/strings/app_color_manager.dart';
 import '../../../../core/util/my_style.dart';
+import '../../../../core/widgets/date_picker_widget.dart';
+import '../../../../core/widgets/my_text_form_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../router/app_router.dart';
 import '../../../filter_data/bloc/class_cubit/class_cubit.dart';
@@ -29,8 +32,13 @@ class StudentsPage extends StatefulWidget {
 class _StudentsPageState extends State<StudentsPage> {
   final request = StudentsRequest();
 
+  late final TextEditingController startDateC;
+  late final TextEditingController endDateC;
+
   @override
   void initState() {
+    startDateC = TextEditingController(text: request.startTime?.formatDate);
+    endDateC = TextEditingController(text: request.endTime?.formatDate);
     context.read<StudentCubit>().getStudent(context, request: StudentsRequest());
     super.initState();
   }
@@ -82,6 +90,48 @@ class _StudentsPageState extends State<StudentsPage> {
                 },
               ),
               10.0.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0).w,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: MyTextFormNoLabelWidget(
+                        hint: 'تاريخ بداية',
+                        textAlign: TextAlign.center,
+                        controller: startDateC,
+                        disableAndKeepIcon: true,
+                        textDirection: TextDirection.ltr,
+                        iconWidget: SelectSingeDateWidget(
+                          initial: request.startTime,
+                          onSelect: (selected) {
+                            startDateC.text = selected?.formatDate ?? '';
+                            request.startTime = selected;
+                          },
+                        ),
+                      ),
+                    ),
+                    10.0.horizontalSpace,
+                    Expanded(
+                      child: MyTextFormNoLabelWidget(
+                        hint: 'تاريخ نهاية',
+                        textAlign: TextAlign.center,
+                        controller: endDateC,
+                        disableAndKeepIcon: true,
+                        color: AppColorManager.mainColorLight.withOpacity(0.5),
+                        textDirection: TextDirection.ltr,
+                        iconWidget: SelectSingeDateWidget(
+                          initial: request.endTime,
+                          onSelect: (selected) {
+                            endDateC.text = selected?.formatDate ?? '';
+                            request.endTime = selected;
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              10.0.verticalSpace,
               BlocBuilder<StudentCubit, StudentInitial>(
                 builder: (context, state) {
                   return MyButton(
@@ -111,9 +161,9 @@ class _StudentsPageState extends State<StudentsPage> {
                     ],
                     data: state.result.mapIndexed((i, e) {
                       return [
-                        e.studentname,
+                        e.studentName,
                         e.className,
-                        e.getAccountBalance.toString(),
+                        e.getAccountBalance.formatPrice,
                       ];
                     }).toList(),
                     onTapItem: (list, i) {

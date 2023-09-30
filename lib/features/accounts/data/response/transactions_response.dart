@@ -1,4 +1,4 @@
-
+import '../../../../core/util/cheker_helper.dart';
 
 class TransactionsResponse {
   TransactionsResponse({
@@ -7,25 +7,26 @@ class TransactionsResponse {
 
   final List<TransactionsData> data;
 
-  factory TransactionsResponse.fromJson(Map<String, dynamic> json){
+  factory TransactionsResponse.fromJson(Map<String, dynamic> json) {
     return TransactionsResponse(
-      data: json["data"] == null ? [] : List<TransactionsData>.from(
-          json["data"]!.map((x) => TransactionsData.fromJson(x))),
+      data: json["data"] == null
+          ? []
+          : List<TransactionsData>.from(
+              json["data"]!.map((x) => TransactionsData.fromJson(x))),
     );
   }
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "data": data.map((x) => x.toJson()).toList(),
       };
-
 }
 
 class TransactionsData {
-  TransactionsData({
+  TransactionsData(
+    this._accountName, {
     required this.id,
     required this.accountGuid,
-    required this.accountName,
+    required this.accountNameLatin,
     required this.paid,
     required this.caught,
     required this.date,
@@ -34,7 +35,8 @@ class TransactionsData {
 
   final int id;
   final String accountGuid;
-  final String accountName;
+  final String _accountName;
+  final String accountNameLatin;
   final String paid;
   final String caught;
   final DateTime? date;
@@ -45,11 +47,18 @@ class TransactionsData {
     return t;
   }
 
-  factory TransactionsData.fromJson(Map<String, dynamic> json){
+  String get accountName => isAr
+        ? _accountName
+        : accountNameLatin.isEmpty
+            ? _accountName
+            : accountNameLatin;
+
+  factory TransactionsData.fromJson(Map<String, dynamic> json) {
     return TransactionsData(
+      json["account"] ?? "",
       id: json["id"] ?? 0,
       accountGuid: json["account_guid"] ?? "",
-      accountName: json["account"] ?? "",
+      accountNameLatin: json["accountlatin"] ?? "",
       paid: json["paid"] ?? "",
       caught: json["caught"] ?? "",
       date: DateTime.tryParse(json["date"] ?? ""),
@@ -57,13 +66,11 @@ class TransactionsData {
     );
   }
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "account_guid": accountGuid,
         "paid": paid,
         "caught": caught,
         "note": note,
       };
-
 }

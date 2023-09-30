@@ -13,6 +13,7 @@ import '../../../../core/util/pair_class.dart';
 import '../../../../core/util/snack_bar_message.dart';
 import '../../../../core/widgets/spinner_widget.dart';
 import '../../../../generated/l10n.dart';
+import '../../data/request/account_request.dart';
 import '../../data/response/accouts_response.dart';
 
 part 'accounts_state.dart';
@@ -22,10 +23,10 @@ class AccountsCubit extends Cubit<AccountsInitial> {
 
   final network = sl<NetworkInfo>();
 
-  Future<void> getAccounts(BuildContext context, {String? guid}) async {
-    emit(state.copyWith(statuses: CubitStatuses.loading));
+  Future<void> getAccounts(BuildContext context, {AccountRequest? request}) async {
+    emit(state.copyWith(statuses: CubitStatuses.loading, request: request));
 
-    final pair = await _getAccountsApi(guid: guid);
+    final pair = await _getAccountsApi();
 
     if (pair.first == null) {
       if (context.mounted) {
@@ -36,19 +37,18 @@ class AccountsCubit extends Cubit<AccountsInitial> {
       emit(
         state.copyWith(
           statuses: CubitStatuses.done,
-          result: guid == null ? pair.first : null,
+          result: state.request.accountGuid == null ? pair.first : null,
           filtered: pair.first,
         ),
       );
     }
   }
 
-  Future<Pair<List<AccountsData>?, String?>> _getAccountsApi(
-      {String? guid}) async {
+  Future<Pair<List<AccountsData>?, String?>> _getAccountsApi({String? guid}) async {
     if (await network.isConnected) {
       final response = await APIService().getApi(
         url: GetUrl.getAccounts,
-        query: {'account_guid': guid},
+        query: state.request.toJson(),
       );
 
       if (response.statusCode == 200) {

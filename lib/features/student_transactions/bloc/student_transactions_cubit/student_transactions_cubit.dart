@@ -12,6 +12,7 @@ import '../../../../core/strings/enum_manager.dart';
 import '../../../../core/util/pair_class.dart';
 import '../../../../core/util/snack_bar_message.dart';
 import '../../../../generated/l10n.dart';
+import '../../../students/data/response/students_respose.dart';
 import '../../data/request/student_transactions_request.dart';
 import '../../data/response/student_transactions_response.dart';
 
@@ -38,7 +39,7 @@ class StudentTransactionsCubit extends Cubit<StudentTransactionsInitial> {
     }
   }
 
-  Future<Pair<List<StudentTransactionsData>?, String?>> _getStudentTransactionsApi(
+  Future<Pair<List<StudentData>?, String?>> _getStudentTransactionsApi(
       {required StudentTransactionsRequest? request}) async {
     if (await network.isConnected) {
       final response = await APIService().getApi(

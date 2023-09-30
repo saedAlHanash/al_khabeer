@@ -1,3 +1,5 @@
+import '../../../../core/util/cheker_helper.dart';
+
 class ClassResponse {
   ClassResponse({
     required this.data,
@@ -19,12 +21,13 @@ class ClassResponse {
 }
 
 class ClassData {
-  ClassData({
+  ClassData(
+     this._name,
+      {
     required this.id,
     required this.guid,
     required this.schoolId,
     required this.code,
-    required this.name,
     required this.latinName,
     required this.stageId,
     required this.levelId,
@@ -34,18 +37,22 @@ class ClassData {
   final String guid;
   final String schoolId;
   final dynamic code;
-  final String name;
+  final String _name;
   final String latinName;
   final String stageId;
   final String levelId;
 
+  String  get name=> isAr?_name:latinName.isEmpty
+      ? _name
+      : latinName;
+
   factory ClassData.fromJson(Map<String, dynamic> json) {
     return ClassData(
+      json["name"] ?? "",
       id: json["id"] ?? 0,
       guid: json["uuid"] ?? "",
       schoolId: json["school_id"] ?? "",
       code: json["code"],
-      name: json["name"] ?? "",
       stageId: json["stage_id"] ?? "",
       levelId: json["level_id"] ?? "",
       latinName: json["latin_name"] ?? "",
@@ -57,7 +64,7 @@ class ClassData {
         "uuid": guid,
         "school_id": schoolId,
         "code": code,
-        "name": name,
+        "name": _name,
         "latin_name": latinName,
       };
 }

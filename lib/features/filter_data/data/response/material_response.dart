@@ -1,3 +1,5 @@
+import '../../../../core/util/cheker_helper.dart';
+
 class MaterialResponse {
   MaterialResponse({
     required this.data,
@@ -13,42 +15,44 @@ class MaterialResponse {
     );
   }
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "data": data.map((x) => x.toJson()).toList(),
       };
 }
 
 class MaterialDate {
-  MaterialDate({
+  MaterialDate(
+    this._name, {
     required this.id,
     required this.guid,
-    required this.name,
     required this.latinName,
     required this.parentGuid,
   });
 
   final int id;
   final String guid;
-  final String name;
+  final String _name;
   final String latinName;
   final String parentGuid;
 
+  String get name => isAr ? _name : latinName.isEmpty
+      ? _name
+      : latinName;
+
   factory MaterialDate.fromJson(Map<String, dynamic> json) {
     return MaterialDate(
+      json["name"] ?? "",
       id: json["id"] ?? 0,
       guid: json["guid"] ?? "",
-      name: json["name"] ?? "",
       latinName: json["latin_name"] ?? "",
       parentGuid: json["parent_guid"] ?? "",
     );
   }
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "guid": guid,
-        "name": name,
+        "name": _name,
         "latin_name": latinName,
         "parent_guid": parentGuid,
       };

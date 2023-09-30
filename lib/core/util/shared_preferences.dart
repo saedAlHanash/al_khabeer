@@ -20,6 +20,7 @@ class AppSharedPreference {
   static const _myId = '12';
   static const _cart = '13';
   static const _lang = '14';
+  static const _loginModel = '15';
 
   static late SharedPreferences _prefs;
 
@@ -40,13 +41,22 @@ class AppSharedPreference {
 
   static cashUser(User? model) {
     if (model == null) return;
-
     _prefs.setString(_user, jsonEncode(model.toJson()));
   }
 
   static User getUserModel() {
     var json = _prefs.getString(_user) ?? '{}';
     return User.fromJson(jsonDecode(json));
+  }
+
+  static cashLoginData(LoginData? model) {
+    if (model == null) return;
+    _prefs.setString(_loginModel, jsonEncode(model.toJson()));
+  }
+
+  static LoginData getLoginData() {
+    var json = _prefs.getString(_loginModel) ?? '{}';
+    return LoginData.fromJson(jsonDecode(json));
   }
 
   static cashPhoneNumber(String phone) async {
@@ -148,6 +158,8 @@ class AppSharedPreference {
   }
 
   static String get getLocal => _prefs.getString(_lang) ?? 'ar';
+
+  static bool get isAr => (_prefs.getString(_lang) ?? 'ar') =='ar';
 
   static void updateCart(List<String> jsonCart) {
     _prefs.setStringList(_cart, jsonCart);

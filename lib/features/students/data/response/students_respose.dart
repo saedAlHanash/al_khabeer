@@ -1,3 +1,5 @@
+import '../../../../core/util/cheker_helper.dart';
+
 class StudentResponse {
   StudentResponse({
     required this.data,
@@ -22,35 +24,65 @@ class StudentData {
   StudentData({
     required this.id,
     required this.studentguid,
-    required this.studentname,
     required this.studentnamelatin,
     required this.classguid,
     required this.classlevelguid,
     required this.stageguid,
     required this.paid,
-    required this.studentName,
-    required this.className,
-    required this.classlevelName,
-    required this.stageName,
+    required this.sName,
+    required this.cName,
+    required this.cNameLatin,
+    required this.cLevelName,
+    required this.cLevelNameLatin,
+    required this.stName,
+    required this.stNameLatin,
     required this.caught,
     required this.date,
   });
 
   final int id;
   final String studentguid;
-  final String studentName;
-  final String studentname;
+  final String sName;
   final String studentnamelatin;
   final String classguid;
-  final String className;
+  final String cName;
+  final String cNameLatin;
   final String classlevelguid;
-  final String classlevelName;
+  final String cLevelName;
+  final String cLevelNameLatin;
   final String stageguid;
-  final String stageName;
+  final String stName;
+  final String stNameLatin;
   final String paid;
   final String caught;
   final DateTime? date;
   num? accountBalance;
+
+
+
+  String get studentName => isAr
+      ? sName
+      : studentnamelatin.isEmpty
+          ? sName
+          : studentnamelatin;
+
+  String get className => isAr
+      ? cName
+      : cNameLatin.isEmpty
+          ? cName
+          : cNameLatin;
+
+  String get classlevelName => isAr
+      ? cLevelName
+      : cLevelNameLatin.isEmpty
+          ? cLevelName
+          : cLevelNameLatin;
+
+  String get stageName => isAr
+      ? stName
+      : stNameLatin.isEmpty
+          ? stName
+          : stNameLatin;
 
   num get getAccountBalance => ((num.tryParse(caught) ?? 0) - (num.tryParse(paid) ?? 0));
 
@@ -58,17 +90,19 @@ class StudentData {
     return StudentData(
       id: json["id"] ?? 0,
       studentguid: json["studentguid"] ?? "",
-      studentname: json["studentname"] ?? "",
       studentnamelatin: json["studentnamelatin"] ?? "",
       classguid: json["classguid"] ?? "",
       classlevelguid: json["classlevelguid"] ?? "",
       stageguid: json["stageguid"] ?? "",
       paid: json["paid"] ?? "",
       caught: json["caught"] ?? "",
-      studentName: json["studentname"] ?? "",
-      className: json["class"] ?? "",
-      classlevelName: json["classlevel"] ?? "",
-      stageName: json["stage"] ?? "",
+      sName: json["studentname"] ?? "",
+      cName: json["class"] ?? "",
+      cNameLatin: json["classlatin"] ?? "",
+      cLevelName: json["classlevel"] ?? "",
+      cLevelNameLatin: json["classlevellatin"] ?? "",
+      stName: json["stage"] ?? "",
+      stNameLatin: json["stagelatin"] ?? "",
       date: DateTime.tryParse(json["date"] ?? ""),
     );
   }
@@ -76,7 +110,7 @@ class StudentData {
   Map<String, dynamic> toJson() => {
         "id": id,
         "studentguid": studentguid,
-        "studentname": studentname,
+        "studentname": sName,
         "studentnamelatin": studentnamelatin,
         "classguid": classguid,
         "classlevelguid": classlevelguid,

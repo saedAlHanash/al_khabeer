@@ -1,3 +1,5 @@
+import '../../../../core/util/cheker_helper.dart';
+
 class EmployeesResponse {
   EmployeesResponse({
     required this.data,
@@ -19,9 +21,9 @@ class EmployeesResponse {
 }
 
 class EmployData {
-  EmployData({
+  EmployData(
+    this._name, {
     required this.id,
-    required this.name,
     required this.latinName,
     required this.guid,
     required this.certificateName,
@@ -31,7 +33,7 @@ class EmployData {
   });
 
   final int id;
-  final String name;
+  final String _name;
   final String latinName;
   final String guid;
   final String certificateName;
@@ -39,10 +41,16 @@ class EmployData {
   final String salaryType;
   final DateTime? dateEmployment;
 
+  String get name => isAr ? _name : latinName.isEmpty
+      ? _name
+      : latinName.isEmpty
+      ? _name
+      : latinName;
+
   factory EmployData.fromJson(Map<String, dynamic> json) {
     return EmployData(
+      json["name"] ?? "",
       id: json["id"] ?? 0,
-      name: json["name"] ?? "",
       latinName: json["latin_name"] ?? "",
       guid: json["guid"] ?? "",
       certificateName: json["certificate_name"] ?? "",
@@ -54,7 +62,7 @@ class EmployData {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "name": name,
+        "name": _name,
         "latin_name": latinName,
         "guid": guid,
         "certificate_name": certificateName,

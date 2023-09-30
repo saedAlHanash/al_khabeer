@@ -81,6 +81,12 @@ class _HomepageState extends State<Homepage> {
                   color: AppColorManager.whit,
                   fontFamily: FontManager.cairoBold,
                 ),
+                DrawableText(
+                  text: AppSharedPreference.getUserModel().school.name,
+                  size: 20.0.spMin,
+                  color: AppColorManager.whit,
+                  fontFamily: FontManager.cairoBold,
+                ),
                 Divider(
                   thickness: 2.0.r,
                   endIndent: 0.0,

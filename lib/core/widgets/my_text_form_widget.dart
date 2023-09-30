@@ -152,7 +152,10 @@ class MyTextFormOutLineWidget extends StatelessWidget {
               state(() => obscureText = !obscureText);
               if (onChangeObscure != null) onChangeObscure!();
             },
-            icon: Icon(obscureText ? Icons.visibility : Icons.visibility_off,color: Colors.grey,));
+            icon: Icon(
+              obscureText ? Icons.visibility : Icons.visibility_off,
+              color: Colors.grey,
+            ));
       });
     }
     final border = OutlineInputBorder(
@@ -289,7 +292,7 @@ class MyEditTextWidget extends StatelessWidget {
     final inputDecoration = InputDecoration(
       hintText: hint,
       hintStyle: MyStyle.hintStyle,
-      contentPadding: innerPadding??const EdgeInsets.symmetric(horizontal: 10.0).w,
+      contentPadding: innerPadding ?? const EdgeInsets.symmetric(horizontal: 10.0).w,
       counter: const SizedBox(),
       enabledBorder: border,
       focusedErrorBorder: border,
@@ -323,7 +326,6 @@ class MyEditTextWidget extends StatelessWidget {
           obscureText: obscureText,
           decoration: inputDecoration,
           maxLines: maxLines,
-
           textAlign: textAlign ?? TextAlign.start,
           onChanged: onChanged,
           style: MyStyle.textFormTextStyle,
@@ -357,11 +359,15 @@ class MyTextFormNoLabelWidget extends StatelessWidget {
     this.color,
     this.initialValue,
     this.textDirection,
+    this.iconWidget,
+    this.disableAndKeepIcon,
   }) : super(key: key);
   final bool? enable;
+  final bool? disableAndKeepIcon;
   final String label;
   final String hint;
   final String? icon;
+  final Widget? iconWidget;
   final Color? color;
   final int maxLines;
   final int maxLength;
@@ -376,35 +382,95 @@ class MyTextFormNoLabelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        DrawableText(
-          text: label,
-          matchParent: true,
-          color: AppColorManager.black,
-          padding: const EdgeInsets.symmetric(horizontal: 10.0).w,
-          size: 18.0.sp,
+    final padding = innerPadding ?? EdgeInsets.symmetric(horizontal: 10.0.w);
+
+    bool obscureText = this.obscureText;
+    Widget? suffixIcon;
+    VoidCallback? onChangeObscure;
+
+    if (iconWidget != null) {
+      suffixIcon = iconWidget;
+    } else if (icon != null) {
+      suffixIcon = Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+        child: ImageMultiType(url: icon!, height: 23.0.h, width: 40.0.w),
+      );
+    }
+
+    if (obscureText) {
+      suffixIcon = StatefulBuilder(builder: (context, state) {
+        return IconButton(
+            splashRadius: 0.01,
+            onPressed: () {
+              state(() => obscureText = !obscureText);
+              if (onChangeObscure != null) onChangeObscure!();
+            },
+            icon: Icon(obscureText ? Icons.visibility : Icons.visibility_off));
+      });
+    }
+    final border = OutlineInputBorder(
+        borderSide: BorderSide(
+          color: color ?? AppColorManager.gray.withOpacity(0.7),
         ),
-        3.0.verticalSpace,
-        MyTextFormOutLineWidget(
-          maxLines: maxLines,
-          initialValue: initialValue,
-          obscureText: obscureText,
-          textAlign: textAlign,
-          onChanged: onChanged,
-          textDirection: textDirection,
-          maxLength: maxLength,
-          controller: controller,
-          color: color,
-          enable: enable,
-          hint: hint,
-          keyBordType: keyBordType,
-          icon: icon,
-          innerPadding: innerPadding,
-          key: key,
-        ),
-        5.0.verticalSpace,
-      ],
+        borderRadius: BorderRadius.circular(10.0.r));
+
+    final inputDecoration = InputDecoration(
+      contentPadding: padding,
+      errorBorder: InputBorder.none,
+      border: border,
+      focusedErrorBorder: border,
+      focusedBorder: border,
+      enabledBorder: border,
+      counter: const SizedBox(),
+      alignLabelWithHint: true,
+      hintText: hint,
+      hintStyle: TextStyle(fontSize: 16.0.sp),
+      labelStyle: TextStyle(color: color ?? AppColorManager.mainColor),
+      suffixIcon: suffixIcon,
+      enabled: enable ?? true,
     );
+
+    final textStyle = TextStyle(
+      fontFamily: FontManager.cairoSemiBold.name,
+      fontSize: 22.0.sp,
+      color: AppColorManager.mainColor,
+    );
+
+    return StatefulBuilder(builder: (context, state) {
+      onChangeObscure = () => state(() {});
+      return Column(
+        children: [
+          if (label.isNotEmpty)
+            DrawableText(
+              text: label,
+              matchParent: true,
+              color: AppColorManager.black,
+              padding: const EdgeInsets.symmetric(horizontal: 10.0).w,
+              size: 14.0.sp,
+            ),
+          if (label.isNotEmpty) 3.0.verticalSpace,
+          TextFormField(
+            decoration: inputDecoration,
+            focusNode: (disableAndKeepIcon ?? false) ? AlwaysDisabledFocusNode() : null,
+            maxLines: maxLines,
+            initialValue: initialValue,
+            obscureText: obscureText,
+            textAlign: textAlign,
+            onChanged: onChanged,
+            style: textStyle,
+            textDirection: textDirection,
+            maxLength: maxLength,
+            controller: controller,
+            keyboardType: keyBordType,
+          ),
+          5.0.verticalSpace,
+        ],
+      );
+    });
   }
+}
+
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
 }

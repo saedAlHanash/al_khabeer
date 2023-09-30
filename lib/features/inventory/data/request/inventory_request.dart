@@ -1,15 +1,18 @@
 class InventoryRequest {
   InventoryRequest({
-     this.materialGuid,
-     this.groupGuid,
+    this.materialGuid,
+    this.groupGuid,
     this.sortBy,
+    this.startTime,
+    this.endTime,
   });
 
-   String? groupGuid;
-   // String? groupName;
-   String? materialGuid;
-   // String? materialName;
-   String? sortBy;
+  DateTime? startTime;
+  DateTime? endTime;
+  String? groupGuid;
+
+  String? materialGuid;
+  String? sortBy;
 
   factory InventoryRequest.fromJson(Map<String, dynamic> json) {
     return InventoryRequest(
@@ -23,5 +26,7 @@ class InventoryRequest {
         "materialguid": materialGuid,
         "material_group_guid": groupGuid,
         "sort_by": sortBy,
+        'from_date': startTime?.toIso8601String(),
+        'to_date': endTime?.toIso8601String(),
       };
 }

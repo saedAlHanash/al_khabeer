@@ -39,4 +39,3 @@ class PolicyPage extends StatelessWidget {
     );
   }
 }
-

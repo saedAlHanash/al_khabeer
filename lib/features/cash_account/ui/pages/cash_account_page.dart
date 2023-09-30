@@ -5,13 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/strings/app_color_manager.dart';
 import '../../../../core/util/my_style.dart';
 import '../../../../core/widgets/app_bar/app_bar_widget.dart';
+import '../../../../core/widgets/date_picker_widget.dart';
+import '../../../../core/widgets/my_text_form_widget.dart';
 import '../../../../core/widgets/saed_taple_widget.dart';
 import '../../../../core/widgets/spinner_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../accounts/bloc/accounts_cubit/accounts_cubit.dart';
 import '../../../accounts/bloc/transactions_cubit/transactions_cubit.dart';
+import '../../../accounts/data/request/account_request.dart';
 
 class CashAccount extends StatefulWidget {
   const CashAccount({super.key});
@@ -21,8 +25,15 @@ class CashAccount extends StatefulWidget {
 }
 
 class _CashAccountState extends State<CashAccount> {
+  final request = AccountRequest();
+
+  late final TextEditingController startDateC;
+  late final TextEditingController endDateC;
+
   @override
   void initState() {
+    startDateC = TextEditingController(text: request.startTime?.formatDate);
+    endDateC = TextEditingController(text: request.endTime?.formatDate);
     context.read<TransactionsCubit>().getTransactions(context);
     super.initState();
   }
@@ -47,13 +58,61 @@ class _CashAccountState extends State<CashAccount> {
                   items: state.getSpinnerItems(),
                   width: .9.sw,
                   onChanged: (val) {
-                    context.read<TransactionsCubit>().getTransactions(
-                          context,
-                          guid: val.guid,
-                        );
+                    request.accountGuid = val.guid;
+                    context
+                        .read<TransactionsCubit>()
+                        .getTransactions(context, request: request);
                   },
                 );
               },
+            ),
+            10.0.verticalSpace,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0).w,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: MyTextFormNoLabelWidget(
+                      hint: 'تاريخ بداية',
+                      textAlign: TextAlign.center,
+                      controller: startDateC,
+                      disableAndKeepIcon: true,
+                      textDirection: TextDirection.ltr,
+                      iconWidget: SelectSingeDateWidget(
+                        initial: request.startTime,
+                        onSelect: (selected) {
+                          startDateC.text = selected?.formatDate ?? '';
+                          request.startTime = selected;
+                          context
+                              .read<TransactionsCubit>()
+                              .getTransactions(context, request: request);
+                        },
+                      ),
+                    ),
+                  ),
+                  10.0.horizontalSpace,
+                  Expanded(
+                    child: MyTextFormNoLabelWidget(
+                      hint: 'تاريخ نهاية',
+                      textAlign: TextAlign.center,
+                      controller: endDateC,
+                      disableAndKeepIcon: true,
+                      color: AppColorManager.mainColorLight.withOpacity(0.5),
+                      textDirection: TextDirection.ltr,
+                      iconWidget: SelectSingeDateWidget(
+                        initial: request.endTime,
+                        onSelect: (selected) {
+                          endDateC.text = selected?.formatDate ?? '';
+                          request.endTime = selected;
+                          context
+                              .read<TransactionsCubit>()
+                              .getTransactions(context, request: request);
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             10.0.verticalSpace,
             Expanded(
@@ -89,7 +148,7 @@ class _CashAccountState extends State<CashAccount> {
                 }
                 return Container(
                   decoration: MyStyle.roundBox,
-                  padding: EdgeInsets.all(20.0).r,
+                  padding: const EdgeInsets.all(20.0).r,
                   child: DrawableText(
                     text: S.of(context).total,
                     matchParent: true,

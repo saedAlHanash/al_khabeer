@@ -68,7 +68,7 @@ dependencies:
 #  firebase_core: any
   #  syncfusion_flutter_datepicker: ^21.1.37
   table_calendar: ^3.0.9
-
+  syncfusion_flutter_datepicker: ^22.1.39
   persistent_bottom_nav_bar: ^5.0.2
   #  firebase_dynamic_links: any
   #  photo_view: ^0.14.0

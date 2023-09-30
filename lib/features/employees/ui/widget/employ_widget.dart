@@ -17,7 +17,7 @@ class EmployWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyCardWidget(
-      margin: EdgeInsets.symmetric(vertical: 10.0).h,
+      margin: const EdgeInsets.symmetric(vertical: 10.0).h,
       withSideRed: true,
       child: Column(
         children: [
@@ -30,7 +30,7 @@ class EmployWidget extends StatelessWidget {
             drawableAlin: DrawableAlin.between,
             text: data.name,
           ),
-          Divider(endIndent: 0.0),
+          const Divider(endIndent: 0.0),
           DrawableText(
             matchParent: true,
             drawableAlin: DrawableAlin.between,
