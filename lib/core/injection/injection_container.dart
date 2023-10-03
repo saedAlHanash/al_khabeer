@@ -19,7 +19,6 @@ import '../../features/filter_data/bloc/class_level_cubit/class_level_cubit.dart
 import '../../features/filter_data/bloc/group_cubit/group_cubit.dart';
 import '../../features/filter_data/bloc/material_cubit/material_cubit.dart';
 import '../../features/filter_data/bloc/stage_cubit/stage_cubit.dart';
-import '../../features/firebase/bloc/insert_firebase_token_cubit/insert_firebase_token_cubit.dart';
 import '../../features/home/bloc/slider_cubit/slider_cubit.dart';
 import '../../features/inventory/bloc/inventory_cubit/inventory_cubit.dart';
 import '../../features/news/bloc/news_cubit/news_cubit.dart';
@@ -29,6 +28,7 @@ import '../../features/student_transactions/bloc/student_transactions_cubit/stud
 import '../../features/students/bloc/student_cubit/student_cubit.dart';
 import '../../features/teachers/bloc/teachers_cubit/teachers_cubit.dart';
 import '../app/bloc/loading_cubit.dart';
+import '../app/insert_firebase_token_cubit.dart';
 import '../network/network_info.dart';
 
 final sl = GetIt.instance;

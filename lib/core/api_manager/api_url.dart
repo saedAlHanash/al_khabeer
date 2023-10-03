@@ -80,9 +80,8 @@ class PostUrl {
   static const forgetPassword = 'auth/forget-password';
   static const resetPassword = 'auth/reset-password';
 
-  static const closeVideo = 'lessons/close-video';
 
-  static const insertFireBaseToken = 'auth/me/update-fcm-token';
+  static const insertFireBaseToken = 'firebase/token';
   static const uploadFile = 'media';
 
   static const insertCode = 'courses/insert-code';

@@ -1,10 +1,5 @@
 import 'dart:async';
 
-import 'package:al_khabeer/core/extensions/extensions.dart';
-import 'package:al_khabeer/core/strings/enum_manager.dart';
-import 'package:al_khabeer/core/util/shared_preferences.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
 import '../../../../core/api_manager/api_service.dart';
@@ -12,43 +7,48 @@ import '../../../../core/api_manager/api_url.dart';
 import '../../../../core/error/error_manager.dart';
 import '../../../../core/injection/injection_container.dart';
 import '../../../../core/network/network_info.dart';
+import '../../../../core/strings/app_string_manager.dart';
 import '../../../../core/util/pair_class.dart';
-import '../../../../generated/l10n.dart';
+import '../../generated/l10n.dart';
+import '../../main.dart';
+import '../util/shared_preferences.dart';
 
-part 'insert_firebase_token_state.dart';
-
-class InsertFirebaseTokenCubit extends Cubit<InsertFirebaseTokenInitial> {
-  InsertFirebaseTokenCubit() : super(InsertFirebaseTokenInitial.initial());
-
+class InsertFirebaseTokenCubit {
   final network = sl<NetworkInfo>();
 
   insertFirebaseToken() async {
     if (!AppSharedPreference.isLogin) {
-      Logger().e('canst send FCM user not login');
       return;
     }
-    var token = '';
+
+    var token = AppSharedPreference.getFireToken();
+
+    if (token.isEmpty) token = await getFireToken();
 
     final pair = await _insertFirebaseTokenApi(token: token);
 
     if (pair.first == null) {
-      Logger().e('error fcm to server');
+      Timer(
+        const Duration(seconds: 40),
+        () => insertFirebaseToken(),
+      );
     } else {
-      Logger().d('done Done Fire token ');
+      Logger().e('done Done Fire token ');
       // emit(state.copyWith(statuses: CubitStatuses.done, result: pair.first));
     }
   }
 
-  Future<Pair<bool?, String?>> _insertFirebaseTokenApi({
-    required String token,
-  }) async {
+  Future<Pair<bool?, String?>> _insertFirebaseTokenApi({required String token}) async {
     if (await network.isConnected) {
-      final response = await APIService().postApi(
+      final response = await APIService().uploadMultiPart(
         url: PostUrl.insertFireBaseToken,
-        body: {'token': token},
+        fields: {
+          'device_name': 'android1',
+          'token': token,
+        },
       );
 
-      if (response.statusCode.success) {
+      if (response.statusCode == 200) {
         return Pair(true, null);
       } else {
         return Pair(null, ErrorManager.getApiError(response));

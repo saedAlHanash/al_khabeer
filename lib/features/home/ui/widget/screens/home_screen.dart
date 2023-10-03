@@ -16,7 +16,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    loggerObject.wtf(HomeCards.cashPayment.arabicName);
     return SizedBox.expand(
       child: GridView(
         padding: const EdgeInsets.symmetric(horizontal: 10.0).w,

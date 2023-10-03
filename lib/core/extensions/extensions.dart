@@ -96,7 +96,7 @@ extension EnumHelper on Enum {
       }
     }
     if (this is HomeCards) {
-      loggerObject.w(S().studentBalances);
+
       switch (this as HomeCards) {
         case HomeCards.students:
           return S().studentBalances;

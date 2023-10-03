@@ -288,7 +288,7 @@ DateTime getDateTimeFromHeaders(http.Response response) {
     final dateTime = parseGMTDate(dateString);
     return dateTime;
   } else {
-    loggerObject.wtf('now');
+
     return DateTime.now();
   }
 }
