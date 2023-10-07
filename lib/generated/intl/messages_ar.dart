@@ -56,7 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailEmpty": MessageLookupByLibrary.simpleMessage("حقل البريد مطلوب"),
         "employmentDate":
             MessageLookupByLibrary.simpleMessage("تاريخ المباشرة"),
-        "examType": MessageLookupByLibrary.simpleMessage("نوع الامتحان"),
+        "examType": MessageLookupByLibrary.simpleMessage("نوع"),
         "examsSchedule":
             MessageLookupByLibrary.simpleMessage("جدول الامتحانات"),
         "expense": MessageLookupByLibrary.simpleMessage("المصروف"),

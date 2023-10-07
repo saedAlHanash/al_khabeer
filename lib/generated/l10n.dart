@@ -790,20 +790,20 @@ class S {
     );
   }
 
-  /// `Exam Type`
+  /// `Type`
   String get examType {
     return Intl.message(
-      'Exam Type',
+      'Type',
       name: 'examType',
       desc: '',
       args: [],
     );
   }
 
-  /// `Subject Name`
+  /// `Subject`
   String get subjectName {
     return Intl.message(
-      'Subject Name',
+      'Subject',
       name: 'subjectName',
       desc: '',
       args: [],

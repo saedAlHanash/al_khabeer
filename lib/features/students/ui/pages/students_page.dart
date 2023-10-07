@@ -17,6 +17,7 @@ import '../../../../generated/l10n.dart';
 import '../../../../router/app_router.dart';
 import '../../../filter_data/bloc/class_cubit/class_cubit.dart';
 import '../../../filter_data/bloc/class_level_cubit/class_level_cubit.dart';
+import '../../../filter_data/bloc/stage_cubit/stage_cubit.dart';
 import '../../bloc/student_cubit/student_cubit.dart';
 import '../../data/request/student_request.dart';
 
@@ -66,7 +67,7 @@ class _StudentsPageState extends State<StudentsPage> {
                     items: state.getSpinnerItems(selectedId: request.classGuid),
                     width: .9.sw,
                     onChanged: (val) {
-                      request.classGuid = val.guid;
+                      request.setClass(val.guid);
                       context.read<ClassLevelCubit>().getClassLevel(
                             context,
                             parentGuid: request.classGuid,
@@ -85,7 +86,26 @@ class _StudentsPageState extends State<StudentsPage> {
                     hint: DrawableText(text: S.of(context).grade, color: Colors.white),
                     items: state.getSpinnerItems(selectedId: request.classLevelGuid),
                     width: .9.sw,
-                    onChanged: (val) => request.classLevelGuid = val.guid,
+                    onChanged: (val) {
+                      request.setLevel(val.guid);
+                      context
+                          .read<StageCubit>()
+                          .getStage(context, levelGuid: request.classLevelGuid);
+                    },
+                  );
+                },
+              ),
+              10.0.verticalSpace,
+              BlocBuilder<StageCubit, StageInitial>(
+                builder: (context, state) {
+                  if (state.statuses.loading) {
+                    return MyStyle.loadingWidget();
+                  }
+                  return SpinnerWidget(
+                    hint: DrawableText(text: S.of(context).section, color: Colors.white),
+                    items: state.getSpinnerItems(selectedId: request.stageGuid),
+                    width: .9.sw,
+                    onChanged: (val) => request.stageGuid = val.guid,
                   );
                 },
               ),

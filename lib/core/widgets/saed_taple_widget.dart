@@ -28,12 +28,12 @@ class SaedTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: 30.0).r,
+      padding: const EdgeInsets.symmetric(horizontal: 30.0).r,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: EdgeInsets.all(20.0).r,
+            padding: const EdgeInsets.symmetric(vertical: 20.0).r,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(12.0.r)),
                 color: AppColorManager.tableTitle),
@@ -42,7 +42,7 @@ class SaedTableWidget extends StatelessWidget {
                 (i, e) {
                   final widget = e is String
                       ? DrawableText(
-                          size: 15.0.sp,
+                          size: 14.0.sp,
                           matchParent: true,
                           textAlign: TextAlign.center,
                           text: e,
@@ -66,8 +66,8 @@ class SaedTableWidget extends StatelessWidget {
             return InkWell(
               onTap: onTapItem == null ? null : () => onTapItem?.call(e, i1),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0).r,
-                margin: EdgeInsets.symmetric(vertical: 3.0).r,
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0).r,
+                margin: const EdgeInsets.symmetric(vertical: 3.0).r,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.0.r),
                   color: AppColorManager.tableTitleItem,
@@ -140,7 +140,7 @@ class SaedTableWidget1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: 30.0).r,
+      padding: const EdgeInsets.symmetric(horizontal: 30.0).r,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -172,7 +172,7 @@ class SaedTableWidget1 extends StatelessWidget {
                           Expanded(child: widget),
                           if (i != title.length - 1)
                             Container(
-                              margin: EdgeInsets.only(top: 15.0).h,
+                              margin: const EdgeInsets.only(top: 15.0).h,
                               width: 1.0.h,
                               color: AppColorManager.lightGrayEd,
                             ),
@@ -184,7 +184,7 @@ class SaedTableWidget1 extends StatelessWidget {
               ),
             ),
           ),
-          Divider(
+          const Divider(
             height: 0.0,
             indent: 0.0,
             endIndent: 0.0,
@@ -205,7 +205,7 @@ class SaedTableWidget1 extends StatelessWidget {
                                     ? TextDirection.ltr
                                     : TextDirection.rtl,
                                 child: DrawableText(
-                                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                                  padding: const EdgeInsets.symmetric(vertical: 10.0),
                                   size: 15.0.sp,
                                   matchParent: !(fullSizeIndex?.contains(i) ?? true),
                                   textAlign: TextAlign.center,
@@ -230,7 +230,8 @@ class SaedTableWidget1 extends StatelessWidget {
                               Expanded(child: widget),
                               if (i != title.length - 1)
                                 FutureBuilder(
-                                  future: Future.delayed(Duration(milliseconds: 50), () {
+                                  future: Future.delayed(const Duration(milliseconds: 50),
+                                      () {
                                     return key.currentContext?.size;
                                   }),
                                   builder: (context, snapshot) {
@@ -250,7 +251,7 @@ class SaedTableWidget1 extends StatelessWidget {
                   ),
                 ),
                 if (i1 != data.length - 1)
-                  Divider(
+                  const Divider(
                     height: 0.0,
                     indent: 0.0,
                     endIndent: 0.0,

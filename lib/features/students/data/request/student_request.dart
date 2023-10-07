@@ -13,6 +13,18 @@ class StudentsRequest {
   DateTime? startTime;
   DateTime? endTime;
 
+
+  void setClass(String? classGuid) {
+    this.classGuid = classGuid;
+    stageGuid = null;
+    classLevelGuid = null;
+  }
+
+  void setLevel(String? levelGuid) {
+    classLevelGuid = levelGuid;
+    stageGuid = null;
+  }
+
   factory StudentsRequest.fromJson(Map<String, dynamic> json) {
     return StudentsRequest(
       stageGuid: json["stage_guid"] ?? "",

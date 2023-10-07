@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email field is required"),
         "employmentDate":
             MessageLookupByLibrary.simpleMessage("Employment Date"),
-        "examType": MessageLookupByLibrary.simpleMessage("Exam Type"),
+        "examType": MessageLookupByLibrary.simpleMessage("Type"),
         "examsSchedule": MessageLookupByLibrary.simpleMessage("Exams Schedule"),
         "expense": MessageLookupByLibrary.simpleMessage("Expense"),
         "fav": MessageLookupByLibrary.simpleMessage("Favorites"),
@@ -132,7 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Student Balances"),
         "studentInformation":
             MessageLookupByLibrary.simpleMessage("Student Information"),
-        "subjectName": MessageLookupByLibrary.simpleMessage("Subject Name"),
+        "subjectName": MessageLookupByLibrary.simpleMessage("Subject"),
         "teacherProfile":
             MessageLookupByLibrary.simpleMessage("Teacher Profile"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
