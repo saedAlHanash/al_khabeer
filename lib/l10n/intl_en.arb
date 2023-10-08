@@ -99,7 +99,7 @@
   "remainingInstallmentAmount": "Remaining Installment Amount",
   "stageAndAdditions": "(Stage Salary + Additions)",
   "noResults": "No Results",
-  "expense": "Expense"
-
+  "expense": "Expense",
+  "confirmLogout": "Are you sure you want to logout?"
 
 }

@@ -41,6 +41,15 @@ class _HomepageState extends State<Homepage> {
 
   var pageIndex = 0;
 
+  void showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return LogoutDialog();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -152,6 +161,7 @@ class _HomepageState extends State<Homepage> {
                 MyButton(
                   width: 170.0.w,
                   color: AppColorManager.mainColorDark,
+                  onTap: () => showLogoutDialog(context),
                   child: DrawableText(
                     text: S.of(context).logout,
                     color: Colors.white,
@@ -189,6 +199,35 @@ class _HomepageState extends State<Homepage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class LogoutDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(S.of(context).logout),
+      content: Text(S.of(context).confirmLogout),
+      actions: <Widget>[
+        TextButton(
+          child: Text(S.of(context).cancel),
+          onPressed: () {
+            Navigator.of(context).pop(); // Close the dialog
+          },
+        ),
+        TextButton(
+          child: Text(S.of(context).logout),
+          onPressed: () {
+            AppSharedPreference.logout();
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              RouteName.splash,
+              (route) => false,
+            );
+          },
+        ),
+      ],
     );
   }
 }

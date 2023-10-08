@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirmCode":
             MessageLookupByLibrary.simpleMessage("Enter verification code"),
+        "confirmLogout": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to logout?"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact us"),
         "continueSignUp":
             MessageLookupByLibrary.simpleMessage("Complete registration"),

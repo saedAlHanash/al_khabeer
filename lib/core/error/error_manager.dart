@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 
+import '../../router/app_router.dart';
+import '../injection/injection_container.dart';
 import '../util/shared_preferences.dart';
 
 class ErrorManager {
@@ -9,6 +12,9 @@ class ErrorManager {
     switch (response.statusCode) {
       case 401:
         AppSharedPreference.logout();
+        sl<GlobalKey<NavigatorState>>()
+            .currentState
+            ?.pushNamedAndRemoveUntil(RouteName.splash, (route) => false);
         return ' المستخدم الحالي لم يسجل الدخول ' '${response.statusCode}';
 
       case 503:
@@ -35,20 +41,15 @@ class ErrorBody {
   final String status;
   final String message;
 
-
-  factory ErrorBody.fromJson(Map<String, dynamic> json){
+  factory ErrorBody.fromJson(Map<String, dynamic> json) {
     return ErrorBody(
       status: json["status"] ?? '',
       message: json["message"] ?? "",
-
     );
   }
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-  };
-
+        "status": status,
+        "message": message,
+      };
 }
-
-

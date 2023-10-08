@@ -97,5 +97,6 @@
   "remainingInstallmentAmount": "متبقي مبلغ الأقساط",
   "stageAndAdditions": "(أجر المرحلة + الإضافيات)",
   "noResults": "لا يوجد نتائج",
-  "expense": "المصروف"
+  "expense": "المصروف",
+  "confirmLogout": "هل أنت متأكد من تسجيل الخروج؟"
 }

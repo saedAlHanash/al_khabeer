@@ -42,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "تم إرسال رمز التحقق إلى البريد الإلكتروني: "),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirmCode": MessageLookupByLibrary.simpleMessage("أدخل رمز التفعيل"),
+        "confirmLogout": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد من تسجيل الخروج؟"),
         "contact": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
         "continueSignUp": MessageLookupByLibrary.simpleMessage("إتمام التسجيل"),
         "continueTo": MessageLookupByLibrary.simpleMessage("متابعة"),

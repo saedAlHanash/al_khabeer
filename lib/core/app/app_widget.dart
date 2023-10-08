@@ -22,6 +22,7 @@ import '../../generated/l10n.dart';
 import '../../router/app_router.dart';
 import '../app_theme.dart';
 import '../injection/injection_container.dart' as di;
+import '../injection/injection_container.dart';
 import 'bloc/loading_cubit.dart';
 
 class MyApp extends StatefulWidget {
