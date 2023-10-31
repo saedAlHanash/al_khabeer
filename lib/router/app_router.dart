@@ -1,5 +1,6 @@
 import 'package:al_khabeer/core/app/bloc/loading_cubit.dart';
 import 'package:al_khabeer/features/notifications/ui/pages/notifications_page.dart';
+import 'package:al_khabeer/features/students/data/response/students_response.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -182,22 +183,19 @@ class AppRoutes {
       case RouteName.studentInfo:
         //region
 
-        final studentGuid = settings.arguments as String;
-        final providers = [
-          BlocProvider(
-            create: (_) => di.sl<StudentTransactionsCubit>()
-              ..getStudentTransactions(
-                _,
-                request: StudentTransactionsRequest(studentguid: studentGuid),
-              ),
-          ),
-        ];
+        final student = settings.arguments as Student;
+        // final providers = [
+        //   BlocProvider(
+        //     create: (_) => di.sl<StudentTransactionsCubit>()
+        //       ..getStudentTransactions(
+        //         _,
+        //         request: StudentTransactionsRequest(studentguid: studentGuid),
+        //       ),
+        //   ),
+        // ];
         return CupertinoPageRoute(
           builder: (context) {
-            return MultiBlocProvider(
-              providers: providers,
-              child: StudentInfoPage(),
-            );
+            return StudentInfoPage(student:student);
           },
         );
       //endregion

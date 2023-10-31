@@ -1,4 +1,6 @@
+import 'package:al_khabeer/core/api_manager/api_service.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
+import 'package:al_khabeer/core/util/shared_preferences.dart';
 import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:al_khabeer/core/widgets/my_button.dart';
 import 'package:al_khabeer/core/widgets/saed_taple_widget.dart';
@@ -41,6 +43,8 @@ class _StudentsPageState extends State<StudentsPage> {
     startDateC = TextEditingController(text: request.startTime?.formatDate);
     endDateC = TextEditingController(text: request.endTime?.formatDate);
     context.read<StudentCubit>().getStudent(context, request: StudentsRequest());
+    context.read<ClassLevelCubit>().getClassLevel(context);
+    context.read<StageCubit>().getStage(context);
     super.initState();
   }
 
@@ -183,14 +187,14 @@ class _StudentsPageState extends State<StudentsPage> {
                       return [
                         e.studentName,
                         e.className,
-                        e.getAccountBalance.formatPrice,
+                        e.balance.formatPrice,
                       ];
                     }).toList(),
                     onTapItem: (list, i) {
                       Navigator.pushNamed(
                         context,
                         RouteName.studentInfo,
-                        arguments: state.result[i].studentguid,
+                        arguments: state.result[i],
                       );
                     },
                   );

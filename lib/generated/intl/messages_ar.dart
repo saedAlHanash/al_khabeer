@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "balance": MessageLookupByLibrary.simpleMessage("الرصيد"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "cart": MessageLookupByLibrary.simpleMessage("السلة"),
+        "caught": MessageLookupByLibrary.simpleMessage("مقبوض"),
         "certificateOrSpecialization":
             MessageLookupByLibrary.simpleMessage("الشهادة او الاختصاص"),
         "changeAddress": MessageLookupByLibrary.simpleMessage("تغير العنوان"),
@@ -94,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
         "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "notifications": MessageLookupByLibrary.simpleMessage("التبليغات"),
+        "paid": MessageLookupByLibrary.simpleMessage("مدفوع"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
         "passwordEmpty":
             MessageLookupByLibrary.simpleMessage("حقل كلمة السر مطلوب"),

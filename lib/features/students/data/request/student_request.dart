@@ -36,6 +36,7 @@ class StudentsRequest {
   Map<String, dynamic> toJson() => {
         "stage_guid": stageGuid,
         "class_guid": classGuid,
+        "group": true,
         "classlevel_guid": classLevelGuid,
         'from_date': startTime?.toIso8601String(),
         'to_date': endTime?.toIso8601String(),

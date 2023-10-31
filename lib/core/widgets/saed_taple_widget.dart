@@ -81,7 +81,7 @@ class SaedTableWidget extends StatelessWidget {
                                   ? TextDirection.ltr
                                   : TextDirection.rtl,
                               child: DrawableText(
-                                size: 15.0.sp,
+                                size: 12.0.sp,
                                 matchParent: !(fullSizeIndex?.contains(i) ?? true),
                                 textAlign: TextAlign.center,
                                 text: e.isEmpty ? '-' : e.replaceAll('spy', ''),

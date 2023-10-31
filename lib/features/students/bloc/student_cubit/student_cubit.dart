@@ -14,6 +14,7 @@ import '../../../../core/strings/enum_manager.dart';
 import '../../../../core/util/pair_class.dart';
 import '../../../../core/util/snack_bar_message.dart';
 import '../../../../generated/l10n.dart';
+import '../../data/response/students_response.dart';
 
 part 'student_state.dart';
 
@@ -33,35 +34,35 @@ class StudentCubit extends Cubit<StudentInitial> {
       }
       emit(state.copyWith(statuses: CubitStatuses.error, error: pair.second));
     } else {
-      emit(state.copyWith(statuses: CubitStatuses.done, result: groupItems(pair.first!)));
+      emit(state.copyWith(statuses: CubitStatuses.done, result: pair.first!));
     }
   }
 
-// Define a helper method to group the items
-  List<StudentData> groupItems(List<StudentData> items) {
-    Map<String, List<StudentData>> groupedMap = {};
-    final list = <StudentData>[];
+// // Define a helper method to group the items
+//   List<StudentData> groupItems(List<StudentData> items) {
+//     Map<String, List<StudentData>> groupedMap = {};
+//     final list = <StudentData>[];
+//
+//     for (var item in items) {
+//       if (groupedMap.containsKey(item.studentguid)) {
+//         groupedMap[item.studentguid]!.add(item);
+//       } else {
+//         groupedMap[item.studentguid] = [item];
+//       }
+//     }
+//     groupedMap.forEach((key, value) {
+//       var accountBalance = 0.0;
+//       for (var e in value) {
+//         accountBalance += e.getAccountBalance;
+//       }
+//       final item = value.first..accountBalance = accountBalance;
+//       list.add(item);
+//     });
+//
+//     return list;
+//   }
 
-    for (var item in items) {
-      if (groupedMap.containsKey(item.studentguid)) {
-        groupedMap[item.studentguid]!.add(item);
-      } else {
-        groupedMap[item.studentguid] = [item];
-      }
-    }
-    groupedMap.forEach((key, value) {
-      var accountBalance = 0.0;
-      for (var e in value) {
-        accountBalance += e.getAccountBalance;
-      }
-      final item = value.first..accountBalance = accountBalance;
-      list.add(item);
-    });
-
-    return list;
-  }
-
-  Future<Pair<List<StudentData>?, String?>> _getStudentApi(
+  Future<Pair<List<Student>?, String?>> _getStudentApi(
       {required StudentsRequest? request}) async {
     if (await network.isConnected) {
       final response = await APIService().getApi(
@@ -70,7 +71,7 @@ class StudentCubit extends Cubit<StudentInitial> {
       );
 
       if (response.statusCode == 200) {
-        return Pair(StudentResponse.fromJson(response.jsonBody).data, null);
+        return Pair(StudentsResponse.fromJson(response.jsonBody).data, null);
       } else {
         return Pair(null, ErrorManager.getApiError(response));
       }

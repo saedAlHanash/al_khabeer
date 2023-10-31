@@ -98,5 +98,7 @@
   "stageAndAdditions": "(أجر المرحلة + الإضافيات)",
   "noResults": "لا يوجد نتائج",
   "expense": "المصروف",
+  "paid": "مدفوع",
+  "caught": "مقبوض",
   "confirmLogout": "هل أنت متأكد من تسجيل الخروج؟"
 }

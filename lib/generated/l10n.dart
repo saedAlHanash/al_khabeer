@@ -990,6 +990,26 @@ class S {
     );
   }
 
+  /// `paid`
+  String get paid {
+    return Intl.message(
+      'paid',
+      name: 'paid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `caught`
+  String get caught {
+    return Intl.message(
+      'caught',
+      name: 'caught',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure you want to logout?`
   String get confirmLogout {
     return Intl.message(

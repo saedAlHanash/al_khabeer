@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "balance": MessageLookupByLibrary.simpleMessage("Balance"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+        "caught": MessageLookupByLibrary.simpleMessage("caught"),
         "certificateOrSpecialization": MessageLookupByLibrary.simpleMessage(
             "Certificate or Specialization"),
         "changeAddress": MessageLookupByLibrary.simpleMessage("Change address"),
@@ -96,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notes": MessageLookupByLibrary.simpleMessage("Notes"),
         "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "paid": MessageLookupByLibrary.simpleMessage("paid"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordEmpty":
             MessageLookupByLibrary.simpleMessage("Password field is required"),
