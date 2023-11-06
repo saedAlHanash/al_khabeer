@@ -38,29 +38,29 @@ class StudentCubit extends Cubit<StudentInitial> {
     }
   }
 
-// // Define a helper method to group the items
-//   List<StudentData> groupItems(List<StudentData> items) {
-//     Map<String, List<StudentData>> groupedMap = {};
-//     final list = <StudentData>[];
-//
-//     for (var item in items) {
-//       if (groupedMap.containsKey(item.studentguid)) {
-//         groupedMap[item.studentguid]!.add(item);
-//       } else {
-//         groupedMap[item.studentguid] = [item];
-//       }
-//     }
-//     groupedMap.forEach((key, value) {
-//       var accountBalance = 0.0;
-//       for (var e in value) {
-//         accountBalance += e.getAccountBalance;
-//       }
-//       final item = value.first..accountBalance = accountBalance;
-//       list.add(item);
-//     });
-//
-//     return list;
-//   }
+// Define a helper method to group the items
+  List<StudentData> groupItems(List<StudentData> items) {
+    Map<String, List<StudentData>> groupedMap = {};
+    final list = <StudentData>[];
+
+    for (var item in items) {
+      if (groupedMap.containsKey(item.studentguid)) {
+        groupedMap[item.studentguid]!.add(item);
+      } else {
+        groupedMap[item.studentguid] = [item];
+      }
+    }
+    groupedMap.forEach((key, value) {
+      var accountBalance = 0.0;
+      for (var e in value) {
+        accountBalance += e.getAccountBalance;
+      }
+      final item = value.first..accountBalance = accountBalance;
+      list.add(item);
+    });
+
+    return list;
+  }
 
   Future<Pair<List<Student>?, String?>> _getStudentApi(
       {required StudentsRequest? request}) async {

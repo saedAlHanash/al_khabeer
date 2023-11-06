@@ -277,7 +277,7 @@ class AppRoutes {
         return CupertinoPageRoute(builder: (context) {
           return MultiBlocProvider(
             providers: providers,
-            child: InventoryPage(),
+            child: const InventoryPage(),
           );
         });
 

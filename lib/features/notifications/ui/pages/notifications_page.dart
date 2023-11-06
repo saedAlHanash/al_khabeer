@@ -3,6 +3,7 @@ import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:al_khabeer/features/notifications/ui/widget/notifivcation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_multi_type/image_multi_type.dart';
 
 import '../../../../core/util/my_style.dart';
 import '../../../../core/util/shared_preferences.dart';
@@ -37,11 +38,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
             return MyStyle.loadingWidget();
           }
           if (state.result.isEmpty) {
-            return  Expanded(
-              child: NotFoundWidget(
-                icon: Assets.iconsNoNotifications,
-                text: S.of(context).noNotifications,
-              ),
+            return  NotFoundWidget(
+              icon: Assets.iconsNoNotifications,
+              text: S.of(context).noNotifications,
             );
           }
           return ListView.builder(
