@@ -29,8 +29,6 @@ class Assets {
   static const String iconsInfo = 'assets/icons/info.svg';
   static const String iconsLang = 'assets/icons/lang.svg';
   static const String iconsLocation = 'assets/icons/location.svg';
-  static const String iconsLogo = 'assets/icons/logo.png';
-  static const String iconsLogoForground = 'assets/icons/logo_forground.png';
   static const String iconsLogoWithoutText = 'assets/icons/logo_without_text.png';
   static const String iconsMenue = 'assets/icons/menue.svg';
   static const String iconsMines = 'assets/icons/mines.svg';

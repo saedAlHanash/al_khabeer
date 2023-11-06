@@ -52,7 +52,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
           child: ImageMultiType(
             height: 150.0.r,
             width: 150.0.r,
-            url: Assets.iconsLogo,
+            url: Assets.iconsLogoWithoutText,
           ),
         ),
       ),

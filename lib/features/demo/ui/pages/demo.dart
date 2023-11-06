@@ -23,7 +23,7 @@ class DemoPage extends StatelessWidget {
         child: Column(
           children: [
             ImageMultiType(
-              url: Assets.iconsLogo,
+              url: Assets.iconsLogoWithoutText,
               height: 100.0.r,
               width: 100.0.r,
             ),
