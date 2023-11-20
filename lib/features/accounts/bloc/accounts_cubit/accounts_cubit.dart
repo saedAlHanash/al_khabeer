@@ -46,6 +46,7 @@ class AccountsCubit extends Cubit<AccountsInitial> {
 
   Future<Pair<List<AccountsData>?, String?>> _getAccountsApi({String? guid}) async {
     if (await network.isConnected) {
+      loggerObject.w(state.request.toJson());
       final response = await APIService().getApi(
         url: GetUrl.getAccounts,
         query: state.request.toJson(),

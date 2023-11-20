@@ -25,13 +25,14 @@ class CashAccount extends StatefulWidget {
 }
 
 class _CashAccountState extends State<CashAccount> {
-  final request = AccountRequest();
+  late final AccountRequest request;
 
   late final TextEditingController startDateC;
   late final TextEditingController endDateC;
 
   @override
   void initState() {
+    request = context.read<TransactionsCubit>().state.request;
     startDateC = TextEditingController(text: request.startTime?.formatDate);
     endDateC = TextEditingController(text: request.endTime?.formatDate);
     context.read<TransactionsCubit>().getTransactions(context);
@@ -55,7 +56,7 @@ class _CashAccountState extends State<CashAccount> {
                 return SpinnerWidget(
                   hint:
                       DrawableText(text: S.of(context).accountName, color: Colors.white),
-                  items: state.getSpinnerItems(),
+                  items: state.getSpinnerItems(selectedId: request.accountGuid),
                   width: .9.sw,
                   onChanged: (val) {
                     request.accountGuid = val.guid;

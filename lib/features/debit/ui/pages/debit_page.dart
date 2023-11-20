@@ -25,7 +25,7 @@ class DebitPage extends StatefulWidget {
 }
 
 class _DebitPageState extends State<DebitPage> {
-  final request = AccountRequest();
+  final request = AccountRequest(type: 'expenses');
 
   late final TextEditingController startDateC;
   late final TextEditingController endDateC;
@@ -34,7 +34,7 @@ class _DebitPageState extends State<DebitPage> {
   void initState() {
     startDateC = TextEditingController(text: request.startTime?.formatDate);
     endDateC = TextEditingController(text: request.endTime?.formatDate);
-    context.read<TransactionsCubit>().getTransactions(context);
+    // context.read<TransactionsCubit>().getTransactions(context,request: request);
     super.initState();
   }
 

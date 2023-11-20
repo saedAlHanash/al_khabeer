@@ -33,16 +33,17 @@ class StudentsPage extends StatefulWidget {
 }
 
 class _StudentsPageState extends State<StudentsPage> {
-  final request = StudentsRequest();
+  late final StudentsRequest request ;
 
   late final TextEditingController startDateC;
   late final TextEditingController endDateC;
 
   @override
   void initState() {
+    request = context.read<StudentCubit>().state.request;
     startDateC = TextEditingController(text: request.startTime?.formatDate);
     endDateC = TextEditingController(text: request.endTime?.formatDate);
-    context.read<StudentCubit>().getStudent(context, request: StudentsRequest());
+    context.read<StudentCubit>().getStudent(context, request: request);
     context.read<ClassLevelCubit>().getClassLevel(context);
     context.read<StageCubit>().getStage(context);
     super.initState();

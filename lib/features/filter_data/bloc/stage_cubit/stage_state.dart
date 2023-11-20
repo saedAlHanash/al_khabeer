@@ -41,7 +41,7 @@ class StageInitial extends Equatable {
               guid: e.guid,
               isSelected: e.guid == selectedId,
             ))
-        .toList();
+        .toList() ..insert(0, SpinnerItem(name: 'الكل', id: 1));
   }
 
   StageInitial copyWith({

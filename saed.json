@@ -1,172 +1,294 @@
 {
   "status": "Success",
-  "message": "List of student transactions",
+  "message": "List of transactions",
   "data": [
     {
-      "id": 141,
-      "school_id": "5",
-      "studentguid": "9BE5C69E-2CD3-4624-AF7F-2D3C9B7F8045",
-      "studentname": "مينا عامر",
-      "studentnamelatin": "",
-      "classguid": "E187CB2D-C4A9-4456-9F60-54A52C9E8DA7",
-      "classlevelguid": "CD44A7A1-455E-427C-BF3E-A2D72C0B698C",
-      "stageguid": "26F5EEBA-F6CA-4ABB-8F84-7ADEA1662161",
-      "school": {
-        "id": 5,
-        "slug": "mdrs-sma-bsmay",
-        "name": "مدرسة سما بسماية",
-        "code": "kh02",
-        "slogan": null,
-        "logo": "public/schools/653cdb96e3b01-1698487190.png",
-        "phone": "",
-        "phone2": "",
-        "email": "",
-        "website": "",
-        "address": "",
-        "social_media": {
-          "facebook": "",
-          "instagram": "",
-          "snap": "",
-          "youtube": ""
-        },
-        "policies": null,
-        "vision": "",
-        "mission": "",
-        "about_us": "",
-        "subscription_id": "11",
-        "subscription_date": "2023-10-28T00:00:00.000000Z",
-        "period": "2",
-        "expiry_date": "2023-12-28T00:00:00.000000Z",
-        "gps_token": "",
-        "welcome_message": null,
-        "options": null
-      },
-      "stage": "المرحلة الأبتدائية",
-      "stage_en": "Primary Stage",
-      "level": "الثاني الأبتدائي",
-      "level_en": "Grade 2",
-      "division": "a",
-      "division_en": "a",
-      "class": "المرحلة الأبتدائية-الثاني الأبتدائي-a",
-      "classlatin": "Primary Stage-Grade 2-a",
-      "sum_paid": "400000",
-      "sum_caught": "2000000",
-      "balance": 1600000,
-      "transactions": [
-        {
-          "paid": "0",
-          "caught": "500000",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "100000",
-          "caught": "0",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "0",
-          "caught": "500000",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "100000",
-          "caught": "0",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "0",
-          "caught": "500000",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "100000",
-          "caught": "0",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "0",
-          "caught": "500000",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "100000",
-          "caught": "0",
-          "date": "2023-10-28"
-        }
-      ]
+      "id": 45,
+      "uuid": "69AEFE01-DEFE-4311-A8B6-C76DE0AB3085",
+      "school_id": "6",
+      "account_guid": "8264DE92-9E36-41C7-BF35-96B3A87D312B",
+      "paid": "30",
+      "caught": "0",
+      "date": "2023-11-20",
+      "note": "\u0643\u062a\u0627\u0628 \u0639\u0644\u0648\u0645",
+      "account": "\u0635\u0627\u0641\u064a \u0645\u0628\u064a\u0639\u0627\u062a",
+      "account_en": "Net Sales"
     },
     {
-      "id": 143,
-      "school_id": "5",
-      "studentguid": "BEFA699D-F098-4101-98FD-09D4B7ED9479",
-      "studentname": "احمد طه",
-      "studentnamelatin": "",
-      "classguid": "E187CB2D-C4A9-4456-9F60-54A52C9E8DA7",
-      "classlevelguid": "CD44A7A1-455E-427C-BF3E-A2D72C0B698C",
-      "stageguid": "52792B16-AFA3-4F5F-A0D1-3C9B08C40E37",
-      "school": {
-        "id": 5,
-        "slug": "mdrs-sma-bsmay",
-        "name": "مدرسة سما بسماية",
-        "code": "kh02",
-        "slogan": null,
-        "logo": "public/schools/653cdb96e3b01-1698487190.png",
-        "phone": "",
-        "phone2": "",
-        "email": "",
-        "website": "",
-        "address": "",
-        "social_media": {
-          "facebook": "",
-          "instagram": "",
-          "snap": "",
-          "youtube": ""
-        },
-        "policies": null,
-        "vision": "",
-        "mission": "",
-        "about_us": "",
-        "subscription_id": "11",
-        "subscription_date": "2023-10-28T00:00:00.000000Z",
-        "period": "2",
-        "expiry_date": "2023-12-28T00:00:00.000000Z",
-        "gps_token": "",
-        "welcome_message": null,
-        "options": null
-      },
-      "stage": "المرحلة الأبتدائية",
-      "stage_en": "Primary Stage",
-      "level": "الثاني الأبتدائي",
-      "level_en": "Grade 2",
-      "division": "b",
-      "division_en": "b",
-      "class": "المرحلة الأبتدائية-الثاني الأبتدائي-b",
-      "classlatin": "Primary Stage-Grade 2-b",
-      "sum_paid": 0,
-      "sum_caught": "2000000",
-      "balance": 2000000,
-      "transactions": [
-        {
-          "paid": "0",
-          "caught": "500000",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "0",
-          "caught": "500000",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "0",
-          "caught": "500000",
-          "date": "2023-10-28"
-        },
-        {
-          "paid": "0",
-          "caught": "500000",
-          "date": "2023-10-28"
-        }
-      ]
+      "id": 46,
+      "uuid": "69AEFE01-DEFE-4311-A8B6-C76DE0AB3085",
+      "school_id": "6",
+      "account_guid": "307FEA6C-43E4-4952-9842-FA4BD75C5373",
+      "paid": "0",
+      "caught": "30",
+      "date": "2023-11-20",
+      "note": "",
+      "account": "\u0627\u0644\u0635\u0646\u062f\u0648\u0642",
+      "account_en": "Cashier"
+    },
+    {
+      "id": 41,
+      "uuid": "A1AD7C96-5DD8-487F-87D8-EB4CB4636CDA",
+      "school_id": "6",
+      "account_guid": "A1AD7C96-5DD8-487F-87D8-EB4CB4636CDA",
+      "paid": "0",
+      "caught": "500000",
+      "date": "2023-11-18",
+      "note": "",
+      "account": "\u0645\u0635\u0637\u0641\u0649 \u062c\u0639\u0641\u0631",
+      "account_en": "\u0645\u0635\u0637\u0641\u0649 \u062c\u0639\u0641\u0631"
+    },
+    {
+      "id": 42,
+      "uuid": "A1AD7C96-5DD8-487F-87D8-EB4CB4636CDA",
+      "school_id": "6",
+      "account_guid": "FCABC742-DC60-40E1-AE41-38C664C92879",
+      "paid": "500000",
+      "caught": "0",
+      "date": "2023-11-18",
+      "note": "",
+      "account": "\u0625\u064a\u0631\u0627\u062f \u0623\u062c\u0648\u0631 \u0627\u0644\u0645\u0631\u0627\u062d\u0644",
+      "account_en": "Stages Wages Revenues "
+    },
+    {
+      "id": 43,
+      "uuid": "B24351FC-862F-45FE-B1BD-2108A86A96A5",
+      "school_id": "6",
+      "account_guid": "BC1188A1-9323-413F-86E5-67A97C465113",
+      "paid": "0",
+      "caught": "66",
+      "date": "2023-11-18",
+      "note": "\u0643\u062a\u0627\u0628 \u0639\u0644\u0648\u0645",
+      "account": "\u0635\u0627\u0641\u064a \u0645\u0634\u062a\u0631\u064a\u0627\u062a",
+      "account_en": "Net Purchases"
+    },
+    {
+      "id": 44,
+      "uuid": "B24351FC-862F-45FE-B1BD-2108A86A96A5",
+      "school_id": "6",
+      "account_guid": "307FEA6C-43E4-4952-9842-FA4BD75C5373",
+      "paid": "66",
+      "caught": "0",
+      "date": "2023-11-18",
+      "note": "",
+      "account": "\u0627\u0644\u0635\u0646\u062f\u0648\u0642",
+      "account_en": "Cashier"
+    },
+    {
+      "id": 28,
+      "uuid": "EE40F6E9-C3F6-48A0-9C9E-9FE9C2C6FF02",
+      "school_id": "6",
+      "account_guid": "B54F16BA-1F77-474F-AC5D-1FB5B327478D",
+      "paid": "100000",
+      "caught": "0",
+      "date": "2023-11-13",
+      "note": "",
+      "account": "\u0646\u0648\u0631 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0643\u0627\u0638\u0645 \u0627\u0644\u0642\u0631\u064a\u0634\u064a",
+      "account_en": "\u0646\u0648\u0631 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0643\u0627\u0638\u0645 \u0627\u0644\u0642\u0631\u064a\u0634\u064a"
+    },
+    {
+      "id": 29,
+      "uuid": "EE40F6E9-C3F6-48A0-9C9E-9FE9C2C6FF02",
+      "school_id": "6",
+      "account_guid": "0DD96B16-02ED-4B9E-BB77-97CB2B5F29A7",
+      "paid": "100000",
+      "caught": "0",
+      "date": "2023-11-13",
+      "note": "",
+      "account": "\u0639\u0644\u064a \u0639\u0627\u0645\u0631 \u0646\u0627\u0635\u0631 \u0627\u0633\u0639\u062f",
+      "account_en": "\u0639\u0644\u064a \u0639\u0627\u0645\u0631 \u0646\u0627\u0635\u0631 \u0627\u0633\u0639\u062f"
+    },
+    {
+      "id": 30,
+      "uuid": "EE40F6E9-C3F6-48A0-9C9E-9FE9C2C6FF02",
+      "school_id": "6",
+      "account_guid": "307FEA6C-43E4-4952-9842-FA4BD75C5373",
+      "paid": "0",
+      "caught": "200000",
+      "date": "2023-11-13",
+      "note": "",
+      "account": "\u0627\u0644\u0635\u0646\u062f\u0648\u0642",
+      "account_en": "Cashier"
+    },
+    {
+      "id": 35,
+      "uuid": "9251BFB1-B5FA-48AF-A0B8-4C2EAE3F6A0A",
+      "school_id": "6",
+      "account_guid": "B54F16BA-1F77-474F-AC5D-1FB5B327478D",
+      "paid": "300000",
+      "caught": "0",
+      "date": "2023-11-13",
+      "note": "",
+      "account": "\u0646\u0648\u0631 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0643\u0627\u0638\u0645 \u0627\u0644\u0642\u0631\u064a\u0634\u064a",
+      "account_en": "\u0646\u0648\u0631 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0643\u0627\u0638\u0645 \u0627\u0644\u0642\u0631\u064a\u0634\u064a"
+    },
+    {
+      "id": 36,
+      "uuid": "9251BFB1-B5FA-48AF-A0B8-4C2EAE3F6A0A",
+      "school_id": "6",
+      "account_guid": "307FEA6C-43E4-4952-9842-FA4BD75C5373",
+      "paid": "0",
+      "caught": "300000",
+      "date": "2023-11-13",
+      "note": "",
+      "account": "\u0627\u0644\u0635\u0646\u062f\u0648\u0642",
+      "account_en": "Cashier"
+    },
+    {
+      "id": 47,
+      "uuid": "8E7715FC-ECFF-40BC-A934-D6FEC5CB8926",
+      "school_id": "6",
+      "account_guid": "BC1188A1-9323-413F-86E5-67A97C465113",
+      "paid": "0",
+      "caught": "66",
+      "date": "2023-11-11",
+      "note": "\u0643\u062a\u0627\u0628 \u0627\u062d\u064a\u0627\u0621",
+      "account": "\u0635\u0627\u0641\u064a \u0645\u0634\u062a\u0631\u064a\u0627\u062a",
+      "account_en": "Net Purchases"
+    },
+    {
+      "id": 48,
+      "uuid": "8E7715FC-ECFF-40BC-A934-D6FEC5CB8926",
+      "school_id": "6",
+      "account_guid": "307FEA6C-43E4-4952-9842-FA4BD75C5373",
+      "paid": "66",
+      "caught": "0",
+      "date": "2023-11-11",
+      "note": "",
+      "account": "\u0627\u0644\u0635\u0646\u062f\u0648\u0642",
+      "account_en": "Cashier"
+    },
+    {
+      "id": 25,
+      "uuid": "5F31AAF1-712F-4BAD-B50D-1996DC89D1D5",
+      "school_id": "6",
+      "account_guid": "0DD96B16-02ED-4B9E-BB77-97CB2B5F29A7",
+      "paid": "200000",
+      "caught": "0",
+      "date": "2023-11-08",
+      "note": "",
+      "account": "\u0639\u0644\u064a \u0639\u0627\u0645\u0631 \u0646\u0627\u0635\u0631 \u0627\u0633\u0639\u062f",
+      "account_en": "\u0639\u0644\u064a \u0639\u0627\u0645\u0631 \u0646\u0627\u0635\u0631\u0627\u0633\u0639\u062f"
+    },
+    {
+      "id": 26,
+      "uuid": "5F31AAF1-712F-4BAD-B50D-1996DC89D1D5",
+      "school_id": "6",
+      "account_guid": "B54F16BA-1F77-474F-AC5D-1FB5B327478D",
+      "paid": "300000",
+      "caught": "0",
+      "date": "2023-11-08",
+      "note": "",
+      "account": "\u0646\u0648\u0631 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0643\u0627\u0638\u0645 \u0627\u0644\u0642\u0631\u064a\u0634\u064a",
+      "account_en": "\u0646\u0648\u0631 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0643\u0627\u0638\u0645 \u0627\u0644\u0642\u0631\u064a\u0634\u064a"
+    },
+    {
+      "id": 27,
+      "uuid": "5F31AAF1-712F-4BAD-B50D-1996DC89D1D5",
+      "school_id": "6",
+      "account_guid": "307FEA6C-43E4-4952-9842-FA4BD75C5373",
+      "paid": "0",
+      "caught": "500000",
+      "date": "2023-11-08",
+      "note": "",
+      "account": "\u0627\u0644\u0635\u0646\u062f\u0648\u0642",
+      "account_en": "Cashier"
+    },
+    {
+      "id": 31,
+      "uuid": "B3C46FEE-C297-4D45-B98D-627F685E2937",
+      "school_id": "6",
+      "account_guid": "BC1188A1-9323-413F-86E5-67A97C465113",
+      "paid": "0",
+      "caught": "200",
+      "date": "2023-11-08",
+      "note": "\u0643\u062a\u0627\u0628 \u0627\u062d\u064a\u0627\u0621",
+      "account": "\u0635\u0627\u0641\u064a \u0645\u0634\u062a\u0631\u064a\u0627\u062a",
+      "account_en": "Net Purchases"
+    },
+    {
+      "id": 32,
+      "uuid": "B3C46FEE-C297-4D45-B98D-627F685E2937",
+      "school_id": "6",
+      "account_guid": "307FEA6C-43E4-4952-9842-FA4BD75C5373",
+      "paid": "200",
+      "caught": "0",
+      "date": "2023-11-08",
+      "note": "",
+      "account": "\u0627\u0644\u0635\u0646\u062f\u0648\u0642",
+      "account_en": "Cashier"
+    },
+    {
+      "id": 33,
+      "uuid": "588AA92D-360D-4490-A291-760FE0FF6B59",
+      "school_id": "6",
+      "account_guid": "0DD96B16-02ED-4B9E-BB77-97CB2B5F29A7",
+      "paid": "100000",
+      "caught": "0",
+      "date": "2023-11-08",
+      "note": "",
+      "account": "\u0639\u0644\u064a \u0639\u0627\u0645\u0631 \u0646\u0627\u0635\u0631 \u0627\u0633\u0639\u062f",
+      "account_en": "\u0639\u0644\u064a \u0639\u0627\u0645\u0631 \u0646\u0627\u0635\u0631 \u0627\u0633\u0639\u062f"
+    },
+    {
+      "id": 34,
+      "uuid": "588AA92D-360D-4490-A291-760FE0FF6B59",
+      "school_id": "6",
+      "account_guid": "307FEA6C-43E4-4952-9842-FA4BD75C5373",
+      "paid": "0",
+      "caught": "100000",
+      "date": "2023-11-08",
+      "note": "",
+      "account": "\u0627\u0644\u0635\u0646\u062f\u0648\u0642",
+      "account_en": "Cashier"
+    },
+    {
+      "id": 37,
+      "uuid": "B54F16BA-1F77-474F-AC5D-1FB5B327478D",
+      "school_id": "6",
+      "account_guid": "B54F16BA-1F77-474F-AC5D-1FB5B327478D",
+      "paid": "0",
+      "caught": "500000",
+      "date": "2023-11-01",
+      "note": "",
+      "account": "\u0646\u0648\u0631 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0643\u0627\u0638\u0645 \u0627\u0644\u0642\u0631\u064a\u0634\u064a",
+      "account_en": "\u0646\u0648\u0631 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0643\u0627\u0638\u0645 \u0627\u0644\u0642\u0631\u064a\u0634\u064a"
+    },
+    {
+      "id": 38,
+      "uuid": "B54F16BA-1F77-474F-AC5D-1FB5B327478D",
+      "school_id": "6",
+      "account_guid": "FCABC742-DC60-40E1-AE41-38C664C92879",
+      "paid": "500000",
+      "caught": "0",
+      "date": "2023-11-01",
+      "note": "",
+      "account": "\u0625\u064a\u0631\u0627\u062f \u0623\u062c\u0648\u0631 \u0627\u0644\u0645\u0631\u0627\u062d\u0644",
+      "account_en": "Stages Wages Revenues "
+    },
+    {
+      "id": 39,
+      "uuid": "0DD96B16-02ED-4B9E-BB77-97CB2B5F29A7",
+      "school_id": "6",
+      "account_guid": "0DD96B16-02ED-4B9E-BB77-97CB2B5F29A7",
+      "paid": "0",
+      "caught": "500000",
+      "date": "2023-11-01",
+      "note": "",
+      "account": "\u0639\u0644\u064a \u0639\u0627\u0645\u0631 \u0646\u0627\u0635\u0631 \u0627\u0633\u0639\u062f",
+      "account_en": "\u0639\u0644\u064a \u0639\u0627\u0645\u0631 \u0646\u0627\u0635\u0631 \u0627\u0633\u0639\u062f"
+    },
+    {
+      "id": 40,
+      "uuid": "0DD96B16-02ED-4B9E-BB77-97CB2B5F29A7",
+      "school_id": "6",
+      "account_guid": "FCABC742-DC60-40E1-AE41-38C664C92879",
+      "paid": "500000",
+      "caught": "0",
+      "date": "2023-11-01",
+      "note": "",
+      "account": "\u0625\u064a\u0631\u0627\u062f \u0623\u062c\u0648\u0631 \u0627\u0644\u0645\u0631\u0627\u062d\u0644",
+      "account_en": "Stages Wages Revenues "
     }
   ]
 }

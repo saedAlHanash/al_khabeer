@@ -25,7 +25,7 @@ class AuditPage extends StatefulWidget {
 }
 
 class _AuditPageState extends State<AuditPage> {
-  final request = AccountRequest();
+  final request = AccountRequest(type: 'revenues');
 
   late final TextEditingController startDateC;
   late final TextEditingController endDateC;
@@ -34,7 +34,7 @@ class _AuditPageState extends State<AuditPage> {
   void initState() {
     startDateC = TextEditingController(text: request.startTime?.formatDate);
     endDateC = TextEditingController(text: request.endTime?.formatDate);
-    context.read<TransactionsCubit>().getTransactions(context);
+    // context.read<TransactionsCubit>().getTransactions(context,request: request);
     super.initState();
   }
 

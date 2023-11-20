@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/injection/injection_container.dart' as di;
+import '../features/accounts/bloc/accounts_cubit/accounts_cubit.dart';
+import '../features/accounts/bloc/transactions_cubit/transactions_cubit.dart';
+import '../features/accounts/data/request/account_request.dart';
 import '../features/audit/ui/pages/audit_page.dart';
 import '../features/auth/bloc/delete_account_cubit/delete_account_cubit.dart';
 import '../features/auth/bloc/login_cubit/login_cubit.dart';
@@ -42,7 +45,6 @@ class AppRoutes {
         return CupertinoPageRoute(builder: (_) => const SplashScreenPage());
       //endregion
 
-
       case RouteName.login:
         //region
         {
@@ -70,7 +72,6 @@ class AppRoutes {
           BlocProvider(create: (_) => di.sl<SliderCubit>()..getSlider(_)),
           BlocProvider(create: (_) => di.sl<LogoutCubit>()),
           BlocProvider(create: (_) => di.sl<DeleteAccountCubit>()),
-
           BlocProvider(create: (_) => di.sl<NotificationCountCubit>()),
           BlocProvider(create: (_) => di.sl<NotificationsCubit>()),
         ];
@@ -120,7 +121,16 @@ class AppRoutes {
         //region
 
         final providers = [
-          BlocProvider(create: (_) => di.sl<LoadingCubit>()),
+          BlocProvider(create: (_) => di.sl<TransactionsCubit>()),
+          BlocProvider(
+            create: (_) => di.sl<AccountsCubit>()
+              ..getAccounts(
+                _,
+                request: AccountRequest(
+                  type: 'expenses',
+                ),
+              ),
+          ),
         ];
         return CupertinoPageRoute(
           builder: (context) {
@@ -136,7 +146,16 @@ class AppRoutes {
         //region
 
         final providers = [
-          BlocProvider(create: (_) => di.sl<LoadingCubit>()),
+          BlocProvider(create: (_) => di.sl<TransactionsCubit>()),
+          BlocProvider(
+            create: (_) => di.sl<AccountsCubit>()
+              ..getAccounts(
+                _,
+                request: AccountRequest(
+                  type: 'revenues',
+                ),
+              ),
+          ),
         ];
         return CupertinoPageRoute(
           builder: (context) {
@@ -195,7 +214,7 @@ class AppRoutes {
         // ];
         return CupertinoPageRoute(
           builder: (context) {
-            return StudentInfoPage(student:student);
+            return StudentInfoPage(student: student);
           },
         );
       //endregion
@@ -293,7 +312,6 @@ class RouteName {
   static const splash = '/';
 
   static const home = '/2';
-
 
   static const login = '/5';
 
