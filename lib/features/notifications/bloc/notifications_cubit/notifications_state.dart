@@ -12,8 +12,12 @@ class NotificationsInitial extends Equatable {
   });
 
   factory NotificationsInitial.initial() {
-    return const NotificationsInitial(
-      result: <NotificationModel>[],
+    return NotificationsInitial(
+      result: <NotificationModel>[
+        NotificationModel.fromJson({}),
+        NotificationModel.fromJson({}),
+        NotificationModel.fromJson({}),
+      ],
       error: '',
       statuses: CubitStatuses.init,
     );

@@ -16,6 +16,7 @@ import '../../features/filter_data/bloc/group_cubit/group_cubit.dart';
 import '../../features/filter_data/bloc/material_cubit/material_cubit.dart';
 import '../../features/filter_data/bloc/stage_cubit/stage_cubit.dart';
 import '../../features/news/bloc/news_cubit/news_cubit.dart';
+import '../../features/notifications/bloc/notifications_cubit/notifications_cubit.dart';
 import '../../features/students/bloc/student_cubit/student_cubit.dart';
 import '../../features/teachers/bloc/teachers_cubit/teachers_cubit.dart';
 import '../../generated/l10n.dart';
@@ -109,6 +110,9 @@ class _MyAppState extends State<MyApp> {
                 BlocProvider(create: (_) => di.sl<EmployeesCubit>()..getEmployees(_)),
                 BlocProvider(create: (_) => di.sl<ClassLevelCubit>()..getClassLevel(_)),
                 BlocProvider(create: (_) => di.sl<AccountsCubit>()..getAccounts(_)),
+                BlocProvider(
+                  create: (_) => di.sl<NotificationsCubit>()..getNotifications(_),
+                ),
                 BlocProvider(
                   create: (_) => di.sl<TransactionsCubit>()..getTransactions(_),
                 ),

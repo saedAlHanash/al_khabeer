@@ -73,7 +73,6 @@ class AppRoutes {
           BlocProvider(create: (_) => di.sl<LogoutCubit>()),
           BlocProvider(create: (_) => di.sl<DeleteAccountCubit>()),
           BlocProvider(create: (_) => di.sl<NotificationCountCubit>()),
-          BlocProvider(create: (_) => di.sl<NotificationsCubit>()),
         ];
         return CupertinoPageRoute(
           builder: (context) {
@@ -235,34 +234,29 @@ class AppRoutes {
         );
       //endregion
 
-      case RouteName.notifications:
-        //region
-
-        final providers = [
-          BlocProvider(create: (_) => di.sl<NotificationsCubit>()..getNotifications(_)),
-        ];
-        return CupertinoPageRoute(
-          builder: (context) {
-            return MultiBlocProvider(
-              providers: providers,
-              child: const NotificationsPage(),
-            );
-          },
-        );
-      //endregion
+      // case RouteName.notifications:
+      //   //region
+      //
+      //   final providers = [
+      //     BlocProvider(create: (_) => di.sl<NotificationsCubit>()..getNotifications(_)),
+      //   ];
+      //   return CupertinoPageRoute(
+      //     builder: (context) {
+      //       return MultiBlocProvider(
+      //         providers: providers,
+      //         child: const NotificationsPage(),
+      //       );
+      //     },
+      //   );
+      // //endregion
 
       case RouteName.demo:
         //region
 
-        final providers = [
-          BlocProvider(create: (_) => di.sl<NotificationsCubit>()..getNotifications(_)),
-        ];
+
         return CupertinoPageRoute(
           builder: (context) {
-            return MultiBlocProvider(
-              providers: providers,
-              child: const DemoPage(),
-            );
+            return const DemoPage();
           },
         );
       //endregion
@@ -271,15 +265,9 @@ class AppRoutes {
       case RouteName.policy:
         //region
 
-        final providers = [
-          BlocProvider(create: (_) => di.sl<NotificationsCubit>()..getNotifications(_)),
-        ];
         return CupertinoPageRoute(
           builder: (context) {
-            return MultiBlocProvider(
-              providers: providers,
-              child: const PolicyPage(),
-            );
+            return const PolicyPage();
           },
         );
       //endregion
@@ -318,7 +306,7 @@ class RouteName {
   static const searchResult = '/11';
   static const update = '/12';
   static const updateChoice = '/13';
-  static const notifications = '/14';
+  // static const notifications = '/14';
   static const offers = '/15';
   static const examTable = '/16';
   static const myOrders = '/17';

@@ -28,29 +28,30 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: BlocBuilder<NotificationsCubit, NotificationsInitial>(
-        builder: (context, state) {
-          if (state.statuses.loading) {
-            return MyStyle.loadingWidget();
-          }
-          if (state.result.isEmpty) {
-            return  Expanded(
-              child: NotFoundWidget(
-                icon: Assets.iconsNoNotifications,
-                text: S.of(context).noNotifications,
-              ),
-            );
-          }
-          return ListView.builder(
+    return BlocBuilder<NotificationsCubit, NotificationsInitial>(
+      builder: (context, state) {
+        if (state.statuses.loading) {
+          return MyStyle.loadingWidget();
+        }
+        if (state.result.isEmpty) {
+          return  NotFoundWidget(
+            icon: Assets.iconsNoNotifications,
+            text: S.of(context).noNotifications,
+          );
+        }
+        return RefreshIndicator(
+          onRefresh: () async{
+            context.read<NotificationsCubit>().getNotifications(context);
+          },
+          child: ListView.builder(
             shrinkWrap: true,
             itemCount: state.result.length,
             itemBuilder: (_, i) {
               return NotificationWidget(not: state.result[i]);
             },
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
