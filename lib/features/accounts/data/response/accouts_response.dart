@@ -27,6 +27,7 @@ class AccountsData {
     required this.guid,
     required this.latinName,
     required this.parentGuid,
+        required this.balance,
   });
 
   final int id;
@@ -34,6 +35,7 @@ class AccountsData {
   final String _name;
   final String latinName;
   final String parentGuid;
+  final num balance;
 
   String get name => isAr
       ? _name
@@ -48,6 +50,7 @@ class AccountsData {
       guid: json["guid"] ?? "",
       latinName: json["latin_name"] ?? "",
       parentGuid: json["parent_guid"] ?? "",
+      balance: json["balance"] ?? 0,
     );
   }
 
@@ -57,5 +60,6 @@ class AccountsData {
         "name": _name,
         "latin_name": latinName,
         "parent_guid": parentGuid,
+    "balance": balance,
       };
 }

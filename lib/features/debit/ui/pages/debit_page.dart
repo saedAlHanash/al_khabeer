@@ -58,7 +58,7 @@ class _DebitPageState extends State<DebitPage> {
                   items: state.getSpinnerItems(),
                   width: .9.sw,
                   onChanged: (val) {
-                    request.accountGuid = val.guid;
+                    request.account = val.item;
                     context
                         .read<TransactionsCubit>()
                         .getTransactions(context, request: request);
@@ -142,13 +142,6 @@ class _DebitPageState extends State<DebitPage> {
             ),
             BlocBuilder<TransactionsCubit, TransactionsInitial>(
               builder: (context, state) {
-                if (state.statuses.loading) {
-                  return MyStyle.loadingWidget();
-                }
-                var sum = 0.0;
-                for (var e in state.result) {
-                  sum += num.parse(e.paid);
-                }
                 return Container(
                   decoration: MyStyle.roundBox,
                   padding: const EdgeInsets.all(20.0).r,
@@ -156,7 +149,7 @@ class _DebitPageState extends State<DebitPage> {
                     text: S.of(context).total,
                     matchParent: true,
                     drawableEnd: DrawableText(
-                      text: sum.formatPrice,
+                      text: (state.request.account?.balance ?? 0.0).formatPrice,
                       fontFamily: FontManager.cairoBold,
                     ),
                   ),

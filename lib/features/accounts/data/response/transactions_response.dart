@@ -28,6 +28,7 @@ class TransactionsData {
     required this.accountGuid,
     required this.accountNameLatin,
     required this.paid,
+    required this.balance,
     required this.caught,
     required this.date,
     required this.note,
@@ -38,6 +39,7 @@ class TransactionsData {
   final String _accountName;
   final String accountNameLatin;
   final String paid;
+  final num balance;
   final String caught;
   final DateTime? date;
   final String note;
@@ -48,10 +50,10 @@ class TransactionsData {
   }
 
   String get accountName => isAr
-        ? _accountName
-        : accountNameLatin.isEmpty
-            ? _accountName
-            : accountNameLatin;
+      ? _accountName
+      : accountNameLatin.isEmpty
+          ? _accountName
+          : accountNameLatin;
 
   factory TransactionsData.fromJson(Map<String, dynamic> json) {
     return TransactionsData(
@@ -60,6 +62,7 @@ class TransactionsData {
       accountGuid: json["account_guid"] ?? "",
       accountNameLatin: json["accountlatin"] ?? "",
       paid: json["paid"] ?? "",
+      balance: json["balance"] ?? 0,
       caught: json["caught"] ?? "",
       date: DateTime.tryParse(json["date"] ?? ""),
       note: json["note"] ?? "",
@@ -70,6 +73,7 @@ class TransactionsData {
         "id": id,
         "account_guid": accountGuid,
         "paid": paid,
+        "balance": balance,
         "caught": caught,
         "note": note,
       };

@@ -37,7 +37,7 @@ class AccountsCubit extends Cubit<AccountsInitial> {
       emit(
         state.copyWith(
           statuses: CubitStatuses.done,
-          result: state.request.accountGuid == null ? pair.first : null,
+          result: state.request.account == null ? pair.first : null,
           filtered: pair.first,
         ),
       );

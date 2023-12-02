@@ -25,20 +25,17 @@ class CashAccount extends StatefulWidget {
 }
 
 class _CashAccountState extends State<CashAccount> {
-  late final AccountRequest request;
+  final request = AccountRequest(type: 'ready');
 
   late final TextEditingController startDateC;
   late final TextEditingController endDateC;
 
   @override
   void initState() {
-    request = context.read<TransactionsCubit>().state.request;
     startDateC = TextEditingController(text: request.startTime?.formatDate);
     endDateC = TextEditingController(text: request.endTime?.formatDate);
-    context.read<TransactionsCubit>().getTransactions(context);
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,10 +53,10 @@ class _CashAccountState extends State<CashAccount> {
                 return SpinnerWidget(
                   hint:
                       DrawableText(text: S.of(context).accountName, color: Colors.white),
-                  items: state.getSpinnerItems(selectedId: request.accountGuid),
+                  items: state.getSpinnerItems(selectedId: request.account?.guid),
                   width: .9.sw,
                   onChanged: (val) {
-                    request.accountGuid = val.guid;
+                    request.account = val.item;
                     context
                         .read<TransactionsCubit>()
                         .getTransactions(context, request: request);
@@ -143,10 +140,7 @@ class _CashAccountState extends State<CashAccount> {
             ),
             BlocBuilder<TransactionsCubit, TransactionsInitial>(
               builder: (context, state) {
-                var sum = 0.0;
-                for (var e in state.result) {
-                  sum += e.getAccountBalance;
-                }
+
                 return Container(
                   decoration: MyStyle.roundBox,
                   padding: const EdgeInsets.all(20.0).r,
@@ -154,7 +148,7 @@ class _CashAccountState extends State<CashAccount> {
                     text: S.of(context).total,
                     matchParent: true,
                     drawableEnd: DrawableText(
-                      text: sum.formatPrice,
+                      text: (state.request.account?.balance ?? 0.0).formatPrice,
                       fontFamily: FontManager.cairoBold,
                     ),
                   ),

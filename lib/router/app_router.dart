@@ -222,7 +222,16 @@ class AppRoutes {
         //region
 
         final providers = [
-          BlocProvider(create: (_) => di.sl<LoadingCubit>()),
+          BlocProvider(create: (_) => di.sl<TransactionsCubit>()),
+          BlocProvider(
+            create: (_) => di.sl<AccountsCubit>()
+              ..getAccounts(
+                _,
+                request: AccountRequest(
+                  type: 'ready',
+                ),
+              ),
+          ),
         ];
         return CupertinoPageRoute(
           builder: (context) {

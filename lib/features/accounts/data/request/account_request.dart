@@ -1,6 +1,8 @@
+import '../response/accouts_response.dart';
+
 class AccountRequest {
   AccountRequest({
-    this.accountGuid,
+    this.account,
     this.type,
     this.startTime,
     this.endTime,
@@ -8,20 +10,20 @@ class AccountRequest {
 
   DateTime? startTime;
   DateTime? endTime;
-  String? accountGuid;
+  AccountsData? account;
   String? type;
 
 
   factory AccountRequest.fromJson(Map<String, dynamic> json) {
     return AccountRequest(
-      accountGuid: json["account_guid"] ?? "",
+      account: json["account_guid"] ?? "",
       type: json["type"] ?? "",
     );
   }
 
 
   Map<String, dynamic> toJson() => {
-    "account_guid": accountGuid,
+    "account_guid": account?.guid,
     "type": type,
     'from_date': startTime?.toIso8601String(),
     'to_date': endTime?.toIso8601String(),
@@ -30,13 +32,13 @@ class AccountRequest {
   AccountRequest copyWith({
     DateTime? startTime,
     DateTime? endTime,
-    String? accountGuid,
+    AccountsData? account,
     String? type,
   }) {
     return AccountRequest(
       startTime: startTime ?? this.startTime,
       endTime: endTime ?? this.endTime,
-      accountGuid: accountGuid ?? this.accountGuid,
+      account: account ?? this.account,
       type: type ?? this.type,
     );
   }
