@@ -3,6 +3,7 @@ import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:al_khabeer/core/widgets/my_button.dart';
 import 'package:al_khabeer/core/widgets/saed_taple_widget.dart';
 import 'package:al_khabeer/core/widgets/spinner_widget.dart';
+import 'package:al_khabeer/features/exam_table/ui/widget/filter_widget.dart';
 import 'package:collection/collection.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
@@ -30,77 +31,20 @@ class _ExamTablePageState extends State<ExamTablePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBarWidget(
-        titleText:    S.of(context).examsSchedule,
+      appBar: AppBarWidget(
+        titleText: S.of(context).examsSchedule,
       ),
       body: SizedBox.expand(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              BlocBuilder<ClassCubit, ClassInitial>(
-                builder: (context, state) {
-                  if (state.statuses.loading) {
-                    return MyStyle.loadingWidget();
-                  }
-                  return SpinnerWidget(
-                    hint: DrawableText(text: S.of(context).stage, color: Colors.white),
-                    items: state.getSpinnerItems(selectedId: request.classGuid),
-                    width: .9.sw,
-                    onChanged: (val) {
-                      request.setClass(val.guid);
-
-                      context.read<ClassLevelCubit>().getClassLevel(
-                        context,
-                        parentGuid: request.classGuid,
-                      );
-
-                      context.read<StageCubit>().getStage(
-                        context,
-                        levelGuid: request.classLevelGuid,
-                      );
-                    },
-                  );
-                },
-              ),
-              10.0.verticalSpace,
-              BlocBuilder<ClassLevelCubit, ClassLevelInitial>(
-                builder: (context, state) {
-                  if (state.statuses.loading) {
-                    return MyStyle.loadingWidget();
-                  }
-                  return SpinnerWidget(
-                    hint: DrawableText(text: S.of(context).grade, color: Colors.white),
-                    items: state.getSpinnerItems(selectedId: request.classLevelGuid),
-                    width: .9.sw,
-                    onChanged: (val) {
-                      request.setLevel(val.guid);
-                      context
-                          .read<StageCubit>()
-                          .getStage(context, levelGuid: request.classLevelGuid);
-                    },
-                  );
-                },
-              ),
-              10.0.verticalSpace,
-              BlocBuilder<StageCubit, StageInitial>(
-                builder: (context, state) {
-                  if (state.statuses.loading) {
-                    return MyStyle.loadingWidget();
-                  }
-                  return SpinnerWidget(
-                    hint: DrawableText(text: S.of(context).section, color: Colors.white),
-                    items: state.getSpinnerItems(selectedId: request.stageGuid),
-                    width: .9.sw,
-                    onChanged: (val) => request.stageGuid = val.guid,
-                  );
-                },
-              ),
+              FilterWidget(request: request),
               10.0.verticalSpace,
               BlocBuilder<ExamCubit, ExamInitial>(
                 builder: (context, state) {
                   return MyButton(
-                    enable: !state.statuses.loading,
+                    enable: !state.statuses.loading && request.canCall,
                     text: S.of(context).preview,
                     width: 240.0.w,
                     onTap: () =>
@@ -124,15 +68,14 @@ class _ExamTablePageState extends State<ExamTablePage> {
                     ],
                     data: state.result
                         .mapIndexed(
-                          (i, e) =>
-                      [
-                        e.date?.formatDateMD,
-                        e.date?.formatDayName,
-                        e.type,
-                        e.material,
-                        e.note,
-                      ],
-                    )
+                          (i, e) => [
+                            e.date?.formatDateMD,
+                            e.date?.formatDayName,
+                            e.type,
+                            e.material,
+                            e.note,
+                          ],
+                        )
                         .toList(),
                   );
                 },
@@ -144,4 +87,3 @@ class _ExamTablePageState extends State<ExamTablePage> {
     );
   }
 }
-

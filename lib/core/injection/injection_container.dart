@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/accounts/bloc/account_by_id_cubit/account_by_id_cubit.dart';
 import '../../features/accounts/bloc/accounts_cubit/accounts_cubit.dart';
 import '../../features/accounts/bloc/transactions_cubit/transactions_cubit.dart';
 import '../../features/auth/bloc/delete_account_cubit/delete_account_cubit.dart';
@@ -99,6 +100,7 @@ Future<void> init() async {
   sl.registerFactory(() => StageCubit());
   sl.registerFactory(() => TransactionsCubit());
   sl.registerFactory(() => AccountsCubit());
+  sl.registerFactory(() => AccountByIdCubit());
   sl.registerFactory(() => NewsCubit());
 
   //endregion

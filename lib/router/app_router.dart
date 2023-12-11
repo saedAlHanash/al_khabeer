@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/injection/injection_container.dart' as di;
+import '../features/accounts/bloc/account_by_id_cubit/account_by_id_cubit.dart';
 import '../features/accounts/bloc/accounts_cubit/accounts_cubit.dart';
 import '../features/accounts/bloc/transactions_cubit/transactions_cubit.dart';
 import '../features/accounts/data/request/account_request.dart';
@@ -120,7 +121,7 @@ class AppRoutes {
         //region
 
         final providers = [
-          BlocProvider(create: (_) => di.sl<TransactionsCubit>()),
+          BlocProvider(create: (_) => di.sl<AccountByIdCubit>()),
           BlocProvider(
             create: (_) => di.sl<AccountsCubit>()
               ..getAccounts(
@@ -145,7 +146,7 @@ class AppRoutes {
         //region
 
         final providers = [
-          BlocProvider(create: (_) => di.sl<TransactionsCubit>()),
+          BlocProvider(create: (_) => di.sl<AccountByIdCubit>()),
           BlocProvider(
             create: (_) => di.sl<AccountsCubit>()
               ..getAccounts(
@@ -222,7 +223,7 @@ class AppRoutes {
         //region
 
         final providers = [
-          BlocProvider(create: (_) => di.sl<TransactionsCubit>()),
+          BlocProvider(create: (_) => di.sl<AccountByIdCubit>()),
           BlocProvider(
             create: (_) => di.sl<AccountsCubit>()
               ..getAccounts(

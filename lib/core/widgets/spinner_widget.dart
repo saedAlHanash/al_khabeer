@@ -10,6 +10,7 @@ class SpinnerWidget<T> extends StatelessWidget {
     Key? key,
     required this.items,
     this.hint,
+    this.hintText,
     this.onChanged,
     this.customButton,
     this.width,
@@ -21,6 +22,7 @@ class SpinnerWidget<T> extends StatelessWidget {
 
   final List<SpinnerItem> items;
   final Widget? hint;
+  final String? hintText;
   final Widget? customButton;
   final Function(SpinnerItem item)? onChanged;
   final double? width;
@@ -43,6 +45,7 @@ class SpinnerWidget<T> extends StatelessWidget {
           child: DrawableText(
             selectable: false,
             text: item.name ?? '',
+            size: 14.0.sp,
             color: (item.id != 0) ? Colors.white : AppColorManager.mainColorLight,
             fontFamily: FontManager.cairoBold,
             drawableStart: item.icon,
@@ -58,46 +61,56 @@ class SpinnerWidget<T> extends StatelessWidget {
       if (onChanged != null) onChanged!(selectedItem!);
     }
 
-    return StatefulBuilder(
-      builder: (_, state) {
-        return DropdownButton2(
-          items: list,
-          value: selectedItem,
-          hint: hint,
-          onChanged: (value) {
-            if (onChanged != null) onChanged!(value!);
-            state(() => selectedItem = value!);
-          },
-          buttonWidth: width,
-          isExpanded: expanded ?? false,
-          dropdownWidth: dropdownWidth,
-          customButton: customButton,
-          underline: 0.0.verticalSpace,
-          buttonHeight: 50.0.h,
-          dropdownMaxHeight: 300.0.h,
-          dropdownDecoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.0.r),
-            color: AppColorManager.mainColorLight,
+    return Column(
+      children: [
+        if (hintText != null)
+          DrawableText(
+            text: hintText!,
+            matchParent: true,
+            padding: const EdgeInsets.symmetric(horizontal: 5.0).w,
           ),
-          buttonDecoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.0.r),
-            color: AppColorManager.mainColor,
-          ),
-          buttonPadding: EdgeInsets.symmetric(horizontal: 20.0).w,
-          buttonElevation: 0,
-          dropdownElevation: 2,
-          icon: Row(
-            children: [
-              const Icon(
-                Icons.expand_more,
-                color: AppColorManager.whit,
+        StatefulBuilder(
+          builder: (_, state) {
+            return DropdownButton2(
+              items: list,
+              value: selectedItem,
+              hint: hint,
+              onChanged: (value) {
+                if (onChanged != null) onChanged!(value!);
+                state(() => selectedItem = value!);
+              },
+              buttonWidth: 1.0.sw,
+              isExpanded: expanded ?? false,
+              dropdownWidth: dropdownWidth,
+              customButton: customButton,
+              underline: 0.0.verticalSpace,
+              buttonHeight: 50.0.h,
+              dropdownMaxHeight: 300.0.h,
+              dropdownDecoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0.r),
+                color: AppColorManager.mainColorLight,
               ),
-              5.0.horizontalSpace,
-            ],
-          ),
-          iconSize: 25.0.spMin,
-        );
-      },
+              buttonDecoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0.r),
+                color: AppColorManager.mainColor,
+              ),
+              buttonPadding: const EdgeInsets.symmetric(horizontal: 20.0).w,
+              buttonElevation: 0,
+              dropdownElevation: 2,
+              icon: Row(
+                children: [
+                  const Icon(
+                    Icons.expand_more,
+                    color: AppColorManager.whit,
+                  ),
+                  5.0.horizontalSpace,
+                ],
+              ),
+              iconSize: 25.0.spMin,
+            );
+          },
+        ),
+      ],
     );
   }
 }

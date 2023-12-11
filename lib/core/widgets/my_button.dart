@@ -49,9 +49,13 @@ class MyButton extends StatelessWidget {
           backgroundColor: MaterialStateProperty.resolveWith<Color?>(
             (Set<MaterialState> states) {
               if (states.contains(MaterialState.pressed)) {
-                return color ?? AppColorManager.mainColor.withOpacity(0.8);
+                return !enable
+                    ? AppColorManager.mainColor.withOpacity(0.5)
+                    : color ?? AppColorManager.mainColor.withOpacity(0.8);
               }
-              return color ?? AppColorManager.mainColor; // Use the component's default.
+              return !enable
+                  ? AppColorManager.mainColor.withOpacity(0.5)
+                  : color ?? AppColorManager.mainColor; // Use the component's default.
             },
           ),
           overlayColor: MaterialStateProperty.resolveWith<Color?>(

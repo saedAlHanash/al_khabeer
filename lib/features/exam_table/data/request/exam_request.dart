@@ -15,6 +15,8 @@ class ExamRequest {
     classLevelGuid = null;
   }
 
+  bool get canCall => stageGuid != null && classGuid != null && classLevelGuid != null;
+
   void setLevel(String? levelGuid) {
     classLevelGuid = levelGuid;
     stageGuid = null;

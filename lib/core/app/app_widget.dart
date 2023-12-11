@@ -105,7 +105,7 @@ class _MyAppState extends State<MyApp> {
                 BlocProvider(create: (_) => di.sl<NewsCubit>()..getNews(_)),
                 BlocProvider(create: (_) => di.sl<ClassCubit>()..getClass(_)),
                 BlocProvider(create: (_) => di.sl<GroupCubit>()..getGroups(_)),
-                BlocProvider(create: (_) => di.sl<StudentCubit>()..getStudent(_)),
+                BlocProvider(create: (_) => di.sl<StudentCubit>()),
                 BlocProvider(create: (_) => di.sl<TeachersCubit>()..getTeachers(_)),
                 BlocProvider(create: (_) => di.sl<EmployeesCubit>()..getEmployees(_)),
                 BlocProvider(create: (_) => di.sl<ClassLevelCubit>()..getClassLevel(_)),

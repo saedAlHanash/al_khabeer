@@ -70,6 +70,8 @@ class GetUrl {
   static var exam ='exams-admin';
 
   static var getNews ='news';
+
+  static var getAccountById ='accounts';
 }
 
 class PostUrl {

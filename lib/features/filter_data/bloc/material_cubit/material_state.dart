@@ -32,7 +32,7 @@ class MaterialInitial extends Equatable {
 
   List<SpinnerItem> getSpinnerItems({String? selectedId}) {
     if (result.isEmpty) {
-      return [SpinnerItem(name: 'الكل')];
+      return [SpinnerItem(name: 'الكل', id: 1)];
     }
     return result
         .map((e) => SpinnerItem(

@@ -1,5 +1,6 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:bloc/bloc.dart';
+import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -16,14 +17,14 @@ import '../../../../generated/l10n.dart';
 import '../../data/request/account_request.dart';
 import '../../data/response/accouts_response.dart';
 
-part 'accounts_state.dart';
+part 'account_by_id_state.dart';
 
-class AccountsCubit extends Cubit<AccountsInitial> {
-  AccountsCubit() : super(AccountsInitial.initial());
+class AccountByIdCubit extends Cubit<AccountByIdInitial> {
+  AccountByIdCubit() : super(AccountByIdInitial.initial());
 
   final network = sl<NetworkInfo>();
 
-  Future<void> getAccounts(BuildContext context, {AccountRequest? request}) async {
+  Future<void> getAccountById(BuildContext context, {AccountRequest? request}) async {
     emit(state.copyWith(statuses: CubitStatuses.loading, request: request));
 
     final pair = await _getAccountsApi();
@@ -34,11 +35,16 @@ class AccountsCubit extends Cubit<AccountsInitial> {
       }
       emit(state.copyWith(statuses: CubitStatuses.error, error: pair.second));
     } else {
+      final r = <AccountsData>[];
+
+      for (var e in pair.first!) {
+        r.addAll(getAllSubAccounts(e));
+      }
+
       emit(
         state.copyWith(
           statuses: CubitStatuses.done,
-          result: state.request.account == null ? pair.first : null,
-          filtered: pair.first,
+          result: r,
         ),
       );
     }
@@ -48,7 +54,7 @@ class AccountsCubit extends Cubit<AccountsInitial> {
     if (await network.isConnected) {
       loggerObject.w(state.request.toJson());
       final response = await APIService().getApi(
-        url: GetUrl.getAccounts,
+        url: GetUrl.getAccountById,
         query: state.request.toJson(),
       );
 
