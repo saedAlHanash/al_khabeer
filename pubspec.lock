@@ -507,7 +507,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "7478f62fb3c0f1a907f960c547ae61918c1b4248"
+      resolved-ref: "0af688ee03bb2a950f7384ebdaa36ba35f288dbb"
       url: "https://github.com/saedAlHanash/image_multi_type"
     source: git
     version: "0.0.1"

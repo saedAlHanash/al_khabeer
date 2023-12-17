@@ -52,8 +52,6 @@
   "changePass": "Change password",
   "phoneNumberCanNotBeChange": "Phone number cannot be changed",
   "continueSignUp": "Complete registration",
-
-
   "studentBalances": "Student Balances",
   "notifications": "Notifications",
   "news": "News",
@@ -64,10 +62,8 @@
   "netExpenses": "Net Expenses",
   "teacherProfile": "Teacher Profile",
   "staffProfile": "Staff Profile",
-
   "changePassword": "Change Password",
   "accountName": "Account Name",
-
   "revenue": "Revenue",
   "notes": "Notes",
   "total": "Total",
@@ -88,10 +84,7 @@
   "group": "Group",
   "unit": "Unit",
   "quantity": "Quantity",
-
   "noNotifications": "No Notifications",
-
-
   "studentInformation": "Student Information",
   "noDetailsAvailable": "No Details Available",
   "balance": "Balance",
@@ -102,6 +95,7 @@
   "expense": "Expense",
   "paid": "paid",
   "caught": "caught",
-  "confirmLogout": "Are you sure you want to logout?"
-
+  "confirmLogout": "Are you sure you want to logout?",
+  "startDate": "تاريخ بداية",
+  "endDate": "تاريخ نهاية"
 }

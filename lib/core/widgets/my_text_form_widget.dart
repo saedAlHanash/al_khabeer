@@ -432,8 +432,8 @@ class MyTextFormNoLabelWidget extends StatelessWidget {
 
     final textStyle = TextStyle(
       fontFamily: FontManager.cairoSemiBold.name,
-      fontSize: 22.0.sp,
-      color: AppColorManager.mainColor,
+      fontSize: 20.0.sp,
+      color: AppColorManager.selectedIconColor,
     );
 
     return StatefulBuilder(builder: (context, state) {

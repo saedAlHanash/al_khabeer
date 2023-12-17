@@ -1019,6 +1019,26 @@ class S {
       args: [],
     );
   }
+
+  /// `تاريخ بداية`
+  String get startDate {
+    return Intl.message(
+      'تاريخ بداية',
+      name: 'startDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تاريخ نهاية`
+  String get endDate {
+    return Intl.message(
+      'تاريخ نهاية',
+      name: 'endDate',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

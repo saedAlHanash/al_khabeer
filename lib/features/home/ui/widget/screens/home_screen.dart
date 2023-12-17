@@ -95,7 +95,6 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
         }
       },
       child: MyCardWidget(
-          cardColor: AppColorManager.textFieldColor,
           elevation: 0.0,
           padding: EdgeInsets.zero,
           margin: const EdgeInsets.all(10.0).r,

@@ -1,4 +1,5 @@
 import 'package:al_khabeer/core/app/app_widget.dart';
+import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/core/util/shared_preferences.dart';
 import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_multi_type/image_multi_type.dart';
 
+import '../../../../core/strings/enum_manager.dart';
 import '../../../../core/widgets/bottom_nav_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../news/ui/pages/news_page.dart';
@@ -63,12 +65,34 @@ class _HomepageState extends State<Homepage> {
       },
       child: Scaffold(
         appBar: AppBarWidget(
-          title: ImageMultiType(
-            url: Assets.iconsLogoWithoutText,
-            height: 60.0.r,
-            width: 60.0.r,
+          title: DrawableText(
+            text: NavItems.values[pageIndex].arabicName,
+            size: 24.0.sp,
+            fontFamily: FontManager.cairoBold,
           ),
+          actions: [
+            30.0.horizontalSpace,
+            ImageMultiType(
+              url: Assets.iconsLogoWithoutText,
+              height: 45.0.r,
+              width: 45.0.r,
+            ),
+            30.0.horizontalSpace,
+          ],
+          leading: Builder(builder: (context) {
+            return IconButton(
+              icon: ImageMultiType(url: Assets.iconsMenueIcon),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            );
+          }),
         ),
+        bottomNavigationBar: NewNav(
+        onChange: (index) {
+          pageIndex = index;
+          setState(() => _pageController.jumpToPage(index));
+        },
+        controller: _pageController,
+      ),
         drawer: SafeArea(
           child: Drawer(
             width: 280.0.w,
@@ -179,13 +203,7 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
         ),
-        bottomNavigationBar: NewNav(
-          onChange: (index) {
-            pageIndex = index;
-            setState(() => _pageController.jumpToPage(index));
-          },
-          controller: _pageController,
-        ),
+
         body: SizedBox.expand(
           child: PageView(
             controller: _pageController,

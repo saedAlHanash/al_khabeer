@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class AppColorManager {
   static const  mainColor = Color(0xFF007DC5);
   static const  mainColorDark = Color(0xFF1B4B8D);
+  static const  selectedIconColor = Color(0xFF031E43);
   static const  mainColorLight = Color(0xFF08A5FF);
   static const  tableTitle = Color(0xFFC7EAFE);
   static const  tableTitleText = Color(0xFF009BD5);
   static const  tableTitleItem = Color(0xFFF6FBFF);
     static const  textFieldColor = Color(0xFFE2EEF6);
+    static const  cardColor = Color(0xFFF6FBFF);
   static const  textColor = Color(0xFF606060);
   static const  black = Color(0xFF000000);
   static const  ampere = Color(0xFFFFC107);
@@ -19,7 +21,7 @@ class AppColorManager {
   static const  offWhit = Color(0xFFD9D9D9);
   static const  whit = Color(0xFFFFFFFF);
   static const  red = Color(0xFFC60000);
-  static const  cardColor = Color(0xFFEFEFEF);
+
   static const  blue = Color(0xFF0D479E);
 
   static const dividerColor = Color(0xFFC2C2C2);

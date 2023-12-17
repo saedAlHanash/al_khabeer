@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_multi_type/image_multi_type.dart';
 
 import '../../../../generated/assets.dart';
+import '../../generated/l10n.dart';
 import '../strings/enum_manager.dart';
 
 class NewNav extends StatefulWidget {
@@ -30,7 +31,9 @@ class _NewNavState extends State<NewNav> {
     return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30.0.r), topLeft: Radius.circular(30.0.r)),
+            topRight: Radius.circular(30.0.r),
+            topLeft: Radius.circular(30.0.r),
+          ),
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.only(
@@ -38,7 +41,7 @@ class _NewNavState extends State<NewNav> {
             topRight: Radius.circular(30.0.r),
           ),
           child: BottomNavigationBar(
-            backgroundColor: AppColorManager.lightGray,
+            backgroundColor: const Color(0xFFF8F8F8),
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: ImageMultiType(
@@ -48,10 +51,10 @@ class _NewNavState extends State<NewNav> {
                 ),
                 activeIcon: ImageMultiType(
                   url: Assets.iconsHome,
-                  color: AppColorManager.mainColor,
+                  color: AppColorManager.selectedIconColor,
                   height: 35.0.spMin,
                 ),
-                label: selectedIndex.arabicName,
+                label: S.of(context).home,
               ),
               BottomNavigationBarItem(
                 icon: ImageMultiType(
@@ -61,10 +64,10 @@ class _NewNavState extends State<NewNav> {
                 ),
                 activeIcon: ImageMultiType(
                   url: Assets.iconsSDolar,
-                  color: AppColorManager.mainColor,
+                  color: AppColorManager.selectedIconColor,
                   height: 35.0.spMin,
                 ),
-                label: selectedIndex.arabicName,
+                label: S.of(context).studentBalances,
               ),
               BottomNavigationBarItem(
                 icon: ImageMultiType(
@@ -74,10 +77,10 @@ class _NewNavState extends State<NewNav> {
                 ),
                 activeIcon: ImageMultiType(
                   url: Assets.iconsNotifications,
-                  color: AppColorManager.mainColor,
+                  color: AppColorManager.selectedIconColor,
                   height: 35.0.spMin,
                 ),
-                label: selectedIndex.arabicName,
+                label: S.of(context).notification,
               ),
               BottomNavigationBarItem(
                 icon: ImageMultiType(
@@ -87,18 +90,23 @@ class _NewNavState extends State<NewNav> {
                 ),
                 activeIcon: ImageMultiType(
                   url: Assets.iconsAsk,
-                  color: AppColorManager.mainColor,
+                  color: AppColorManager.selectedIconColor,
                   height: 35.0.spMin,
                 ),
-                label: selectedIndex.arabicName,
+                label: S.of(context).news,
               ),
             ],
             selectedLabelStyle: TextStyle(
-              color: Colors.white,
-              fontFamily: FontManager.cairoSemiBold.name,
+              color: AppColorManager.selectedIconColor,
+              fontFamily: FontManager.cairo.name,
             ),
+            unselectedLabelStyle: TextStyle(
+              color: Colors.grey,
+              fontFamily: FontManager.cairo.name,
+            ),
+            fixedColor: AppColorManager.selectedIconColor,
             showSelectedLabels: true,
-            showUnselectedLabels: false,
+            showUnselectedLabels: true,
             currentIndex: selectedIndex.index,
             onTap: (value) {
               widget.onChange.call(value);

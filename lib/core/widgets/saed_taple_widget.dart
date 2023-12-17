@@ -42,7 +42,7 @@ class SaedTableWidget extends StatelessWidget {
                 (i, e) {
                   final widget = e is String
                       ? DrawableText(
-                          size: 14.0.sp,
+                          size: 13.0.sp,
                           matchParent: true,
                           textAlign: TextAlign.center,
                           text: e,

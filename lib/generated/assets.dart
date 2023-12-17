@@ -31,6 +31,7 @@ class Assets {
   static const String iconsLocation = 'assets/icons/location.svg';
   static const String iconsLogoWithoutText = 'assets/icons/logo_without_text.png';
   static const String iconsMenue = 'assets/icons/menue.svg';
+  static const String iconsMenueIcon = 'assets/icons/menue_icon.svg';
   static const String iconsMines = 'assets/icons/mines.svg';
   static const String iconsNameTip = 'assets/icons/name_tip.svg';
   static const String iconsNoCart = 'assets/icons/no_cart.svg';

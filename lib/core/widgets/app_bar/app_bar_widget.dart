@@ -13,6 +13,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     this.titleText,
     this.title,
     this.elevation,
+    this.leading,
     this.action,
     this.zeroHeight,
     this.actions,
@@ -21,6 +22,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   final String? titleText;
   final Widget? title;
+  final Widget? leading;
   final List<Widget>? action;
   final bool? zeroHeight;
   final double? elevation;
@@ -40,7 +42,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                 color: color != null ? Colors.white : AppColorManager.mainColor,
                 fontFamily: FontManager.cairoBold,
               ),
-        leading: Navigator.canPop(context) ? const BackBtnWidget() : null,
+        leading: Navigator.canPop(context) ? const BackBtnWidget() : leading,
         actions: actions,
         elevation: elevation ?? 0.0,
         shadowColor: AppColorManager.black.withOpacity(0.28),

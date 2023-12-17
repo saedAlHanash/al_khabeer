@@ -59,15 +59,21 @@ class SelectSingeDateWidget extends StatelessWidget {
           ),
         ),
       ],
-      child: Container(
+      child: Transform.scale(
+        scaleX: 0.85,
+        scaleY: 0.85,
+        child: Container(
 
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.0.r),
-          color: AppColorManager.mainColorLight.withOpacity(0.5),
-        ),
-        child: Icon(
-          Icons.date_range,
-          size: 20.0.r,
+
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12.0.r),
+            color: AppColorManager.tableTitle,
+          ),
+          child: Icon(
+            Icons.date_range,
+            color: AppColorManager.selectedIconColor,
+            size: 25.0.r,
+          ),
         ),
       ),
     );

@@ -65,7 +65,7 @@ class _FilterAccountWidgetState extends State<FilterAccountWidget> {
             children: [
               Expanded(
                 child: MyTextFormNoLabelWidget(
-                  hint: 'تاريخ بداية',
+                  hint: S.of(context).startDate,
                   textAlign: TextAlign.center,
                   controller: startDateC,
                   disableAndKeepIcon: true,
@@ -85,7 +85,7 @@ class _FilterAccountWidgetState extends State<FilterAccountWidget> {
               10.0.horizontalSpace,
               Expanded(
                 child: MyTextFormNoLabelWidget(
-                  hint: 'تاريخ نهاية',
+                     hint: S.of(context).endDate,
                   textAlign: TextAlign.center,
                   controller: endDateC,
                   disableAndKeepIcon: true,

@@ -149,7 +149,7 @@ class _InventoryPageState extends State<InventoryPage> {
                 children: [
                   Expanded(
                     child: MyTextFormNoLabelWidget(
-                      hint: 'تاريخ بداية',
+                      hint: S.of(context).startDate,
                       textAlign: TextAlign.center,
                       controller: startDateC,
                       disableAndKeepIcon: true,
@@ -169,7 +169,7 @@ class _InventoryPageState extends State<InventoryPage> {
                   10.0.horizontalSpace,
                   Expanded(
                     child: MyTextFormNoLabelWidget(
-                      hint: 'تاريخ نهاية',
+                         hint: S.of(context).endDate,
                       textAlign: TextAlign.center,
                       controller: endDateC,
                       disableAndKeepIcon: true,

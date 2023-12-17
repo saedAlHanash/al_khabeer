@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailEmpty": MessageLookupByLibrary.simpleMessage("حقل البريد مطلوب"),
         "employmentDate":
             MessageLookupByLibrary.simpleMessage("تاريخ المباشرة"),
+        "endDate": MessageLookupByLibrary.simpleMessage("تاريخ نهاية"),
         "examType": MessageLookupByLibrary.simpleMessage("نوع"),
         "examsSchedule":
             MessageLookupByLibrary.simpleMessage("جدول الامتحانات"),
@@ -126,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "stage": MessageLookupByLibrary.simpleMessage("المرحلة"),
         "stageAndAdditions":
             MessageLookupByLibrary.simpleMessage("(أجر المرحلة + الإضافيات)"),
+        "startDate": MessageLookupByLibrary.simpleMessage("تاريخ بداية"),
         "startLearn": MessageLookupByLibrary.simpleMessage("ابدأ التعلم"),
         "student": MessageLookupByLibrary.simpleMessage("طالب"),
         "studentAccounts": MessageLookupByLibrary.simpleMessage("حساب النقدية"),
