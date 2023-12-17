@@ -44,7 +44,7 @@ class _ExamTablePageState extends State<ExamTablePage> {
               BlocBuilder<ExamCubit, ExamInitial>(
                 builder: (context, state) {
                   return MyButton(
-                    enable: !state.statuses.loading && request.canCall,
+                    enable: !state.statuses.loading,
                     text: S.of(context).preview,
                     width: 240.0.w,
                     onTap: () =>

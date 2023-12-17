@@ -58,10 +58,10 @@ class _DebitPageState extends State<DebitPage> {
                     data: state.result
                         .mapIndexed(
                           (i, e) => [
-                        e.name,
-                        e.totalPaid.formatPrice,
-                      ],
-                    )
+                            e.name,
+                            e.totalPaid.formatPrice,
+                          ],
+                        )
                         .toList(),
                   );
                 },

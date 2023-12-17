@@ -136,7 +136,7 @@ class AppRoutes {
           builder: (context) {
             return MultiBlocProvider(
               providers: providers,
-              child: const DebitPage(),
+              child: const DebitPage (),
             );
           },
         );
