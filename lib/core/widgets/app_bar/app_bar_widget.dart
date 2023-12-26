@@ -38,15 +38,15 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         toolbarHeight: (zeroHeight ?? false) ? 0 : 80.0.h,
         title: title ?? DrawableText(
                 text: titleText ?? '',
+                color: color != null ? Colors.white : AppColorManager.mainColorDark,
                 size: 24.0.spMin,
-                color: color != null ? Colors.white : AppColorManager.mainColor,
                 fontFamily: FontManager.cairoBold,
               ),
         leading: Navigator.canPop(context) ? const BackBtnWidget() : leading,
         actions: actions,
         elevation: elevation ?? 0.0,
         shadowColor: AppColorManager.black.withOpacity(0.28),
-        iconTheme: const IconThemeData(color: AppColorManager.mainColor),
+        iconTheme: const IconThemeData(color: AppColorManager.textColor1),
       ),
     );
   }

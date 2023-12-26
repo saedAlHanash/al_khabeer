@@ -64,7 +64,7 @@ class _ExamTablePageState extends State<ExamTablePage> {
                       S.of(context).day,
                       S.of(context).examType,
                       S.of(context).subjectName,
-                      S.of(context).notes,
+
                     ],
                     data: state.result
                         .mapIndexed(
@@ -73,7 +73,6 @@ class _ExamTablePageState extends State<ExamTablePage> {
                             e.date?.formatDayName,
                             e.type,
                             e.material,
-                            e.note,
                           ],
                         )
                         .toList(),

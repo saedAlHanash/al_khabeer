@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../api_manager/request_models/command.dart';
+import '../util/pair_class.dart';
 
 class SaedTableWidget extends StatelessWidget {
   const SaedTableWidget(
@@ -140,7 +141,7 @@ class SaedTableWidget1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0).r,
+      // padding: const EdgeInsets.symmetric(horizontal: 30.0).r,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -156,7 +157,7 @@ class SaedTableWidget1 extends StatelessWidget {
                             matchParent: true,
                             textAlign: TextAlign.center,
                             text: e,
-                            color: AppColorManager.mainColorDark,
+                            color: AppColorManager.newsHeader,
                             fontFamily: FontManager.cairoBold,
                           )
                         : title is Widget
@@ -283,7 +284,6 @@ class TableItem {
   final String data;
   final Color? background;
 
-//<editor-fold desc="Data Methods">
   const TableItem({
     required this.data,
     required this.background,
@@ -330,4 +330,105 @@ class TableItem {
   }
 
 //</editor-fold>
+}
+
+class Table2Item extends StatelessWidget {
+  const Table2Item({super.key, required this.title, required this.data});
+
+  final List<String> title;
+  final List<Pair<TableItem, TableItem>> data;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 50.0.h,
+            child: IntrinsicHeight(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: DrawableText(
+                      size: 18.0.sp,
+                      matchParent: true,
+                      textAlign: TextAlign.center,
+                      text: title.first,
+                      color: AppColorManager.newsHeader,
+                      fontFamily: FontManager.cairoBold,
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 15.0).h,
+                    width: 1.0.h,
+                    color: AppColorManager.lightGrayEd,
+                  ),
+                  Expanded(
+                    child: DrawableText(
+                      size: 18.0.sp,
+                      matchParent: true,
+                      textAlign: TextAlign.center,
+                      text: title.last,
+                      color: AppColorManager.newsHeader,
+                      fontFamily: FontManager.cairoBold,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          const Divider(
+            height: 0.0,
+            indent: 0.0,
+            endIndent: 0.0,
+            color: AppColorManager.lightGrayEd,
+          ),
+          for (var e in data)
+            Column(
+              children: [
+                20.0.verticalSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: 200.0.w,
+                      child: DrawableText(
+                        size: 18.0.sp,
+                        textAlign: TextAlign.start,
+                        text: e.first.data.isEmpty ? '-' : e.first.data,
+                        matchParent: true,
+                        color: AppColorManager.newsHeader,
+                        fontFamily: e.first.background != null
+                            ? FontManager.cairoBold
+                            : FontManager.cairo,
+                      ),
+                    ),
+                    Container(
+                      width: 82.0.w,
+                      margin:EdgeInsetsDirectional.only(end: 20.0.w),
+                      child: DrawableText(
+                        size: 18.0.sp,
+                        matchParent: true,
+                        textAlign: TextAlign.end,
+                        text: e.second.data.isEmpty ? '-' : e.second.data,
+                        color: AppColorManager.newsHeader,
+                        fontFamily: FontManager.cairoBold,
+                      ),
+                    )
+                  ],
+                ),
+                20.0.verticalSpace,
+                const Divider(
+                  height: 0.0,
+                  indent: 0.0,
+                  endIndent: 0.0,
+                  color: AppColorManager.lightGrayEd,
+                ),
+              ],
+            ),
+          20.0.verticalSpace,
+        ],
+      ),
+    );
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/util/my_style.dart';
+import 'package:al_khabeer/core/util/pair_class.dart';
 import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:collection/collection.dart';
 import 'package:drawable_text/drawable_text.dart';
@@ -33,27 +34,23 @@ class DebitPage extends StatelessWidget {
                   if (state.statuses.loading) {
                     return MyStyle.loadingWidget();
                   }
-                  return SaedTableWidget1(
+                  return Table2Item(
                     title: [
                       S.of(context).accountName,
                       S.of(context).expense,
                     ],
                     data: state.result
                         .mapIndexed(
-                          (i, e) => [
+                          (i, e) => Pair(
                             TableItem(
                               data: e.name,
-                              background: e.isParent
-                                  ? AppColorManager.black
-                                  : null,
+                              background: e.isParent ? AppColorManager.black : null,
                             ),
                             TableItem(
                               data: e.balance.formatPrice,
-                              background: e.isParent
-                                  ? AppColorManager.black
-                                  : null,
+                              background: e.isParent ? AppColorManager.black : null,
                             ),
-                          ],
+                          ),
                         )
                         .toList(),
                   );

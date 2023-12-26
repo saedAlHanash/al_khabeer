@@ -23,10 +23,12 @@ class PolicyPage extends StatelessWidget {
         padding: const EdgeInsets.all(20.0).r,
         child: Column(
           children: [
-            ImageMultiType(
-              url: Assets.iconsLogoWithoutText,
-              height: 100.0.r,
-              width: 100.0.r,
+            Center(
+              child: ImageMultiType(
+                url: Assets.iconsLogoWithoutText,
+                height: 100.0.r,
+                width: 100.0.r,
+              ),
             ),
             10.0.verticalSpace,
             const DrawableText(

@@ -1,4 +1,5 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
+import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,6 +63,7 @@ class ItemNews extends StatelessWidget {
         DrawableText(
           text: data.note,
           maxLines: 3,
+          color: AppColorManager.newsHeader,
           size: 14.0.sp,
           padding: const EdgeInsets.symmetric(vertical: 5.0).h,
         ),

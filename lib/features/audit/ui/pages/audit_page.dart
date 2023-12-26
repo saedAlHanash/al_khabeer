@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/strings/app_color_manager.dart';
+import '../../../../core/util/pair_class.dart';
 import '../../../../core/widgets/saed_taple_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../accounts/bloc/account_by_id_cubit/account_by_id_cubit.dart';
@@ -33,27 +34,23 @@ class AuditPage extends StatelessWidget {
                   if (state.statuses.loading) {
                     return MyStyle.loadingWidget();
                   }
-                  return SaedTableWidget1(
+                  return Table2Item(
                     title: [
                       S.of(context).accountName,
                       S.of(context).revenue,
                     ],
                     data: state.result
                         .mapIndexed(
-                          (i, e) => [
+                          (i, e) => Pair(
                             TableItem(
                               data: e.name,
-                              background: e.isParent
-                                  ? AppColorManager.black
-                                  : null,
+                              background: e.isParent ? AppColorManager.black : null,
                             ),
                             TableItem(
                               data: e.balance.formatPrice,
-                              background: e.isParent
-                                  ? AppColorManager.black
-                                  : null,
+                              background: e.isParent ? AppColorManager.black : null,
                             ),
-                          ],
+                          ),
                         )
                         .toList(),
                   );

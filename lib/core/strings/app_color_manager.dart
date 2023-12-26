@@ -7,6 +7,7 @@ class AppColorManager {
   static const  mainColorDark = Color(0xFF1B4B8D);
   static const  selectedIconColor = Color(0xFF031E43);
   static const  appBarColor = Color(0xFFB5E4FE);
+  static const  newsHeader = Color(0xFF4C6991);
   static const  textColor1 = Color(0xFF042658);
   static const  mainColorLight = Color(0xFF08A5FF);
   static const  tableTitle = Color(0xFFC7EAFE);

@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/strings/app_color_manager.dart';
 import '../../../../core/util/my_style.dart';
+import '../../../../core/util/pair_class.dart';
 import '../../../../core/widgets/app_bar/app_bar_widget.dart';
 import '../../../../core/widgets/date_picker_widget.dart';
 import '../../../../core/widgets/my_button.dart';
@@ -39,28 +40,24 @@ class CashAccount extends StatelessWidget {
                   if (state.statuses.loading) {
                     return MyStyle.loadingWidget();
                   }
-                  return SaedTableWidget1(
+                  return Table2Item(
                     title: [
                       S.of(context).accountName,
                       S.of(context).balance,
                     ],
                     data: state.result
                         .mapIndexed(
-                          (i, e) => [
-                            TableItem(
-                              data: e.name,
-                              background: e.isParent
-                                  ? AppColorManager.black
-                                  : null,
-                            ),
-                            TableItem(
-                              data: e.balance.formatPrice,
-                              background: e.isParent
-                                  ? AppColorManager.black
-                                  : null,
-                            ),
-                          ],
-                        )
+                          (i, e) => Pair(
+                        TableItem(
+                          data: e.name,
+                          background: e.isParent ? AppColorManager.black : null,
+                        ),
+                        TableItem(
+                          data: e.balance.formatPrice,
+                          background: e.isParent ? AppColorManager.black : null,
+                        ),
+                      ),
+                    )
                         .toList(),
                   );
                 },

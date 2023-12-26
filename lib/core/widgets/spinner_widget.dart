@@ -36,7 +36,7 @@ class SpinnerWidget<T> extends StatelessWidget {
     SpinnerItem? selectedItem;
 
     final list = items.map(
-          (item) {
+      (item) {
         if (item.isSelected) selectedItem = item;
 
         return DropdownMenuItem(
@@ -45,8 +45,8 @@ class SpinnerWidget<T> extends StatelessWidget {
           child: DrawableText(
             selectable: false,
             text: item.name ?? '',
-            size: 14.0.sp,
             color: (item.id != 0) ? Colors.white : AppColorManager.mainColorLight,
+            size: 20.0.sp,
             fontFamily: FontManager.cairoBold,
             drawableStart: item.icon,
             drawablePadding: 7.0.w,
@@ -66,11 +66,13 @@ class SpinnerWidget<T> extends StatelessWidget {
         if (hintText != null)
           DrawableText(
             text: hintText!,
+            color: AppColorManager.newsHeader,
+            size: 20.0.sp,
+            fontFamily: FontManager.cairoBold,
             matchParent: true,
             padding: const EdgeInsets.symmetric(horizontal: 5.0).w,
           ),
-        if (hintText != null)
-          15.0.verticalSpace,
+        if (hintText != null) 15.0.verticalSpace,
         StatefulBuilder(
           builder: (_, state) {
             return DropdownButton2(

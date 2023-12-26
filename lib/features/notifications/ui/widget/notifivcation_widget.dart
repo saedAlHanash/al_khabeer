@@ -32,6 +32,7 @@ class NotificationWidget extends StatelessWidget {
               children: [
                 DrawableText(
                   text: not.message,
+                  color: AppColorManager.mainColorDark,
                   matchParent: true,
                   textAlign: TextAlign.start,
                 ),
