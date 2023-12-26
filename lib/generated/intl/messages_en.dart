@@ -125,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "salaryType": MessageLookupByLibrary.simpleMessage("Salary Type"),
         "section": MessageLookupByLibrary.simpleMessage("Section"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "since": MessageLookupByLibrary.simpleMessage("Since"),
         "staffProfile": MessageLookupByLibrary.simpleMessage("Staff Profile"),
         "stage": MessageLookupByLibrary.simpleMessage("Stage"),
         "stageAndAdditions":

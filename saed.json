@@ -10,10 +10,10 @@
       "code": "13",
       "latin_name": "Ready Money",
       "parent_guid": "72F0FC03-01A9-44AC-A730-0559A4027C18",
-      "total_paid": 334,
-      "total_caught": 1300030,
+      "total_paid": 326492,
+      "total_caught": 1020030,
       "is_parent": false,
-      "balance": 1299696,
+      "balance": 693538,
       "subaccounts": [
         {
           "id": 10,
@@ -23,10 +23,10 @@
           "code": "1301",
           "latin_name": "Cashier",
           "parent_guid": "55982025-844B-4800-9E35-C2806F04D9C8",
-          "total_paid": 334,
-          "total_caught": 1300030,
+          "total_paid": 306492,
+          "total_caught": 1020030,
           "is_parent": false,
-          "balance": 1299696,
+          "balance": 713538,
           "subaccounts": []
         },
         {
@@ -37,10 +37,10 @@
           "code": "1302",
           "latin_name": "Bank",
           "parent_guid": "55982025-844B-4800-9E35-C2806F04D9C8",
-          "total_paid": 0,
+          "total_paid": 20000,
           "total_caught": 0,
           "is_parent": false,
-          "balance": 0,
+          "balance": -20000,
           "subaccounts": [
             {
               "id": 86,
@@ -50,10 +50,10 @@
               "code": "1302001",
               "latin_name": "",
               "parent_guid": "EAFF2FDF-E881-4BC4-A95C-6FDBADE8E32D",
-              "total_paid": 0,
+              "total_paid": 20000,
               "total_caught": 0,
               "is_parent": false,
-              "balance": 0,
+              "balance": -20000,
               "subaccounts": []
             },
             {
@@ -82,10 +82,10 @@
       "code": "1301",
       "latin_name": "Cashier",
       "parent_guid": "55982025-844B-4800-9E35-C2806F04D9C8",
-      "total_paid": 334,
-      "total_caught": 1300030,
+      "total_paid": 306492,
+      "total_caught": 1020030,
       "is_parent": false,
-      "balance": 1299696,
+      "balance": 713538,
       "subaccounts": []
     },
     {
@@ -96,10 +96,10 @@
       "code": "1302",
       "latin_name": "Bank",
       "parent_guid": "55982025-844B-4800-9E35-C2806F04D9C8",
-      "total_paid": 0,
+      "total_paid": 20000,
       "total_caught": 0,
       "is_parent": false,
-      "balance": 0,
+      "balance": -20000,
       "subaccounts": [
         {
           "id": 86,
@@ -109,10 +109,10 @@
           "code": "1302001",
           "latin_name": "",
           "parent_guid": "EAFF2FDF-E881-4BC4-A95C-6FDBADE8E32D",
-          "total_paid": 0,
+          "total_paid": 20000,
           "total_caught": 0,
           "is_parent": false,
-          "balance": 0,
+          "balance": -20000,
           "subaccounts": []
         },
         {
@@ -139,10 +139,10 @@
       "code": "1302001",
       "latin_name": "",
       "parent_guid": "EAFF2FDF-E881-4BC4-A95C-6FDBADE8E32D",
-      "total_paid": 0,
+      "total_paid": 20000,
       "total_caught": 0,
       "is_parent": false,
-      "balance": 0,
+      "balance": -20000,
       "subaccounts": []
     },
     {

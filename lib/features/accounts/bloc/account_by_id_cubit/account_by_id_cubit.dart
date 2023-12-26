@@ -36,8 +36,8 @@ class AccountByIdCubit extends Cubit<AccountByIdInitial> {
       emit(state.copyWith(statuses: CubitStatuses.error, error: pair.second));
     } else {
       final r = <AccountsData>[];
-
       for (var e in pair.first!) {
+        e.isParent = true;
         r.addAll(getAllSubAccounts(e));
       }
 

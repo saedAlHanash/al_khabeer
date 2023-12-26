@@ -20,9 +20,9 @@ import '../../../accounts/bloc/transactions_cubit/transactions_cubit.dart';
 import '../../../accounts/data/request/account_request.dart';
 
 class FilterAccountWidget extends StatefulWidget {
-  const FilterAccountWidget({super.key, required this.request});
+  const FilterAccountWidget({super.key, required this.filterName});
+final String filterName;
 
-  final AccountRequest request;
 
   @override
   State<FilterAccountWidget> createState() => _FilterAccountWidgetState();
@@ -31,11 +31,12 @@ class FilterAccountWidget extends StatefulWidget {
 class _FilterAccountWidgetState extends State<FilterAccountWidget> {
   late final TextEditingController startDateC;
   late final TextEditingController endDateC;
-
+  late final AccountRequest request;
   @override
   void initState() {
-    startDateC = TextEditingController(text: widget.request.startTime?.formatDate);
-    endDateC = TextEditingController(text: widget.request.endTime?.formatDate);
+    request = AccountRequest(type: widget.filterName);
+    startDateC = TextEditingController(text: request.startTime?.formatDate);
+    endDateC = TextEditingController(text: request.endTime?.formatDate);
     super.initState();
   }
 
@@ -50,61 +51,52 @@ class _FilterAccountWidgetState extends State<FilterAccountWidget> {
             }
             return SpinnerWidget(
               hintText: S.of(context).accountName,
-              items: state.getSpinnerItems(selectedId: widget.request.account?.guid),
+              items: state.getSpinnerItems(selectedId: request.account?.guid),
               width: .9.sw,
               onChanged: (val) {
-                widget.request.account = val.item;
+                request.account = val.item;
               },
             );
           },
         ),
-        10.0.verticalSpace,
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0).w,
-          child: Row(
-            children: [
-              Expanded(
-                child: MyTextFormNoLabelWidget(
-                  hint: S.of(context).startDate,
-                  textAlign: TextAlign.center,
-                  controller: startDateC,
-                  disableAndKeepIcon: true,
-                  textDirection: TextDirection.ltr,
-                  iconWidget: SelectSingeDateWidget(
-                    initial: widget.request.startTime,
-                    onSelect: (selected) {
-                      startDateC.text = selected?.formatDate ?? '';
-                      widget.request.startTime = selected;
-                      context
-                          .read<TransactionsCubit>()
-                          .getTransactions(context, request: widget.request);
-                    },
-                  ),
+        30.0.verticalSpace,
+        Row(
+          children: [
+            Expanded(
+              child: MyTextFormNoLabelWidget(
+                hint: S.of(context).startDate,
+                textAlign: TextAlign.center,
+                controller: startDateC,
+                disableAndKeepIcon: true,
+                textDirection: TextDirection.ltr,
+                iconWidget: SelectSingeDateWidget(
+                  initial: request.startTime,
+                  onSelect: (selected) {
+                    startDateC.text = selected?.formatDate ?? '';
+                    request.startTime = selected;
+                  },
                 ),
               ),
-              10.0.horizontalSpace,
-              Expanded(
-                child: MyTextFormNoLabelWidget(
-                     hint: S.of(context).endDate,
-                  textAlign: TextAlign.center,
-                  controller: endDateC,
-                  disableAndKeepIcon: true,
-                  color: AppColorManager.mainColorLight.withOpacity(0.5),
-                  textDirection: TextDirection.ltr,
-                  iconWidget: SelectSingeDateWidget(
-                    initial: widget.request.endTime,
-                    onSelect: (selected) {
-                      endDateC.text = selected?.formatDate ?? '';
-                      widget.request.endTime = selected;
-                      context
-                          .read<TransactionsCubit>()
-                          .getTransactions(context, request: widget.request);
-                    },
-                  ),
+            ),
+            16.0.horizontalSpace,
+            Expanded(
+              child: MyTextFormNoLabelWidget(
+                hint: S.of(context).endDate,
+                textAlign: TextAlign.center,
+                controller: endDateC,
+                disableAndKeepIcon: true,
+                color: AppColorManager.mainColorLight.withOpacity(0.5),
+                textDirection: TextDirection.ltr,
+                iconWidget: SelectSingeDateWidget(
+                  initial: request.endTime,
+                  onSelect: (selected) {
+                    endDateC.text = selected?.formatDate ?? '';
+                    request.endTime = selected;
+                  },
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         10.0.verticalSpace,
         BlocBuilder<AccountByIdCubit, AccountByIdInitial>(
@@ -116,7 +108,7 @@ class _FilterAccountWidgetState extends State<FilterAccountWidget> {
               onTap: () {
                 context
                     .read<AccountByIdCubit>()
-                    .getAccountById(context, request: widget.request);
+                    .getAccountById(context, request: request);
               },
             );
           },

@@ -22,6 +22,8 @@ class StudentInitial extends Equatable {
     );
   }
 
+  num get getAllStudentsBalance => result.fold(0.0, (acc, e) => acc + (e.balance));
+
   @override
   List<Object> get props => [statuses, result, error];
 

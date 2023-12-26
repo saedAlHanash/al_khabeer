@@ -72,7 +72,7 @@ class MyStyle {
   );
 
   static var roundBox = BoxDecoration(
-    color: AppColorManager.tableTitle,
+    color: AppColorManager.appBarColor,
     borderRadius: BorderRadius.circular(12.0.r),
   );
 

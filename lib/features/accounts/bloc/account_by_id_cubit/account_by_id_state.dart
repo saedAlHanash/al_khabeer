@@ -15,20 +15,19 @@ class AccountByIdInitial extends Equatable {
 
   factory AccountByIdInitial.initial() {
     return AccountByIdInitial(
-      result: const[],
+      result: const [],
       error: '',
       request: AccountRequest(),
       statuses: CubitStatuses.init,
     );
   }
 
-  num get getAllAccountBalance => result.fold(0, (acc, e) => acc + e.balance);
-  num get getAllAccountCaught => result.fold(0, (acc, e) => acc + e.totalCaught);
-  num get getAllAccountPayed => result.fold(0, (acc, e) => acc + e.totalPaid);
+  num get getAllAccountBalance =>
+      result.fold(0, (acc, e) => acc + (!e.isParent ? 0 : e.balance));
 
   // List<SpinnerItem> getSpinnerItems({String? selectedId}) {
   //   if (result.isEmpty) {
-  //     return [SpinnerItem(name: 'الكل', id: 1)];
+  //     return [SpinnerItem(name: '-', id: 1)];
   //   }
   //   return result
   //       .map((e) => SpinnerItem(

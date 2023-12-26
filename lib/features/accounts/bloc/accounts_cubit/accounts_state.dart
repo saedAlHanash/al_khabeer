@@ -27,7 +27,7 @@ class AccountsInitial extends Equatable {
 
   List<SpinnerItem> getSpinnerItems({String? selectedId}) {
     if (result.isEmpty) {
-      return [SpinnerItem(name: 'الكل', id: 1)];
+      return [SpinnerItem(name: '-', id: 1)];
     }
     return result
         .map((e) => SpinnerItem(
@@ -37,8 +37,7 @@ class AccountsInitial extends Equatable {
               guid: e.guid,
               isSelected: e.guid == selectedId,
             ))
-        .toList()
-      ..insert(0, SpinnerItem(name: 'الكل',id: 1));
+        .toList();
   }
 
   @override

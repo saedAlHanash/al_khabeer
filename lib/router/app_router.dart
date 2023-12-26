@@ -25,6 +25,7 @@ import '../features/exam_table/ui/pages/exam_table_page.dart';
 import '../features/home/bloc/slider_cubit/slider_cubit.dart';
 import '../features/home/ui/pages/home_page.dart';
 import '../features/inventory/bloc/inventory_cubit/inventory_cubit.dart';
+import '../features/inventory/ui/pages/inventory_list_page.dart';
 import '../features/inventory/ui/pages/inventory_page.dart';
 import '../features/notifications/bloc/notification_count_cubit/notification_count_cubit.dart';
 import '../features/notifications/bloc/notifications_cubit/notifications_cubit.dart';
@@ -32,6 +33,7 @@ import '../features/policy/ui/pages/policy.dart';
 import '../features/student_transactions/bloc/student_transactions_cubit/student_transactions_cubit.dart';
 import '../features/student_transactions/data/request/student_transactions_request.dart';
 import '../features/students/ui/pages/student_info_page.dart';
+import '../features/students/ui/pages/students_list_page.dart';
 import '../features/students/ui/pages/students_page.dart';
 import '../features/teachers/ui/pages/teachers_page.dart';
 
@@ -103,15 +105,20 @@ class AppRoutes {
 
       case RouteName.students:
         //region
-
-        final providers = [
-          BlocProvider(create: (_) => di.sl<LoadingCubit>()),
-        ];
         return CupertinoPageRoute(
           builder: (context) {
-            return MultiBlocProvider(
-              providers: providers,
-              child: const StudentsPage(),
+            return const StudentsPage();
+          },
+        );
+      //endregion
+      case RouteName.studentsList:
+        //region
+        return CupertinoPageRoute(
+          builder: (context) {
+            return StudentsListPage(
+              result: settings.arguments == null
+                  ? <Student>[]
+                  : settings.arguments as List<Student>,
             );
           },
         );
@@ -136,7 +143,7 @@ class AppRoutes {
           builder: (context) {
             return MultiBlocProvider(
               providers: providers,
-              child: const DebitPage (),
+              child: const DebitPage(),
             );
           },
         );
@@ -263,7 +270,6 @@ class AppRoutes {
       case RouteName.demo:
         //region
 
-
         return CupertinoPageRoute(
           builder: (context) {
             return const DemoPage();
@@ -285,10 +291,12 @@ class AppRoutes {
       //endregion
 
       //region inventory
+
       case RouteName.inventory:
+        //region
         final providers = [
           BlocProvider(
-            create: (context) => di.sl<InventoryCubit>()..getInventory(context),
+            create: (context) => di.sl<InventoryCubit>(),
           ),
         ];
         return CupertinoPageRoute(builder: (context) {
@@ -297,6 +305,16 @@ class AppRoutes {
             child: const InventoryPage(),
           );
         });
+
+      //endregion
+      case RouteName.inventoryList:
+        //region
+
+        return CupertinoPageRoute(builder: (context) {
+          return InventoryListPage(state: settings.arguments as InventoryInitial);
+        });
+
+      //endregion
 
       //endregion
     }
@@ -316,6 +334,7 @@ class RouteName {
   static const searchResult = '/11';
   static const update = '/12';
   static const updateChoice = '/13';
+
   // static const notifications = '/14';
   static const offers = '/15';
   static const examTable = '/16';
@@ -333,4 +352,6 @@ class RouteName {
   static const employees = '/27';
   static const demo = '/28';
   static const policy = '/29';
+  static const studentsList = '/30';
+  static const inventoryList = '/31';
 }

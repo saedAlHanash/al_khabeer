@@ -1039,6 +1039,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Since`
+  String get since {
+    return Intl.message(
+      'Since',
+      name: 'since',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

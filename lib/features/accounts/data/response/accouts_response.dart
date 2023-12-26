@@ -46,7 +46,7 @@ class AccountsData {
   final String code;
   final int totalPaid;
   final num totalCaught;
-  final bool isParent;
+   bool isParent;
   final List<AccountsData> subaccounts;
 
   String get name => isAr

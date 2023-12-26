@@ -36,7 +36,7 @@ class SpinnerWidget<T> extends StatelessWidget {
     SpinnerItem? selectedItem;
 
     final list = items.map(
-      (item) {
+          (item) {
         if (item.isSelected) selectedItem = item;
 
         return DropdownMenuItem(
@@ -55,7 +55,7 @@ class SpinnerWidget<T> extends StatelessWidget {
       },
     ).toList();
 
-    if (hint == null) selectedItem ??= items.firstOrNull;
+    // if (hint == null) selectedItem ??= items.firstOrNull;
 
     if ((sedFirstItem ?? false) && selectedItem != null) {
       if (onChanged != null) onChanged!(selectedItem!);
@@ -69,6 +69,8 @@ class SpinnerWidget<T> extends StatelessWidget {
             matchParent: true,
             padding: const EdgeInsets.symmetric(horizontal: 5.0).w,
           ),
+        if (hintText != null)
+          15.0.verticalSpace,
         StatefulBuilder(
           builder: (_, state) {
             return DropdownButton2(

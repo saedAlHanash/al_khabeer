@@ -1,4 +1,8 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
+import 'package:al_khabeer/core/strings/app_color_manager.dart';
+import 'package:al_khabeer/core/strings/app_color_manager.dart';
+import 'package:al_khabeer/core/strings/app_color_manager.dart';
+import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,39 +31,52 @@ class EmployWidget extends StatelessWidget {
             size: 100.0.r,
           ),
           DrawableText(
-            drawableAlin: DrawableAlin.between,
+            fontFamily: FontManager.cairoBold,
+            size: 24.0.sp,
             text: data.name,
           ),
           const Divider(endIndent: 0.0),
           DrawableText(
+            color: AppColorManager.mainColorDark,
+            size: 18.0.sp,
             matchParent: true,
             drawableAlin: DrawableAlin.between,
             text: S.of(context).certificateOrSpecialization,
             drawableEnd: DrawableText(
+              size: 20.0.sp,
               text: data.certificateName,
             ),
           ),
           DrawableText(
+            color: AppColorManager.mainColorDark,
+            size: 18.0.sp,
             matchParent: true,
             drawableAlin: DrawableAlin.between,
             text: S.of(context).administrativePosition,
             drawableEnd: DrawableText(
+              size: 20.0.sp,
               text: data.epithet,
             ),
           ),
           DrawableText(
+            color: AppColorManager.mainColorDark,
+            size: 18.0.sp,
             matchParent: true,
             drawableAlin: DrawableAlin.between,
             text: S.of(context).salaryType,
             drawableEnd: DrawableText(
+              size: 20.0.sp,
               text: data.salaryType,
             ),
           ),
           DrawableText(
+            color: AppColorManager.mainColorDark,
+            size: 18.0.sp,
             matchParent: true,
             drawableAlin: DrawableAlin.between,
             text: S.of(context).employmentDate,
             drawableEnd: DrawableText(
+              size: 20.0.sp,
               text: data.dateEmployment?.formatDate ?? '-',
             ),
           ),

@@ -145,7 +145,7 @@ class _HomepageState extends State<Homepage> {
                     ? ListTile(
                         leading: const Icon(Icons.language),
                         title: const DrawableText(
-                          text: 'اللغة العربية',
+                          text: 'Change to arabic',
                           color: Colors.white,
                         ),
                         onTap: () {
@@ -157,7 +157,7 @@ class _HomepageState extends State<Homepage> {
                     : ListTile(
                         leading: const Icon(Icons.language),
                         title: const DrawableText(
-                          text: 'English Language',
+                          text: 'تبديل للغة الإنكليزية',
                           color: Colors.white,
                         ),
                         onTap: () {

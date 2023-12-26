@@ -97,5 +97,6 @@
   "caught": "caught",
   "confirmLogout": "Are you sure you want to logout?",
   "startDate": "تاريخ بداية",
-  "endDate": "تاريخ نهاية"
+  "endDate": "تاريخ نهاية",
+  "since": "Since"
 }

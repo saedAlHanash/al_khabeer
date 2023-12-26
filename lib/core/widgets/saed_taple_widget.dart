@@ -46,7 +46,7 @@ class SaedTableWidget extends StatelessWidget {
                           matchParent: true,
                           textAlign: TextAlign.center,
                           text: e,
-                          color: AppColorManager.tableTitleText,
+                          color: AppColorManager.textColor1,
                           fontFamily: FontManager.cairoBold,
                         )
                       : title is Widget
@@ -85,7 +85,7 @@ class SaedTableWidget extends StatelessWidget {
                                 matchParent: !(fullSizeIndex?.contains(i) ?? true),
                                 textAlign: TextAlign.center,
                                 text: e.isEmpty ? '-' : e.replaceAll('spy', ''),
-                                color: Colors.black,
+                                color: AppColorManager.textColor1,
                               ),
                             )
                           : e is Widget
@@ -144,7 +144,7 @@ class SaedTableWidget1 extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
+          SizedBox(
             height: 50.0.h,
             child: IntrinsicHeight(
               child: Row(
@@ -199,26 +199,38 @@ class SaedTableWidget1 extends StatelessWidget {
                   child: Row(
                     children: e.mapIndexed(
                       (i, e) {
-                        final widget = e is String
-                            ? Directionality(
-                                textDirection: e.contains('spy')
-                                    ? TextDirection.ltr
-                                    : TextDirection.rtl,
-                                child: DrawableText(
-                                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                  size: 15.0.sp,
-                                  matchParent: !(fullSizeIndex?.contains(i) ?? true),
-                                  textAlign: TextAlign.center,
-                                  text: e.isEmpty ? '-' : e.replaceAll('spy', ''),
-                                  color: Colors.black,
-                                ),
+                        final widget = e is TableItem
+                            ? DrawableText(
+                                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                size: 15.0.sp,
+                                matchParent: !(fullSizeIndex?.contains(i) ?? true),
+                                textAlign: TextAlign.center,
+                                text: e.data.isEmpty ? '-' : e.data,
+                                color: e.background,
+                                fontFamily: e.background != null
+                                    ? FontManager.cairoBold
+                                    : FontManager.cairo,
                               )
-                            : e is Widget
-                                ? e
-                                : Container(
-                                    height: 10,
-                                    color: Colors.red,
-                                  );
+                            : e is String
+                                ? Directionality(
+                                    textDirection: e.contains('spy')
+                                        ? TextDirection.ltr
+                                        : TextDirection.rtl,
+                                    child: DrawableText(
+                                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                                      size: 15.0.sp,
+                                      matchParent: !(fullSizeIndex?.contains(i) ?? true),
+                                      textAlign: TextAlign.center,
+                                      text: e.isEmpty ? '-' : e.replaceAll('spy', ''),
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                : e is Widget
+                                    ? e
+                                    : Container(
+                                        height: 10,
+                                        color: Colors.red,
+                                      );
 
                         if (fullSizeIndex?.contains(i) ?? false) {
                           return widget;
@@ -260,16 +272,62 @@ class SaedTableWidget1 extends StatelessWidget {
               ],
             );
           }).toList(),
-          // if (command != null)
-          //   SpinnerWidget(
-          //     items: command!.getSpinnerItems,
-          //     onChanged: (spinnerItem) {
-          //       onChangePage?.call(command!..goToPage(spinnerItem.id));
-          //     },
-          //   ),
           20.0.verticalSpace,
         ],
       ),
     );
   }
+}
+
+class TableItem {
+  final String data;
+  final Color? background;
+
+//<editor-fold desc="Data Methods">
+  const TableItem({
+    required this.data,
+    required this.background,
+  });
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is TableItem &&
+          runtimeType == other.runtimeType &&
+          data == other.data &&
+          background == other.background);
+
+  @override
+  int get hashCode => data.hashCode ^ background.hashCode;
+
+  @override
+  String toString() {
+    return 'TableItem{' + ' data: $data,' + ' background: $background,' + '}';
+  }
+
+  TableItem copyWith({
+    String? data,
+    Color? background,
+  }) {
+    return TableItem(
+      data: data ?? this.data,
+      background: background ?? this.background,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'data': this.data,
+      'background': this.background,
+    };
+  }
+
+  factory TableItem.fromMap(Map<String, dynamic> map) {
+    return TableItem(
+      data: map['data'] as String,
+      background: map['background'] as Color,
+    );
+  }
+
+//</editor-fold>
 }

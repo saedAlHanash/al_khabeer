@@ -13,62 +13,67 @@ import '../../../../core/widgets/my_text_form_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../filter_data/bloc/class_cubit/class_cubit.dart';
 import '../../../filter_data/bloc/class_level_cubit/class_level_cubit.dart';
+import '../../../filter_data/bloc/group_cubit/group_cubit.dart';
+import '../../../filter_data/bloc/material_cubit/material_cubit.dart';
 import '../../../filter_data/bloc/stage_cubit/stage_cubit.dart';
-import '../../data/request/student_request.dart';
+import '../../bloc/inventory_cubit/inventory_cubit.dart';
+import '../../data/request/inventory_request.dart';
 
-class StudentsFilterWidget extends StatefulWidget {
-  const StudentsFilterWidget({super.key, required this.request});
+class InventoryFilterWidget extends StatefulWidget {
+  const InventoryFilterWidget({super.key, required this.request});
 
-  final StudentsRequest request;
+  final InventoryRequest request;
 
   @override
-  State<StudentsFilterWidget> createState() => _StudentsFilterWidgetState();
+  State<InventoryFilterWidget> createState() => _InventoryFilterWidgetState();
 }
 
-class _StudentsFilterWidgetState extends State<StudentsFilterWidget> {
+class _InventoryFilterWidgetState extends State<InventoryFilterWidget> {
   late final TextEditingController startDateC;
   late final TextEditingController endDateC;
+
+  late final GroupCubit groupCubit;
+  late final MaterialCubit materialCubit;
 
   @override
   void initState() {
     startDateC = TextEditingController(text: widget.request.startTime?.formatDate);
     endDateC = TextEditingController(text: widget.request.endTime?.formatDate);
+    groupCubit = context.read<GroupCubit>();
+    materialCubit = context.read<MaterialCubit>();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0).w,
+      padding: const EdgeInsets.symmetric(horizontal: 30.0).w,
       child: Column(
         children: [
           20.0.verticalSpace,
-          BlocBuilder<ClassCubit, ClassInitial>(
+          BlocBuilder<GroupCubit, GroupInitial>(
             builder: (context, state) {
               if (state.statuses.loading) {
                 return MyStyle.loadingWidget();
               }
               return SpinnerWidget(
-                hintText: S.of(context).stage,
-                items: state.getSpinnerItems(selectedId: widget.request.classGuid),
+                hintText: S.of(context).group,
+                items: state.getSpinnerItems(selectedId: widget.request.groupGuid),
                 width: .9.sw,
                 onChanged: (val) {
-                  widget.request.setClass(val.guid);
-                  context.read<ClassLevelCubit>().getClassLevel(
+                  widget.request.groupGuid = val.guid;
+                  //get material Data
+                  context.read<MaterialCubit>().getMaterials(
                         context,
-                        parentGuid: widget.request.classGuid,
-                      );
-                  context.read<StageCubit>().getStage(
-                        context,
-                        levelGuid: widget.request.classLevelGuid,
+                        groupGuid: val.guid,
                       );
                 },
               );
             },
           ),
-          BlocBuilder<ClassLevelCubit, ClassLevelInitial>(
+          BlocBuilder<MaterialCubit, MaterialInitial>(
             builder: (context, state) {
-              if (widget.request.classGuid == null) {
+              if (widget.request.groupGuid == null) {
                 return 0.0.verticalSpace;
               }
               if (state.statuses.loading) {
@@ -78,38 +83,12 @@ class _StudentsFilterWidgetState extends State<StudentsFilterWidget> {
                 children: [
                   20.0.verticalSpace,
                   SpinnerWidget(
-                    hintText: S.of(context).grade,
-                    items:
-                        state.getSpinnerItems(selectedId: widget.request.classLevelGuid),
+                    hintText: S.of(context).subjectName,
+                    items: state.getSpinnerItems(selectedId: widget.request.materialGuid),
                     width: .9.sw,
                     onChanged: (val) {
-                      widget.request.setLevel(val.guid);
-                      context
-                          .read<StageCubit>()
-                          .getStage(context, levelGuid: widget.request.classLevelGuid);
+                      widget.request.materialGuid = val.guid;
                     },
-                  ),
-                ],
-              );
-            },
-          ),
-          BlocBuilder<StageCubit, StageInitial>(
-            builder: (context, state) {
-              if (widget.request.classGuid == null ||
-                  widget.request.classLevelGuid == null) {
-                return 0.0.verticalSpace;
-              }
-              if (state.statuses.loading) {
-                return MyStyle.loadingWidget();
-              }
-              return Column(
-                children: [
-                  20.0.verticalSpace,
-                  SpinnerWidget(
-                    hintText: S.of(context).section,
-                    items: state.getSpinnerItems(selectedId: widget.request.stageGuid),
-                    width: .9.sw,
-                    onChanged: (val) => widget.request.stageGuid = val.guid,
                   ),
                 ],
               );

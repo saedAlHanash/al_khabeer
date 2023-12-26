@@ -20,25 +20,8 @@ import '../../../accounts/bloc/accounts_cubit/accounts_cubit.dart';
 import '../../../accounts/bloc/transactions_cubit/transactions_cubit.dart';
 import '../../../accounts/data/request/account_request.dart';
 
-class CashAccount extends StatefulWidget {
+class CashAccount extends StatelessWidget {
   const CashAccount({super.key});
-
-  @override
-  State<CashAccount> createState() => _CashAccountState();
-}
-
-class _CashAccountState extends State<CashAccount> {
-  final request = AccountRequest(type: 'ready');
-
-  late final TextEditingController startDateC;
-  late final TextEditingController endDateC;
-
-  @override
-  void initState() {
-    startDateC = TextEditingController(text: request.startTime?.formatDate);
-    endDateC = TextEditingController(text: request.endTime?.formatDate);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +32,7 @@ class _CashAccountState extends State<CashAccount> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            FilterAccountWidget(request: request),
+            const FilterAccountWidget(filterName: 'ready'),
             Expanded(
               child: BlocBuilder<AccountByIdCubit, AccountByIdInitial>(
                 builder: (context, state) {
@@ -64,8 +47,18 @@ class _CashAccountState extends State<CashAccount> {
                     data: state.result
                         .mapIndexed(
                           (i, e) => [
-                            e.name,
-                            e.balance.formatPrice,
+                            TableItem(
+                              data: e.name,
+                              background: e.isParent
+                                  ? AppColorManager.black
+                                  : null,
+                            ),
+                            TableItem(
+                              data: e.balance.formatPrice,
+                              background: e.isParent
+                                  ? AppColorManager.black
+                                  : null,
+                            ),
                           ],
                         )
                         .toList(),

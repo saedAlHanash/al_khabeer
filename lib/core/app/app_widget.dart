@@ -84,7 +84,7 @@ class _MyAppState extends State<MyApp> {
           initialSize: 16.0.spMin,
           renderHtml: false,
           selectable: false,
-          initialColor: AppColorManager.selectedIconColor,
+          initialColor: AppColorManager.textColor1,
         );
 
         return MaterialApp(

@@ -7,21 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/strings/app_color_manager.dart';
 import '../../../../core/widgets/saed_taple_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../accounts/bloc/account_by_id_cubit/account_by_id_cubit.dart';
 import '../../../accounts/data/request/account_request.dart';
 import '../../../filter_data/ui/widget/filter_account_widget.dart';
 
-class AuditPage extends StatefulWidget {
+class AuditPage extends StatelessWidget {
   const AuditPage({super.key});
-
-  @override
-  State<AuditPage> createState() => _AuditPageState();
-}
-
-class _AuditPageState extends State<AuditPage> {
-  final request = AccountRequest(type: 'revenues');
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +26,7 @@ class _AuditPageState extends State<AuditPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            FilterAccountWidget(request: request),
+            const FilterAccountWidget(filterName: 'revenues'),
             Expanded(
               child: BlocBuilder<AccountByIdCubit, AccountByIdInitial>(
                 builder: (context, state) {
@@ -47,8 +41,18 @@ class _AuditPageState extends State<AuditPage> {
                     data: state.result
                         .mapIndexed(
                           (i, e) => [
-                            e.name,
-                            e.totalCaught.formatPrice,
+                            TableItem(
+                              data: e.name,
+                              background: e.isParent
+                                  ? AppColorManager.black
+                                  : null,
+                            ),
+                            TableItem(
+                              data: e.balance.formatPrice,
+                              background: e.isParent
+                                  ? AppColorManager.black
+                                  : null,
+                            ),
                           ],
                         )
                         .toList(),
@@ -65,7 +69,7 @@ class _AuditPageState extends State<AuditPage> {
                     text: S.of(context).total,
                     matchParent: true,
                     drawableEnd: DrawableText(
-                      text: (state.getAllAccountCaught).formatPrice,
+                      text: (state.getAllAccountBalance).formatPrice,
                       fontFamily: FontManager.cairoBold,
                     ),
                   ),

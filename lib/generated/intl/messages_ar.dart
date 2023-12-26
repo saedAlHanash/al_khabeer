@@ -123,6 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "salaryType": MessageLookupByLibrary.simpleMessage("نوع الراتب"),
         "section": MessageLookupByLibrary.simpleMessage("الشعبة"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+        "since": MessageLookupByLibrary.simpleMessage("منذ"),
         "staffProfile": MessageLookupByLibrary.simpleMessage("ذاتية الموظفين"),
         "stage": MessageLookupByLibrary.simpleMessage("المرحلة"),
         "stageAndAdditions":

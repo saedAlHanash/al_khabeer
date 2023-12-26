@@ -96,7 +96,6 @@ extension EnumHelper on Enum {
       }
     }
     if (this is HomeCards) {
-
       switch (this as HomeCards) {
         case HomeCards.students:
           return S().studentBalances;
@@ -212,6 +211,54 @@ extension DateUtcHelper on DateTime {
   }
 
   String get formatDateAther => DateFormat('yyyy/MM/dd HH:MM').format(this);
+
+  FormatDateTime getFormat({DateTime? serverDate}) {
+    final difference = this.difference(serverDate ?? DateTime.now());
+
+    final months = difference.inDays.abs() ~/ 30;
+    final days = difference.inDays.abs() % 360;
+    final hours = difference.inHours.abs() % 24;
+    final minutes = difference.inMinutes.abs() % 60;
+    final seconds = difference.inSeconds.abs() % 60;
+    return FormatDateTime(
+      months: months,
+      days: days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+    );
+  }
+
+  String formatDuration({DateTime? serverDate}) {
+    final result = getFormat(serverDate: serverDate);
+
+    final formattedDuration = StringBuffer();
+
+    formattedDuration.write('${S().since}: ');
+    var c = 0;
+    if (result.months > 0) {
+      c++;
+      formattedDuration.write('و ${result.months} شهر ');
+    }
+    if (result.days > 0 && c < 2) {
+      c++;
+      formattedDuration.write('و ${result.days} يوم  ');
+    }
+    if (result.hours > 0 && c < 2) {
+      c++;
+      formattedDuration.write('و ${result.hours} ساعة  ');
+    }
+    if (result.minutes > 0 && c < 2) {
+      c++;
+      formattedDuration.write('و ${result.minutes} دقيقة  ');
+    }
+    if (result.seconds > 0 && c < 2) {
+      c++;
+      formattedDuration.write('و ${result.seconds} ثانية ');
+    }
+
+    return formattedDuration.toString().trim().replaceFirst('و', '');
+  }
 }
 
 extension FirstItem<E> on Iterable<E> {
@@ -237,3 +284,19 @@ extension GetDateTimesBetween on DateTime {
 }
 
 BuildContext? get currentContext => sl<GlobalKey<NavigatorState>>().currentState?.context;
+
+class FormatDateTime {
+  final int months;
+  final int days;
+  final int hours;
+  final int minutes;
+  final int seconds;
+
+  const FormatDateTime({
+    required this.months,
+    required this.days,
+    required this.hours,
+    required this.minutes,
+    required this.seconds,
+  });
+}

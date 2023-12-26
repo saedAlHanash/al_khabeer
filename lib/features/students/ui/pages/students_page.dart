@@ -1,4 +1,5 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
+import 'package:al_khabeer/core/strings/enum_manager.dart';
 import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
 import 'package:al_khabeer/core/widgets/my_button.dart';
 import 'package:al_khabeer/core/widgets/saed_taple_widget.dart';
@@ -34,64 +35,43 @@ class _StudentsPageState extends State<StudentsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: (!widget.withAppBar)
-          ? null
-          : AppBarWidget(
-              titleText: S.of(context).studentBalances,
+    return BlocListener<StudentCubit, StudentInitial>(
+      listenWhen: (p, c) => c.statuses.done,
+      listener: (context, state) {
+        Navigator.pushNamed(context, RouteName.studentsList, arguments: state.result);
+      },
+      child: Scaffold(
+        appBar: (!widget.withAppBar)
+            ? null
+            : AppBarWidget(
+                titleText: S.of(context).studentBalances,
+              ),
+        body: SizedBox.expand(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                StudentsFilterWidget(request: request),
+                10.0.verticalSpace,
+                BlocBuilder<StudentCubit, StudentInitial>(
+                  builder: (context, state) {
+                    if (state.statuses.loading) {
+                      return MyStyle.loadingWidget();
+                    }
+                    return MyButton(
+                      text: S.of(context).preview,
+                      width: 240.0.w,
+                      onTap: () {
+                        context.read<StudentCubit>().getStudent(
+                              context,
+                              request: request,
+                            );
+                      },
+                    );
+                  },
+                ),
+              ],
             ),
-      body: SizedBox.expand(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              StudentsFilterWidget(request: request),
-              10.0.verticalSpace,
-              BlocBuilder<StudentCubit, StudentInitial>(
-                builder: (context, state) {
-                  return MyButton(
-                    text: S.of(context).preview,
-                    width: 240.0.w,
-                    enable: !state.statuses.loading,
-                    onTap: () {
-                      context.read<StudentCubit>().getStudent(
-                            context,
-                            request: request,
-                          );
-                    },
-                  );
-                },
-              ),
-              10.0.verticalSpace,
-              BlocBuilder<StudentCubit, StudentInitial>(
-                builder: (context, state) {
-                  if (state.statuses.loading) {
-                    return MyStyle.loadingWidget();
-                  }
-                  return SaedTableWidget(
-                    title: [
-                      S.of(context).name,
-                      S.of(context).grade,
-                      S.of(context).balance,
-                    ],
-                    data: state.result.mapIndexed((i, e) {
-                      return [
-                        e.studentName,
-                        e.className,
-                        e.balance.formatPrice,
-                      ];
-                    }).toList(),
-                    onTapItem: (list, i) {
-                      Navigator.pushNamed(
-                        context,
-                        RouteName.studentInfo,
-                        arguments: state.result[i],
-                      );
-                    },
-                  );
-                },
-              ),
-            ],
           ),
         ),
       ),

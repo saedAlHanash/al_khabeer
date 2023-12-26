@@ -17,14 +17,9 @@ class NotificationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10.0).h,
-      padding: const EdgeInsets.symmetric(vertical: 13.0, horizontal: 30.0).r,
-      decoration: BoxDecoration(
-        color: AppColorManager.f6,
-        borderRadius: BorderRadius.circular(12.0.r),
-      ),
+      margin: const EdgeInsets.symmetric(vertical: 21.0).h,
+      padding: const EdgeInsets.symmetric( horizontal: 30.0).r,
       child: Row(
-
         children: [
           ImageMultiType(
             url: Assets.iconsLogoWithoutText,

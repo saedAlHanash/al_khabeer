@@ -7,32 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/strings/app_color_manager.dart';
 import '../../../../core/widgets/saed_taple_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../accounts/bloc/account_by_id_cubit/account_by_id_cubit.dart';
 import '../../../accounts/data/request/account_request.dart';
 import '../../../filter_data/ui/widget/filter_account_widget.dart';
 
-class DebitPage extends StatefulWidget {
+class DebitPage extends StatelessWidget {
   const DebitPage({super.key});
-
-  @override
-  State<DebitPage> createState() => _DebitPageState();
-}
-
-class _DebitPageState extends State<DebitPage> {
-  final request = AccountRequest(type: 'expenses');
-
-  late final TextEditingController startDateC;
-  late final TextEditingController endDateC;
-
-  @override
-  void initState() {
-    startDateC = TextEditingController(text: request.startTime?.formatDate);
-    endDateC = TextEditingController(text: request.endTime?.formatDate);
-    // context.read<TransactionsCubit>().getTransactions(context,request: request);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +26,7 @@ class _DebitPageState extends State<DebitPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            FilterAccountWidget(request: request),
+            const FilterAccountWidget(filterName: 'expenses'),
             Expanded(
               child: BlocBuilder<AccountByIdCubit, AccountByIdInitial>(
                 builder: (context, state) {
@@ -58,8 +41,18 @@ class _DebitPageState extends State<DebitPage> {
                     data: state.result
                         .mapIndexed(
                           (i, e) => [
-                            e.name,
-                            e.totalPaid.formatPrice,
+                            TableItem(
+                              data: e.name,
+                              background: e.isParent
+                                  ? AppColorManager.black
+                                  : null,
+                            ),
+                            TableItem(
+                              data: e.balance.formatPrice,
+                              background: e.isParent
+                                  ? AppColorManager.black
+                                  : null,
+                            ),
                           ],
                         )
                         .toList(),
@@ -76,7 +69,7 @@ class _DebitPageState extends State<DebitPage> {
                     text: S.of(context).total,
                     matchParent: true,
                     drawableEnd: DrawableText(
-                      text: (state.getAllAccountPayed).formatPrice,
+                      text: (state.getAllAccountBalance).formatPrice,
                       fontFamily: FontManager.cairoBold,
                     ),
                   ),

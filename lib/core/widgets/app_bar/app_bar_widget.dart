@@ -34,7 +34,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return WillPopScope(
       onWillPop: () async => context.read<LoadingCubit>().isLoadingForPop(),
       child: AppBar(
-        backgroundColor: color ?? const Color(0xFFE2EEF6),
+        backgroundColor: color ?? AppColorManager.appBarColor,
         toolbarHeight: (zeroHeight ?? false) ? 0 : 80.0.h,
         title: title ?? DrawableText(
                 text: titleText ?? '',
