@@ -44,67 +44,91 @@ class _NewNavState extends State<NewNav> {
             backgroundColor: const Color(0xFFF8F8F8),
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: ImageMultiType(
-                  url: Assets.iconsHome,
-                  color: AppColorManager.gray,
-                  height: 25.0.spMin,
+                icon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7.0).h,
+                  child: ImageMultiType(
+                    url: Assets.iconsHome,
+                    color: AppColorManager.gray,
+                    height: 25.0.spMin,
+                  ),
                 ),
-                activeIcon: ImageMultiType(
-                  url: Assets.iconsHome,
-                  color: AppColorManager.selectedIconColor,
-                  height: 35.0.spMin,
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7.0).h,
+                  child: ImageMultiType(
+                    url: Assets.iconsHome,
+                    color: AppColorManager.selectedIconBarColor,
+                    height: 35.0.spMin,
+                  ),
                 ),
                 label: S.of(context).home,
               ),
               BottomNavigationBarItem(
-                icon: ImageMultiType(
-                  url: Assets.iconsSDolar,
-                  color: AppColorManager.gray,
-                  height: 25.0.spMin,
+                icon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7.0).h,
+                  child: ImageMultiType(
+                    url: Assets.iconsSDolar,
+                    color: AppColorManager.gray,
+                    height: 25.0.spMin,
+                  ),
                 ),
-                activeIcon: ImageMultiType(
-                  url: Assets.iconsSDolar,
-                  color: AppColorManager.selectedIconColor,
-                  height: 35.0.spMin,
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7.0).h,
+                  child: ImageMultiType(
+                    url: Assets.iconsSDolar,
+                    color: AppColorManager.selectedIconBarColor,
+                    height: 35.0.spMin,
+                  ),
                 ),
                 label: S.of(context).studentBalances,
               ),
               BottomNavigationBarItem(
-                icon: ImageMultiType(
-                  url: Assets.iconsNotifications,
-                  color: AppColorManager.gray,
-                  height: 25.0.spMin,
+                icon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7.0).h,
+                  child: ImageMultiType(
+                    url: Assets.iconsNotifications,
+                    color: AppColorManager.gray,
+                    height: 25.0.spMin,
+                  ),
                 ),
-                activeIcon: ImageMultiType(
-                  url: Assets.iconsNotifications,
-                  color: AppColorManager.selectedIconColor,
-                  height: 35.0.spMin,
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7.0).h,
+                  child: ImageMultiType(
+                    url: Assets.iconsNotifications,
+                    color: AppColorManager.selectedIconBarColor,
+                    height: 35.0.spMin,
+                  ),
                 ),
                 label: S.of(context).notification,
               ),
               BottomNavigationBarItem(
-                icon: ImageMultiType(
-                  url: Assets.iconsAsk,
-                  color: AppColorManager.gray,
-                  height: 25.0.spMin,
+                icon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7.0).h,
+                  child: ImageMultiType(
+                    url: Assets.iconsAsk,
+                    color: AppColorManager.gray,
+                    height: 25.0.spMin,
+                  ),
                 ),
-                activeIcon: ImageMultiType(
-                  url: Assets.iconsAsk,
-                  color: AppColorManager.selectedIconColor,
-                  height: 35.0.spMin,
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(bottom: 7.0).h,
+                  child: ImageMultiType(
+                    url: Assets.iconsAsk,
+                    color: AppColorManager.selectedIconBarColor,
+                    height: 35.0.spMin,
+                  ),
                 ),
                 label: S.of(context).news,
               ),
             ],
             selectedLabelStyle: TextStyle(
-              color: AppColorManager.selectedIconColor,
+              color: AppColorManager.selectedIconBarColor,
               fontFamily: FontManager.cairo.name,
             ),
             unselectedLabelStyle: TextStyle(
               color: Colors.grey,
               fontFamily: FontManager.cairo.name,
             ),
-            fixedColor: AppColorManager.selectedIconColor,
+            fixedColor: AppColorManager.selectedIconBarColor,
             showSelectedLabels: true,
             showUnselectedLabels: true,
             currentIndex: selectedIndex.index,

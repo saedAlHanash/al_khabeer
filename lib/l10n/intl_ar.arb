@@ -103,6 +103,8 @@
   "confirmLogout": "هل أنت متأكد من تسجيل الخروج؟",
   "startDate": "تاريخ بداية",
   "endDate": "تاريخ نهاية",
+  "language": "اللغة",
+  "choseLanguage": "اختيار اللغة",
   "since": "منذ"
 
 

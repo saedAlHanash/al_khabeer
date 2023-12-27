@@ -1,3 +1,4 @@
+import 'package:al_khabeer/core/api_manager/api_service.dart';
 import 'package:al_khabeer/core/app/bloc/loading_cubit.dart';
 import 'package:al_khabeer/features/notifications/ui/pages/notifications_page.dart';
 import 'package:al_khabeer/features/students/data/response/students_response.dart';
@@ -38,7 +39,9 @@ import '../features/students/ui/pages/students_page.dart';
 import '../features/teachers/ui/pages/teachers_page.dart';
 
 class AppRoutes {
+
   static Route<dynamic> routes(RouteSettings settings) {
+
     var screenName = settings.name;
 
     switch (screenName) {

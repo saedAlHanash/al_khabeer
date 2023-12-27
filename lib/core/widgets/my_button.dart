@@ -35,7 +35,7 @@ class MyButton extends StatelessWidget {
           text: text,
           selectable: false,
           color: AppColorManager.whit,
-          fontFamily: FontManager.cairoBold,
+          fontFamily: FontManager.cairoBold.name,
           size: 16.0.sp,
         );
 
@@ -104,7 +104,7 @@ class MyOutlineButton extends StatelessWidget {
           text: text,
           selectable: false,
           color: textColor ?? AppColorManager.mainColor,
-          fontFamily: FontManager.cairoBold,
+          fontFamily: FontManager.cairoBold.name,
           size: 18.0.sp,
         );
 
@@ -167,7 +167,7 @@ class MyIconButton extends StatelessWidget {
           text: text,
           selectable: false,
           color: AppColorManager.whit,
-          fontFamily: FontManager.cairoBold,
+          fontFamily: FontManager.cairoBold.name,
           size: 16.0.sp,
         );
 

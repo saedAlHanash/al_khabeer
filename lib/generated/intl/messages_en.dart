@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "changePhone":
             MessageLookupByLibrary.simpleMessage("Change phone number"),
+        "choseLanguage": MessageLookupByLibrary.simpleMessage("Chose language"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "codeSentToEmail": MessageLookupByLibrary.simpleMessage(
             "Verification code sent to email:"),
@@ -62,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email field is required"),
         "employmentDate":
             MessageLookupByLibrary.simpleMessage("Employment Date"),
-        "endDate": MessageLookupByLibrary.simpleMessage("تاريخ نهاية"),
+        "endDate": MessageLookupByLibrary.simpleMessage("End Date"),
         "examType": MessageLookupByLibrary.simpleMessage("Type"),
         "examsSchedule": MessageLookupByLibrary.simpleMessage("Exams Schedule"),
         "expense": MessageLookupByLibrary.simpleMessage("Expense"),
@@ -76,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homeAddress": MessageLookupByLibrary.simpleMessage("Home address"),
         "inventory": MessageLookupByLibrary.simpleMessage("Inventory"),
+        "language": MessageLookupByLibrary.simpleMessage("language"),
         "liaisons": MessageLookupByLibrary.simpleMessage("Liaisons"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
@@ -130,7 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "stage": MessageLookupByLibrary.simpleMessage("Stage"),
         "stageAndAdditions":
             MessageLookupByLibrary.simpleMessage("(Stage Salary + Additions)"),
-        "startDate": MessageLookupByLibrary.simpleMessage("تاريخ بداية"),
+        "startDate": MessageLookupByLibrary.simpleMessage("Start Date"),
         "startLearn": MessageLookupByLibrary.simpleMessage("Start learning"),
         "student": MessageLookupByLibrary.simpleMessage("Student"),
         "studentAccounts":

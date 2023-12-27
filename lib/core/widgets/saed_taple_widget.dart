@@ -48,7 +48,7 @@ class SaedTableWidget extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: e,
                           color: AppColorManager.textColor1,
-                          fontFamily: FontManager.cairoBold,
+                          fontFamily: FontManager.cairoBold.name,
                         )
                       : title is Widget
                           ? title as Widget
@@ -158,7 +158,7 @@ class SaedTableWidget1 extends StatelessWidget {
                             textAlign: TextAlign.center,
                             text: e,
                             color: AppColorManager.newsHeader,
-                            fontFamily: FontManager.cairoBold,
+                            fontFamily: FontManager.cairoBold.name,
                           )
                         : title is Widget
                             ? title as Widget
@@ -209,8 +209,8 @@ class SaedTableWidget1 extends StatelessWidget {
                                 text: e.data.isEmpty ? '-' : e.data,
                                 color: e.background,
                                 fontFamily: e.background != null
-                                    ? FontManager.cairoBold
-                                    : FontManager.cairo,
+                                    ? FontManager.cairoBold.name
+                                    : FontManager.cairo.name,
                               )
                             : e is String
                                 ? Directionality(
@@ -355,7 +355,7 @@ class Table2Item extends StatelessWidget {
                       textAlign: TextAlign.center,
                       text: title.first,
                       color: AppColorManager.newsHeader,
-                      fontFamily: FontManager.cairoBold,
+                      fontFamily: FontManager.cairoBold.name,
                     ),
                   ),
                   Container(
@@ -370,7 +370,7 @@ class Table2Item extends StatelessWidget {
                       textAlign: TextAlign.center,
                       text: title.last,
                       color: AppColorManager.newsHeader,
-                      fontFamily: FontManager.cairoBold,
+                      fontFamily: FontManager.cairoBold.name,
                     ),
                   )
                 ],
@@ -399,20 +399,20 @@ class Table2Item extends StatelessWidget {
                         matchParent: true,
                         color: AppColorManager.newsHeader,
                         fontFamily: e.first.background != null
-                            ? FontManager.cairoBold
-                            : FontManager.cairo,
+                            ? FontManager.cairoBold.name
+                            : FontManager.cairo.name,
                       ),
                     ),
                     Container(
                       width: 82.0.w,
-                      margin:EdgeInsetsDirectional.only(end: 20.0.w),
+                      margin: EdgeInsetsDirectional.only(end: 20.0.w),
                       child: DrawableText(
                         size: 18.0.sp,
                         matchParent: true,
                         textAlign: TextAlign.end,
                         text: e.second.data.isEmpty ? '-' : e.second.data,
                         color: AppColorManager.newsHeader,
-                        fontFamily: FontManager.cairoBold,
+                        fontFamily: FontManager.cairoBold.name,
                       ),
                     )
                   ],

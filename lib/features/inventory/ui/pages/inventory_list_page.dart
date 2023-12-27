@@ -40,36 +40,37 @@ class _InventoryListPageState extends State<InventoryListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        height: 75.0.h,
         decoration: MyStyle.roundBox,
-        padding: const EdgeInsets.all(5.0).r,
+        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 19.0).r,
         margin: const EdgeInsets.all(15.0).r,
-        child: Row(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: Column(
-                children: [
-                  DrawableText(
-                    text: S.of(context).totalSubjects,
-                  ),
-                  DrawableText(
-                    text: widget.state.result.length.formatPrice,
-                    fontFamily: FontManager.cairoBold,
-                  ),
-                ],
+            DrawableText(
+              text: S.of(context).totalSubjects,
+              color: AppColorManager.newsHeader,
+              matchParent: true,
+              drawableAlin: DrawableAlin.between,
+              size: 16.0.sp,
+              drawableEnd: DrawableText(
+                text: S.of(context).quantities,
+                color: AppColorManager.newsHeader,
+                size: 16.0.sp,
               ),
             ),
-            Expanded(
-              child: Column(
-                children: [
-                  DrawableText(
-                    text: S.of(context).quantities,
-                  ),
-                  DrawableText(
-                    text: widget.state.getQuantity.formatPrice,
-                    fontFamily: FontManager.cairoBold,
-                  ),
-                ],
+            DrawableText(
+              text: '      ${widget.state.result.length}   ',
+              fontFamily: FontManager.cairoBold.name,
+              size: 20.0,
+              matchParent: true,
+              drawableAlin: DrawableAlin.between,
+              color: AppColorManager.newsHeader,
+              drawableEnd: DrawableText(
+                text: widget.state.getQuantity.formatPrice,
+                fontFamily: FontManager.cairoBold.name,
+                color: AppColorManager.newsHeader,
+                size: 20.0,
               ),
             ),
           ],

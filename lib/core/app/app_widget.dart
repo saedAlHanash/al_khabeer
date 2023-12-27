@@ -1,5 +1,6 @@
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/core/util/shared_preferences.dart';
+import 'package:al_khabeer/generated/assets.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -84,6 +85,7 @@ class _MyAppState extends State<MyApp> {
           initialSize: 16.0.spMin,
           renderHtml: false,
           selectable: false,
+          initialFont: FontManager.cairo.name,
           initialColor: AppColorManager.textColor1,
         );
 

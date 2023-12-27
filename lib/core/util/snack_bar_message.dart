@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
@@ -57,8 +59,7 @@ class NoteMessage {
     );
   }
 
-  static Future<bool> showBottomSheet1(
-      BuildContext context, Widget child) async {
+  static Future<bool> showBottomSheet1(BuildContext context, Widget child) async {
     final result = await showModalBottomSheet(
       isScrollControlled: true,
       context: context,
@@ -117,9 +118,7 @@ class NoteMessage {
                 color: Colors.black,
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20.0, horizontal: 15)
-                        .r,
+                padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 15).r,
                 child: MyButton(
                   text: S.of(context).done,
                   onTap: () => Navigator.pop(context),
@@ -136,8 +135,7 @@ class NoteMessage {
     }
   }
 
-  static Future<bool> showConfirm(BuildContext context,
-      {required String text}) async {
+  static Future<bool> showConfirm(BuildContext context, {required String text}) async {
     // show the dialog
     final result = await showDialog(
       context: context,
@@ -160,7 +158,7 @@ class NoteMessage {
                 DrawableText(
                   text: text,
                   size: 22.0.spMin,
-                  fontFamily: FontManager.cairoBold,
+                  fontFamily: FontManager.cairoBold.name,
                   color: AppColorManager.mainColorDark,
                 ),
                 40.0.verticalSpace,
@@ -205,7 +203,7 @@ class NoteMessage {
                 text: 'Oops!',
                 size: 20.0.spMin,
                 padding: const EdgeInsets.symmetric(vertical: 15.0).h,
-                fontFamily: FontManager.cairoBold,
+                fontFamily: FontManager.cairoBold.name,
                 color: AppColorManager.textColor,
               ),
               const Divider(color: Colors.black),
@@ -214,7 +212,7 @@ class NoteMessage {
                 textAlign: TextAlign.center,
                 size: 16.0.spMin,
                 padding: const EdgeInsets.symmetric(vertical: 20.0).h,
-                fontFamily: FontManager.cairoBold,
+                fontFamily: FontManager.cairoBold.name,
                 color: AppColorManager.textColor,
               ),
               const Divider(color: Colors.black),
@@ -253,7 +251,7 @@ class NoteMessage {
                 text: 'Oops!',
                 size: 20.0.spMin,
                 padding: const EdgeInsets.symmetric(vertical: 15.0).h,
-                fontFamily: FontManager.cairoBold,
+                fontFamily: FontManager.cairoBold.name,
                 color: AppColorManager.textColor,
               ),
               const Divider(color: Colors.black),
@@ -262,7 +260,7 @@ class NoteMessage {
                 textAlign: TextAlign.center,
                 size: 16.0.spMin,
                 padding: const EdgeInsets.symmetric(vertical: 20.0).h,
-                fontFamily: FontManager.cairoBold,
+                fontFamily: FontManager.cairoBold.name,
                 color: AppColorManager.textColor,
               ),
               const Divider(color: Colors.black),
@@ -276,29 +274,31 @@ class NoteMessage {
     );
   }
 
-  static Future<bool> showMyDialog(BuildContext context,
-      {required Widget child}) async {
+  static void showMyDialog(BuildContext context,
+      {required Widget child, Function(dynamic v)? onCancel}) {
     // show the dialog
-    final result = await showDialog(
+    showDialog(
       context: context,
-      barrierColor: Colors.black.withOpacity(0.3),
+      barrierColor: AppColorManager.mainColorDark.withOpacity(0.79),
       builder: (BuildContext context) {
-        return Dialog(
-          alignment: Alignment.center,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(20.0.r),
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Dialog(
+            alignment: Alignment.center,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(20.0.r),
+              ),
             ),
-          ),
-          insetPadding: const EdgeInsets.all(20.0).r,
-          elevation: 10.0,
-          clipBehavior: Clip.hardEdge,
-          child: SingleChildScrollView(
-            child: child,
+            insetPadding: const EdgeInsets.all(20.0).r,
+            elevation: 10.0,
+            clipBehavior: Clip.hardEdge,
+            child: SingleChildScrollView(
+              child: child,
+            ),
           ),
         );
       },
-    );
-    return (result ?? false);
+    ).then((value) => onCancel?.call(value));
   }
 }

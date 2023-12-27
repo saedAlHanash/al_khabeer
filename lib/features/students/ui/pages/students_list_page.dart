@@ -66,7 +66,7 @@ class StudentsListPage extends StatelessWidget {
                       matchParent: true,
                       drawableEnd: DrawableText(
                         text: (state.getAllStudentsBalance).formatPrice,
-                        fontFamily: FontManager.cairoBold,
+                        fontFamily: FontManager.cairoBold.name,
                       ),
                     ),
                   );

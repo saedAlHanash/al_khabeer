@@ -424,8 +424,15 @@ class MyTextFormNoLabelWidget extends StatelessWidget {
       counter: const SizedBox(),
       alignLabelWithHint: true,
       hintText: hint,
-      hintStyle: TextStyle(fontSize: 16.0.sp),
-      labelStyle: TextStyle(color: color ?? AppColorManager.mainColor),
+      hintStyle: TextStyle(
+        fontSize: 19.0.sp,
+        color: AppColorManager.mainColorDark,
+        fontFamily: FontManager.cairo.name,
+      ),
+      labelStyle: TextStyle(
+        color: color ?? AppColorManager.mainColor,
+        fontFamily: FontManager.cairo.name,
+      ),
       suffixIcon: suffixIcon,
       enabled: enable ?? true,
     );

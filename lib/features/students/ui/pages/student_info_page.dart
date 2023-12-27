@@ -53,11 +53,11 @@ class StudentInfoPage extends StatelessWidget {
               child: Column(
                 children: [
                   DrawableText(
-                    fontFamily: FontManager.cairoBold,
+                    fontFamily: FontManager.cairoBold.name,
                     matchParent: true,
                     text: S.of(context).totalPaymentAmount,
                     drawableEnd: DrawableText(
-                      fontFamily: FontManager.cairoBold,
+                      fontFamily: FontManager.cairoBold.name,
                       text: student.sumPaid.toString(),
                     ),
                   ),
@@ -68,11 +68,11 @@ class StudentInfoPage extends StatelessWidget {
                   ),
                   10.0.verticalSpace,
                   DrawableText(
-                    fontFamily: FontManager.cairoBold,
+                    fontFamily: FontManager.cairoBold.name,
                     matchParent: true,
                     text: S.of(context).remainingInstallmentAmount,
                     drawableEnd: DrawableText(
-                      fontFamily: FontManager.cairoBold,
+                      fontFamily: FontManager.cairoBold.name,
                       text: student.sumCaught,
                     ),
                   ),

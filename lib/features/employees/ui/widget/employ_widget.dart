@@ -31,9 +31,10 @@ class EmployWidget extends StatelessWidget {
             size: 100.0.r,
           ),
           DrawableText(
-            fontFamily: FontManager.cairoBold,
+            fontFamily: FontManager.cairoBold.name,
             size: 24.0.sp,
             text: data.name,
+            color: AppColorManager.textColor1,
           ),
           const Divider(endIndent: 0.0),
           DrawableText(

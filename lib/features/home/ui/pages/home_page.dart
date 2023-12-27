@@ -12,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_multi_type/image_multi_type.dart';
 
 import '../../../../core/strings/enum_manager.dart';
+import '../../../../core/util/snack_bar_message.dart';
 import '../../../../core/widgets/bottom_nav_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../news/ui/pages/news_page.dart';
@@ -68,7 +69,7 @@ class _HomepageState extends State<Homepage> {
           title: DrawableText(
             text: NavItems.values[pageIndex].arabicName,
             size: 24.0.sp,
-            fontFamily: FontManager.cairoBold,
+            fontFamily: FontManager.cairoBold.name,
           ),
           actions: [
             30.0.horizontalSpace,
@@ -81,18 +82,18 @@ class _HomepageState extends State<Homepage> {
           ],
           leading: Builder(builder: (context) {
             return IconButton(
-              icon: ImageMultiType(url: Assets.iconsMenueIcon),
+              icon: const ImageMultiType(url: Assets.iconsMenueIcon),
               onPressed: () => Scaffold.of(context).openDrawer(),
             );
           }),
         ),
         bottomNavigationBar: NewNav(
-        onChange: (index) {
-          pageIndex = index;
-          setState(() => _pageController.jumpToPage(index));
-        },
-        controller: _pageController,
-      ),
+          onChange: (index) {
+            pageIndex = index;
+            setState(() => _pageController.jumpToPage(index));
+          },
+          controller: _pageController,
+        ),
         drawer: SafeArea(
           child: Drawer(
             width: 280.0.w,
@@ -112,13 +113,13 @@ class _HomepageState extends State<Homepage> {
                   text: AppSharedPreference.getUserModel().name,
                   size: 20.0.spMin,
                   color: AppColorManager.whit,
-                  fontFamily: FontManager.cairoBold,
+                  fontFamily: FontManager.cairoBold.name,
                 ),
                 DrawableText(
                   text: AppSharedPreference.getUserModel().school.name,
                   size: 20.0.spMin,
                   color: AppColorManager.whit,
-                  fontFamily: FontManager.cairoBold,
+                  fontFamily: FontManager.cairoBold.name,
                 ),
                 Divider(
                   thickness: 2.0.r,
@@ -141,31 +142,32 @@ class _HomepageState extends State<Homepage> {
                 //   ),
                 // ),
 
-                AppSharedPreference.getLocal != 'ar'
-                    ? ListTile(
-                        leading: const Icon(Icons.language),
-                        title: const DrawableText(
-                          text: 'Change to arabic',
-                          color: Colors.white,
-                        ),
-                        onTap: () {
-                          MyApp.setLocale(context, const Locale('ar'));
-                          Navigator.pop(context);
-                          setState(() {});
-                        },
-                      )
-                    : ListTile(
-                        leading: const Icon(Icons.language),
-                        title: const DrawableText(
-                          text: 'تبديل للغة الإنكليزية',
-                          color: Colors.white,
-                        ),
-                        onTap: () {
-                          MyApp.setLocale(context, const Locale('en'));
-                          Navigator.pop(context);
-                          setState(() {});
-                        },
-                      ),
+                ListTile(
+                  title: DrawableText(
+                    text: S.of(context).choseLanguage,
+                    color: Colors.white,
+                  ),
+                  minLeadingWidth: 5.0.r,
+                  onTap: () {
+                    Navigator.pop(context);
+                    NoteMessage.showMyDialog(
+                      context,
+                      child: const LanWidget(),
+                      onCancel: (v) {
+                        if (v == null) return;
+                        Future.delayed(
+                          const Duration(microseconds: 500),
+                          () => MyApp.setLocale(context, Locale(v == 0 ? 'en' : 'ar')),
+                        );
+                      },
+                    );
+                  },
+                  leading: ImageMultiType(
+                    url: Assets.iconsLang,
+                    height: 20.0.r,
+                    width: 20.0.r,
+                  ),
+                ),
                 ListTile(
                   title: DrawableText(
                     text: S.of(context).policy,
@@ -203,7 +205,6 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
         ),
-
         body: SizedBox.expand(
           child: PageView(
             controller: _pageController,
@@ -246,6 +247,132 @@ class LogoutDialog extends StatelessWidget {
           },
         ),
       ],
+    );
+  }
+}
+
+class LanWidget extends StatefulWidget {
+  const LanWidget({super.key});
+
+  @override
+  State<LanWidget> createState() => _LanWidgetState();
+}
+
+class _LanWidgetState extends State<LanWidget> {
+  var select = 0;
+
+  @override
+  void initState() {
+    select = AppSharedPreference.getLocal != 'ar' ? 0 : 1;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 250.0.h,
+      width: 300.0.w,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          DrawableText(
+            color: const Color(0xFF333333),
+            size: 18.0.sp,
+            padding: const EdgeInsets.symmetric(vertical: 30.0).h,
+            fontFamily: FontManager.cairoBold.name,
+            text: S.of(context).language,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() => select = 0);
+                  Navigator.pop(context, select);
+                },
+                child: Container(
+                  height: 130.0.r,
+                  width: 120.0.r,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0.r),
+                    border:
+                        select == 0 ? null : Border.all(color: const Color(0xFFE8F3F1)),
+                    color: select == 0 ? AppColorManager.mainColorDark : Colors.white,
+                  ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        height: 70.0.r,
+                        width: 70.0.r,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: DrawableText(
+                          text: 'EN',
+                          size: 20.0.sp,
+                          fontFamily: FontManager.cairoBold.name,
+                        ),
+                      ),
+                      6.0.verticalSpace,
+                      DrawableText(
+                        text: 'English',
+                        color:
+                            select == 0 ? AppColorManager.whit : const Color(0xFF333333),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() => select = 1);
+                  Navigator.pop(context, select);
+                },
+                child: Container(
+                  height: 130.0.r,
+                  width: 120.0.r,
+                  decoration: BoxDecoration(
+                    border:
+                        select == 1 ? null : Border.all(color: const Color(0xFFE8F3F1)),
+                    borderRadius: BorderRadius.circular(20.0.r),
+                    color: select != 0 ? AppColorManager.mainColorDark : Colors.white,
+                  ),
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        height: 70.0.r,
+                        width: 70.0.r,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColorManager.lightGray,
+                        ),
+                        child: DrawableText(
+                          text: 'ع',
+                          size: 20.0.sp,
+                          fontFamily: FontManager.cairoBold.name,
+                        ),
+                      ),
+                      DrawableText(
+                        text: 'العربية',
+                        color:
+                            select == 1 ? AppColorManager.whit : const Color(0xFF333333),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

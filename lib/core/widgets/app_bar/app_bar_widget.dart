@@ -1,10 +1,13 @@
+import 'package:al_khabeer/core/api_manager/api_service.dart';
 import 'package:al_khabeer/core/util/my_style.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../router/app_router.dart';
 import '../../app/bloc/loading_cubit.dart';
+import '../../injection/injection_container.dart';
 import '../../strings/app_color_manager.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -40,7 +43,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                 text: titleText ?? '',
                 color: color != null ? Colors.white : AppColorManager.mainColorDark,
                 size: 24.0.spMin,
-                fontFamily: FontManager.cairoBold,
+                fontFamily: FontManager.cairoBold.name,
               ),
         leading: Navigator.canPop(context) ? const BackBtnWidget() : leading,
         actions: actions,

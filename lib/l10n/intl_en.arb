@@ -96,7 +96,9 @@
   "paid": "paid",
   "caught": "caught",
   "confirmLogout": "Are you sure you want to logout?",
-  "startDate": "تاريخ بداية",
-  "endDate": "تاريخ نهاية",
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "language": "language",
+  "choseLanguage": "Chose language",
   "since": "Since"
 }

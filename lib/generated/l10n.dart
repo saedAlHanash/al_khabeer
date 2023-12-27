@@ -1020,21 +1020,41 @@ class S {
     );
   }
 
-  /// `تاريخ بداية`
+  /// `Start Date`
   String get startDate {
     return Intl.message(
-      'تاريخ بداية',
+      'Start Date',
       name: 'startDate',
       desc: '',
       args: [],
     );
   }
 
-  /// `تاريخ نهاية`
+  /// `End Date`
   String get endDate {
     return Intl.message(
-      'تاريخ نهاية',
+      'End Date',
       name: 'endDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `language`
+  String get language {
+    return Intl.message(
+      'language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chose language`
+  String get choseLanguage {
+    return Intl.message(
+      'Chose language',
+      name: 'choseLanguage',
       desc: '',
       args: [],
     );

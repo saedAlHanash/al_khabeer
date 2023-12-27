@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "changePassword":
             MessageLookupByLibrary.simpleMessage("تغير كلمة المرور"),
         "changePhone": MessageLookupByLibrary.simpleMessage("تغير رقم الهاتف"),
+        "choseLanguage": MessageLookupByLibrary.simpleMessage("اختيار اللغة"),
         "city": MessageLookupByLibrary.simpleMessage(" المحافظة"),
         "codeSentToEmail": MessageLookupByLibrary.simpleMessage(
             "تم إرسال رمز التحقق إلى البريد الإلكتروني: "),
@@ -74,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "homeAddress": MessageLookupByLibrary.simpleMessage("عنوان المنزل"),
         "inventory": MessageLookupByLibrary.simpleMessage("جرد المخازن"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "liaisons": MessageLookupByLibrary.simpleMessage("الملازم"),
         "login": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),

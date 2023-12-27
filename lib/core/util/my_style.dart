@@ -122,16 +122,26 @@ class MyStyle {
       crossAxisCount: 2, mainAxisExtent: 155.0.h);
 }
 
-class BackBtnWidget extends StatelessWidget {
+class BackBtnWidget extends StatefulWidget {
   const BackBtnWidget({super.key});
 
   @override
+  State<BackBtnWidget> createState() => _BackBtnWidgetState();
+}
+
+class _BackBtnWidgetState extends State<BackBtnWidget> {
+  @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () => Navigator.pop(context),
+      onPressed: () {
+        if(!Navigator.canPop(context)) {
+          return ;
+        }
+        Navigator.pop(context);
+      },
       icon: Icon(
         Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios,
-        color: AppColorManager.gray,
+        color: AppColorManager.textColor1,
       ),
     );
   }

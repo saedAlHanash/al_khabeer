@@ -1,4 +1,3 @@
-import 'package:al_khabeer/core/api_manager/api_service.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/core/strings/enum_manager.dart';
@@ -21,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10.0).w,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, mainAxisExtent: 140.0.h),
-        children:  [
+        children: [
           ItemCardWidget(item: HomeCards.students),
           ItemCardWidget(item: HomeCards.cashPayment),
           ItemCardWidget(item: HomeCards.inventory),
@@ -46,7 +45,6 @@ class ItemCardWidget extends StatefulWidget {
 }
 
 class _ItemCardWidgetState extends State<ItemCardWidget> {
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -113,7 +111,7 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
                 DrawableText(
                   text: widget.item.arabicName,
                   color: AppColorManager.mainColorDark,
-                  fontFamily: FontManager.cairoBold,
+                  fontFamily: FontManager.cairoBold.name,
                 ),
               ],
             ),

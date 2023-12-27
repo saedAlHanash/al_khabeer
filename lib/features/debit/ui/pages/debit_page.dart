@@ -67,7 +67,7 @@ class DebitPage extends StatelessWidget {
                     matchParent: true,
                     drawableEnd: DrawableText(
                       text: (state.getAllAccountBalance).formatPrice,
-                      fontFamily: FontManager.cairoBold,
+                      fontFamily: FontManager.cairoBold.name,
                     ),
                   ),
                 );

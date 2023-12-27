@@ -25,7 +25,7 @@ class SnakeBarWidget extends StatelessWidget {
       child: DrawableText(
         padding: EdgeInsets.symmetric(horizontal: 0.02.sw),
         text: text,
-        fontFamily: FontManager.cairoBold,
+        fontFamily: FontManager.cairoBold.name,
         size: 16.0.spMin,
         matchParent: true,
         drawableEnd: icon,
