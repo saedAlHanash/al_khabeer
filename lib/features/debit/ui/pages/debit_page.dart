@@ -22,6 +22,23 @@ class DebitPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(titleText: S.of(context).netExpenses),
+      bottomNavigationBar: BlocBuilder<AccountByIdCubit, AccountByIdInitial>(
+        builder: (context, state) {
+          return Container(
+            decoration: MyStyle.roundBox,
+            margin: const EdgeInsets.all(30.0).r,
+            padding: const EdgeInsets.all(20.0).r,
+            child: DrawableText(
+              text: S.of(context).total,
+              matchParent: true,
+              drawableEnd: DrawableText(
+                text: (state.getAllAccountBalance).formatPrice,
+                fontFamily: FontManager.cairoBold.name,
+              ),
+            ),
+          );
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0).r,
         child: Column(
@@ -56,22 +73,6 @@ class DebitPage extends StatelessWidget {
                   );
                 },
               ),
-            ),
-            BlocBuilder<AccountByIdCubit, AccountByIdInitial>(
-              builder: (context, state) {
-                return Container(
-                  decoration: MyStyle.roundBox,
-                  padding: const EdgeInsets.all(20.0).r,
-                  child: DrawableText(
-                    text: S.of(context).total,
-                    matchParent: true,
-                    drawableEnd: DrawableText(
-                      text: (state.getAllAccountBalance).formatPrice,
-                      fontFamily: FontManager.cairoBold.name,
-                    ),
-                  ),
-                );
-              },
             ),
           ],
         ),

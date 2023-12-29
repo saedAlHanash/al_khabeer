@@ -100,5 +100,6 @@
   "endDate": "End Date",
   "language": "language",
   "choseLanguage": "Chose language",
+  "payDate": "Date",
   "since": "Since"
 }

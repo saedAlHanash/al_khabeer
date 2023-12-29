@@ -32,7 +32,7 @@ class StudentInfoPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             10.0.verticalSpace,
-            SaedTableWidget(
+            Table3Item(
               title: [
                 S.of(context).name,
                 S.of(context).grade,
@@ -47,45 +47,75 @@ class StudentInfoPage extends StatelessWidget {
               ],
             ),
             Container(
-              width: .9.sw,
+
               padding: const EdgeInsets.all(20.0).r,
+              margin: const EdgeInsets.all( 30.0).r,
               decoration: MyStyle.roundBox,
               child: Column(
                 children: [
-                  DrawableText(
-                    fontFamily: FontManager.cairoBold.name,
-                    matchParent: true,
-                    text: S.of(context).totalPaymentAmount,
-                    drawableEnd: DrawableText(
-                      fontFamily: FontManager.cairoBold.name,
-                      text: student.sumPaid.toString(),
-                    ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            DrawableText(
+                              color: AppColorManager.newsHeader,
+                              text: S.of(context).totalPaymentAmount,
+                              size: 18.0.sp,
+                            ),
+                            DrawableText(
+                              color: AppColorManager.newsHeader,
+                              size: 16.0.sp,
+                              text: S.of(context).stageAndAdditions,
+                            ),
+                          ],
+                        ),
+                      ),
+                      DrawableText(
+                        size: 18.0.sp,
+                        color: AppColorManager.newsHeader,
+                        fontFamily: FontManager.cairoBold.name,
+                        text: num.tryParse(student.sumPaid.toString())?.formatPrice ??
+                            student.sumPaid,
+                      ),
+                    ],
                   ),
-                  DrawableText(
-                    color: AppColorManager.mainColor.withOpacity(0.6),
-                    matchParent: true,
-                    text: S.of(context).stageAndAdditions,
-                  ),
-                  10.0.verticalSpace,
-                  DrawableText(
-                    fontFamily: FontManager.cairoBold.name,
-                    matchParent: true,
-                    text: S.of(context).remainingInstallmentAmount,
-                    drawableEnd: DrawableText(
-                      fontFamily: FontManager.cairoBold.name,
-                      text: student.sumCaught,
-                    ),
-                  ),
-                  DrawableText(
-                    color: AppColorManager.mainColor.withOpacity(0.6),
-                    matchParent: true,
-                    text: S.of(context).stageAndAdditions,
+                  15.0.verticalSpace,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            DrawableText(
+                              size: 18.0.sp,
+                              text: S.of(context).remainingInstallmentAmount,
+                              color: AppColorManager.newsHeader,
+                            ),
+                            DrawableText(
+                              size: 16.0.sp,
+                              color: AppColorManager.newsHeader,
+                              text: S.of(context).stageAndAdditions,
+                            ),
+                          ],
+                        ),
+                      ),
+                      DrawableText(
+                        size: 18.0.sp,
+                        color: AppColorManager.newsHeader,
+                        fontFamily: FontManager.cairoBold.name,
+                        text: num.tryParse(student.sumCaught)?.formatPrice ??
+                            student.sumCaught,
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-            const Divider(),
-            Expanded(child: MyStepper(list: student.transactions)),
+            Expanded(
+              child: MyStepper(list: student.transactions),
+            ),
           ],
         ),
       ),
@@ -106,29 +136,38 @@ class MyStepper extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(vertical: 20.0).r,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(12.0.r)),
-                color: AppColorManager.tableTitle),
             child: Row(
               children: [
-                const Expanded(child: DrawableText(matchParent: true, text: '')),
                 Expanded(
-                    child: DrawableText(
-                  textAlign: TextAlign.center,
-                  text: S.of(context).paid,
-                )),
+                  child: DrawableText(
+                      size: 20.0.sp,
+                      color: AppColorManager.newsHeader,
+                      matchParent: true,
+                      text: S.of(context).payDate),
+                ),
                 Expanded(
-                    child: DrawableText(
-                  textAlign: TextAlign.center,
-                  text: S.of(context).caught,
-                )),
+                  child: DrawableText(
+                    size: 20.0.sp,
+                    color: AppColorManager.newsHeader,
+                    textAlign: TextAlign.center,
+                    text: S.of(context).paid,
+                  ),
+                ),
+                Expanded(
+                  child: DrawableText(
+                    size: 20.0.sp,
+                    color: AppColorManager.newsHeader,
+                    textAlign: TextAlign.center,
+                    text: S.of(context).caught,
+                  ),
+                ),
               ],
             ),
           ),
           10.0.verticalSpace,
           Expanded(
             child: ListView(
-              padding: const EdgeInsets.only(bottom: 20.0).h,
+              padding: const EdgeInsets.only(bottom: 30.0).h,
               children: list
                   .mapIndexed((i, e) => Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,25 +175,37 @@ class MyStepper extends StatelessWidget {
                           Row(
                             children: [
                               Expanded(
-                                  child: DrawableText(
-                                matchParent: true,
-                                text: e.date?.formatDate ?? '-',
-                                drawableStart: Icon(
-                                  Icons.check_circle,
-                                  size: 20.0.r,
-                                  color: AppColorManager.mainColor,
+                                child: DrawableText(
+                                  size: 20.0.sp,
+                                  fontFamily: FontManager.cairoBold.name,
+                                  color: AppColorManager.newsHeader,
+                                  matchParent: true,
+                                  text: e.date?.formatDate ?? '-',
+                                  drawableStart: Icon(
+                                    Icons.check_circle,
+                                    size: 18.0.r,
+                                    color: AppColorManager.mainColor,
+                                  ),
                                 ),
-                              )),
+                              ),
                               Expanded(
-                                  child: DrawableText(
-                                textAlign: TextAlign.center,
-                                text: num.tryParse(e.paid)?.formatPrice ?? '-',
-                              )),
+                                child: DrawableText(
+                                  size: 18.0.sp,
+                                  fontFamily: FontManager.cairoBold.name,
+                                  color: AppColorManager.newsHeader,
+                                  textAlign: TextAlign.center,
+                                  text: num.tryParse(e.paid)?.formatPrice ?? '-',
+                                ),
+                              ),
                               Expanded(
-                                  child: DrawableText(
-                                textAlign: TextAlign.center,
-                                text: num.tryParse(e.caught)?.formatPrice ?? '-',
-                              )),
+                                child: DrawableText(
+                                  size: 18.0.sp,
+                                  fontFamily: FontManager.cairoBold.name,
+                                  color: AppColorManager.newsHeader,
+                                  textAlign: TextAlign.center,
+                                  text: num.tryParse(e.caught)?.formatPrice ?? '-',
+                                ),
+                              ),
                             ],
                           ),
                           if (i < list.length - 1)

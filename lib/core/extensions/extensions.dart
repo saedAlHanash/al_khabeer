@@ -182,9 +182,9 @@ extension DateUtcHelper on DateTime {
 
   DateTime get getUtc => DateTime.utc(year, month, day);
 
-  String get formatDate => DateFormat.yMd().format(this);
+  String get formatDate => DateFormat.yMd('en').format(this);
 
-  String get formatDateMD => DateFormat.Md().format(this);
+  String get formatDateMD => DateFormat.Md('en').format(this);
 
   String get formatTime {
     var t = DateFormat('h:mm a').format(this);

@@ -174,7 +174,7 @@ class SaedTableWidget1 extends StatelessWidget {
                           if (i != title.length - 1)
                             Container(
                               margin: const EdgeInsets.only(top: 15.0).h,
-                              width: 1.0.h,
+                              width: 1.0.w,
                               color: AppColorManager.lightGrayEd,
                             ),
                         ],
@@ -360,7 +360,7 @@ class Table2Item extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 15.0).h,
-                    width: 1.0.h,
+                    width: 1.0.w,
                     color: AppColorManager.lightGrayEd,
                   ),
                   Expanded(
@@ -426,6 +426,96 @@ class Table2Item extends StatelessWidget {
                 ),
               ],
             ),
+          20.0.verticalSpace,
+        ],
+      ),
+    );
+  }
+}
+
+class Table3Item extends StatelessWidget {
+  const Table3Item({
+    super.key,
+    required this.title,
+    required this.data,
+    this.onTapItem,
+  });
+
+  final List<String> title;
+  final List<List<String>> data;
+  final Function(List<dynamic> list, int i)? onTapItem;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0).w,
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 10.0).r,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(12.0.r)),
+                color: AppColorManager.tableTitle),
+            child: Row(
+              children: title.mapIndexed(
+                (i, e) {
+                  final widget = DrawableText(
+                    size: 20.0.sp,
+                    matchParent: true,
+                    textAlign: TextAlign.center,
+                    text: e,
+                    color: AppColorManager.newsHeader,
+                  );
+
+                  return Expanded(child: widget);
+                },
+              ).toList(),
+            ),
+          ),
+          ...data.mapIndexed((i, e) {
+            return InkWell(
+              onTap: onTapItem == null ? null : () => onTapItem?.call(e, i),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: DrawableText(
+                      size: 18.0.sp,
+                      textAlign: TextAlign.center,
+                      text: e[0],
+                      color: AppColorManager.newsHeader,
+                    ),
+                  ),
+                  Container(
+                    width: 1.0.w,
+                    height: 54.0.h,
+                    color: Color(0xFFD1D1D1),
+                  ),
+                  Expanded(
+                    child: DrawableText(
+                      size: 18.0.sp,
+                      textAlign: TextAlign.center,
+                      text: e[1],
+                      color: AppColorManager.newsHeader,
+                    ),
+                  ),
+                  Container(
+                    width: 1.0.w,
+                    height: 54.0.h,
+                    color: Color(0xFFD1D1D1),
+                  ),
+                  Expanded(
+                    child: DrawableText(
+                      size: 18.0.sp,
+                      textAlign: TextAlign.center,
+                      text: e[2],
+                      color: AppColorManager.newsHeader,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
           20.0.verticalSpace,
         ],
       ),

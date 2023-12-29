@@ -57,7 +57,7 @@ class _NewNavState extends State<NewNav> {
                   child: ImageMultiType(
                     url: Assets.iconsHome,
                     color: AppColorManager.selectedIconBarColor,
-                    height: 35.0.spMin,
+                    height: 25.0.spMin,
                   ),
                 ),
                 label: S.of(context).home,
@@ -76,7 +76,7 @@ class _NewNavState extends State<NewNav> {
                   child: ImageMultiType(
                     url: Assets.iconsSDolar,
                     color: AppColorManager.selectedIconBarColor,
-                    height: 35.0.spMin,
+                    height: 25.0.spMin,
                   ),
                 ),
                 label: S.of(context).studentBalances,
@@ -95,7 +95,7 @@ class _NewNavState extends State<NewNav> {
                   child: ImageMultiType(
                     url: Assets.iconsNotifications,
                     color: AppColorManager.selectedIconBarColor,
-                    height: 35.0.spMin,
+                    height: 25.0.spMin,
                   ),
                 ),
                 label: S.of(context).notification,
@@ -114,7 +114,7 @@ class _NewNavState extends State<NewNav> {
                   child: ImageMultiType(
                     url: Assets.iconsAsk,
                     color: AppColorManager.selectedIconBarColor,
-                    height: 35.0.spMin,
+                    height: 25.0.spMin,
                   ),
                 ),
                 label: S.of(context).news,

@@ -1060,6 +1060,16 @@ class S {
     );
   }
 
+  /// `Date`
+  String get payDate {
+    return Intl.message(
+      'Date',
+      name: 'payDate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Since`
   String get since {
     return Intl.message(

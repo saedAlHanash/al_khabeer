@@ -27,6 +27,23 @@ class CashAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BlocBuilder<AccountByIdCubit, AccountByIdInitial>(
+        builder: (context, state) {
+          return Container(
+            decoration: MyStyle.roundBox,
+            margin: const EdgeInsets.all(30.0).r,
+            padding: const EdgeInsets.all(20.0).r,
+            child: DrawableText(
+              text: S.of(context).total,
+              matchParent: true,
+              drawableEnd: DrawableText(
+                text: (state.getAllAccountBalance).formatPrice,
+                fontFamily: FontManager.cairoBold.name,
+              ),
+            ),
+          );
+        },
+      ),
       appBar: AppBarWidget(titleText: S.of(context).studentAccounts),
       body: Padding(
         padding: const EdgeInsets.all(20.0).r,
@@ -48,36 +65,20 @@ class CashAccount extends StatelessWidget {
                     data: state.result
                         .mapIndexed(
                           (i, e) => Pair(
-                        TableItem(
-                          data: e.name,
-                          background: e.isParent ? AppColorManager.black : null,
-                        ),
-                        TableItem(
-                          data: e.balance.formatPrice,
-                          background: e.isParent ? AppColorManager.black : null,
-                        ),
-                      ),
-                    )
+                            TableItem(
+                              data: e.name,
+                              background: e.isParent ? AppColorManager.black : null,
+                            ),
+                            TableItem(
+                              data: e.balance.formatPrice,
+                              background: e.isParent ? AppColorManager.black : null,
+                            ),
+                          ),
+                        )
                         .toList(),
                   );
                 },
               ),
-            ),
-            BlocBuilder<AccountByIdCubit, AccountByIdInitial>(
-              builder: (context, state) {
-                return Container(
-                  decoration: MyStyle.roundBox,
-                  padding: const EdgeInsets.all(20.0).r,
-                  child: DrawableText(
-                    text: S.of(context).total,
-                    matchParent: true,
-                    drawableEnd: DrawableText(
-                      text: (state.getAllAccountBalance).formatPrice,
-                      fontFamily: FontManager.cairoBold.name,
-                    ),
-                  ),
-                );
-              },
             ),
           ],
         ),

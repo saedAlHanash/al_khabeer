@@ -63,14 +63,15 @@ class ItemNews extends StatelessWidget {
         DrawableText(
           text: data.note,
           maxLines: 3,
+          matchParent: true,
           color: AppColorManager.newsHeader,
-          size: 14.0.sp,
+          size: 20.0.sp,
           padding: const EdgeInsets.symmetric(vertical: 5.0).h,
         ),
         DrawableText(
           text: data.date,
-          color: Colors.grey,
-          size: 12.0.sp,
+          color: AppColorManager.newsHeader,
+          size: 16.0.sp,
           matchParent: true,
           textAlign: TextAlign.start,
           padding: const EdgeInsets.symmetric(vertical: 5.0).h,

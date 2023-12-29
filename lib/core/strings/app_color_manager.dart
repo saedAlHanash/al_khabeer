@@ -39,6 +39,15 @@ class AppColorManager {
 
 }
 
+bool isColorDark(Color color) {
+  // Calculate the luminance value of the color
+  final luminance = color.computeLuminance();
+
+  // Compare the luminance value with a threshold (0.5)
+  // You can adjust the threshold based on your preference
+  return luminance < 0.5;
+}
+
 /*
     <color name="purple_200">#8BB93E</color>
     <color name="purple_500">#4CA243</color>

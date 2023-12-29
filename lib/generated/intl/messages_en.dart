@@ -106,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password field is required"),
         "passwordNotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
+        "payDate": MessageLookupByLibrary.simpleMessage("Date"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "phoneNumberCanNotBeChange": MessageLookupByLibrary.simpleMessage(
             "Phone number cannot be changed"),

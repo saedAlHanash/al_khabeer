@@ -104,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("حقل كلمة السر مطلوب"),
         "passwordNotMatch":
             MessageLookupByLibrary.simpleMessage("كلمة السر غير متطابقة "),
+        "payDate": MessageLookupByLibrary.simpleMessage("تاريخ الدفعة"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "phoneNumberCanNotBeChange":
             MessageLookupByLibrary.simpleMessage("رقم الهاتف لا يمكن تغييره "),
