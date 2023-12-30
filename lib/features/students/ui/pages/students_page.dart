@@ -52,7 +52,7 @@ class _StudentsPageState extends State<StudentsPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 StudentsFilterWidget(request: request),
-                10.0.verticalSpace,
+                20.0.verticalSpace,
                 BlocBuilder<StudentCubit, StudentInitial>(
                   builder: (context, state) {
                     if (state.statuses.loading) {

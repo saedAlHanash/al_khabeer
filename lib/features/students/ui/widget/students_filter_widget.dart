@@ -5,11 +5,13 @@ import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_multi_type/image_multi_type.dart';
 
 import '../../../../core/strings/app_color_manager.dart';
 import '../../../../core/util/my_style.dart';
 import '../../../../core/widgets/date_picker_widget.dart';
 import '../../../../core/widgets/my_text_form_widget.dart';
+import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../../../filter_data/bloc/class_cubit/class_cubit.dart';
 import '../../../filter_data/bloc/class_level_cubit/class_level_cubit.dart';
@@ -43,6 +45,11 @@ class _StudentsFilterWidgetState extends State<StudentsFilterWidget> {
       child: Column(
         children: [
           20.0.verticalSpace,
+          ImageMultiType(
+            url: Assets.iconsLogoWithoutText,
+            height: 160.0.r,
+            width: 160.0.r,
+          ),
           BlocBuilder<ClassCubit, ClassInitial>(
             builder: (context, state) {
               if (state.statuses.loading) {

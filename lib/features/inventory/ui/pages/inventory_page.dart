@@ -61,7 +61,7 @@ class _InventoryPageState extends State<InventoryPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             InventoryFilterWidget(request: request),
-            const Spacer(),
+            20.0.verticalSpace,
             BlocBuilder<InventoryCubit, InventoryInitial>(
               builder: (context, state) {
                 if (state.statuses.loading) {
@@ -79,7 +79,6 @@ class _InventoryPageState extends State<InventoryPage> {
                 );
               },
             ),
-            131.0.verticalSpace,
           ],
         ),
       ),

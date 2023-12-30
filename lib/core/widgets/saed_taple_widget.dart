@@ -43,6 +43,7 @@ class SaedTableWidget extends StatelessWidget {
                 (i, e) {
                   final widget = e is String
                       ? DrawableText(
+                    maxLines: 1,
                           size: 13.0.sp,
                           matchParent: true,
                           textAlign: TextAlign.center,
@@ -82,6 +83,7 @@ class SaedTableWidget extends StatelessWidget {
                                   ? TextDirection.ltr
                                   : TextDirection.rtl,
                               child: DrawableText(
+                                maxLines: 1,
                                 size: 12.0.sp,
                                 matchParent: !(fullSizeIndex?.contains(i) ?? true),
                                 textAlign: TextAlign.center,
@@ -153,6 +155,7 @@ class SaedTableWidget1 extends StatelessWidget {
                   (i, e) {
                     final widget = e is String
                         ? DrawableText(
+                      maxLines: 1,
                             size: 15.0.sp,
                             matchParent: true,
                             textAlign: TextAlign.center,
@@ -202,6 +205,7 @@ class SaedTableWidget1 extends StatelessWidget {
                       (i, e) {
                         final widget = e is TableItem
                             ? DrawableText(
+                          maxLines: 1,
                                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                                 size: 15.0.sp,
                                 matchParent: !(fullSizeIndex?.contains(i) ?? true),
@@ -218,6 +222,7 @@ class SaedTableWidget1 extends StatelessWidget {
                                         ? TextDirection.ltr
                                         : TextDirection.rtl,
                                     child: DrawableText(
+                                      maxLines: 1,
                                       padding: const EdgeInsets.symmetric(vertical: 10.0),
                                       size: 15.0.sp,
                                       matchParent: !(fullSizeIndex?.contains(i) ?? true),
@@ -350,6 +355,7 @@ class Table2Item extends StatelessWidget {
                 children: [
                   Expanded(
                     child: DrawableText(
+                      maxLines: 1,
                       size: 18.0.sp,
                       matchParent: true,
                       textAlign: TextAlign.center,
@@ -365,6 +371,7 @@ class Table2Item extends StatelessWidget {
                   ),
                   Expanded(
                     child: DrawableText(
+                      maxLines: 1,
                       size: 18.0.sp,
                       matchParent: true,
                       textAlign: TextAlign.center,
@@ -393,6 +400,7 @@ class Table2Item extends StatelessWidget {
                     SizedBox(
                       width: 200.0.w,
                       child: DrawableText(
+                        maxLines: 1,
                         size: 18.0.sp,
                         textAlign: TextAlign.start,
                         text: e.first.data.isEmpty ? '-' : e.first.data,
@@ -407,6 +415,7 @@ class Table2Item extends StatelessWidget {
                       width: 82.0.w,
                       margin: EdgeInsetsDirectional.only(end: 20.0.w),
                       child: DrawableText(
+                        maxLines: 1,
                         size: 18.0.sp,
                         matchParent: true,
                         textAlign: TextAlign.end,
@@ -460,6 +469,7 @@ class Table3Item extends StatelessWidget {
               children: title.mapIndexed(
                 (i, e) {
                   final widget = DrawableText(
+                    maxLines: 1,
                     size: 20.0.sp,
                     matchParent: true,
                     textAlign: TextAlign.center,
@@ -480,6 +490,7 @@ class Table3Item extends StatelessWidget {
                 children: [
                   Expanded(
                     child: DrawableText(
+                      maxLines: 1,
                       size: 18.0.sp,
                       textAlign: TextAlign.center,
                       text: e[0],
@@ -493,6 +504,7 @@ class Table3Item extends StatelessWidget {
                   ),
                   Expanded(
                     child: DrawableText(
+                      maxLines: 1,
                       size: 18.0.sp,
                       textAlign: TextAlign.center,
                       text: e[1],
@@ -506,6 +518,7 @@ class Table3Item extends StatelessWidget {
                   ),
                   Expanded(
                     child: DrawableText(
+                      maxLines: 1,
                       size: 18.0.sp,
                       textAlign: TextAlign.center,
                       text: e[2],
