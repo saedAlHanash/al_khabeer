@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/strings/app_color_manager.dart';
 import '../../../../core/util/my_style.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../router/app_router.dart';
@@ -28,8 +29,7 @@ class StudentsListPage extends StatelessWidget {
         builder: (context, state) {
           return Container(
             padding: const EdgeInsets.all(20.0).r,
-            margin: const EdgeInsets.all(30.0).r,
-            decoration: MyStyle.roundBox,
+            color: AppColorManager.appBarColor,
             child: DrawableText(
               text: S.of(context).total,
               matchParent: true,

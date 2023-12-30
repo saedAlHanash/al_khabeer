@@ -7,122 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../api_manager/request_models/command.dart';
 import '../util/pair_class.dart';
 
-class SaedTableWidget extends StatelessWidget {
-  const SaedTableWidget(
-      {super.key,
-      required this.title,
-      required this.data,
-      this.command,
-      this.onChangePage,
-      this.fullSizeIndex,
-      this.onTapItem});
-
-  final List<dynamic> title;
-  final List<int>? fullSizeIndex;
-  final List<List<dynamic>> data;
-
-  final Command? command;
-
-  final Function(Command command)? onChangePage;
-  final Function(List<dynamic> list, int i)? onTapItem;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0).r,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 20.0).r,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(12.0.r)),
-                color: AppColorManager.tableTitle),
-            child: Row(
-              children: title.mapIndexed(
-                (i, e) {
-                  final widget = e is String
-                      ? DrawableText(
-                    maxLines: 1,
-                          size: 13.0.sp,
-                          matchParent: true,
-                          textAlign: TextAlign.center,
-                          text: e,
-                          color: AppColorManager.textColor1,
-                          fontFamily: FontManager.cairoBold.name,
-                        )
-                      : title is Widget
-                          ? title as Widget
-                          : Container(
-                              color: Colors.red,
-                              height: 10,
-                            );
-
-                  return Expanded(child: widget);
-                },
-              ).toList(),
-            ),
-          ),
-
-          ...data.mapIndexed((i1, e) {
-            return InkWell(
-              onTap: onTapItem == null ? null : () => onTapItem?.call(e, i1),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0).r,
-                margin: const EdgeInsets.symmetric(vertical: 3.0).r,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0.r),
-                  color: AppColorManager.tableTitleItem,
-                ),
-                child: Row(
-                  children: e.mapIndexed(
-                    (i, e) {
-                      final widget = e is String
-                          ? Directionality(
-                              textDirection: e.contains('spy')
-                                  ? TextDirection.ltr
-                                  : TextDirection.rtl,
-                              child: DrawableText(
-                                maxLines: 1,
-                                size: 12.0.sp,
-                                matchParent: !(fullSizeIndex?.contains(i) ?? true),
-                                textAlign: TextAlign.center,
-                                text: e.isEmpty ? '-' : e.replaceAll('spy', ''),
-                                color: AppColorManager.textColor1,
-                              ),
-                            )
-                          : e is Widget
-                              ? e
-                              : Container(
-                                  height: 10,
-                                  color: Colors.red,
-                                );
-
-                      if (fullSizeIndex?.contains(i) ?? false) {
-                        return widget;
-                      }
-
-                      return Expanded(child: widget);
-                    },
-                  ).toList(),
-                ),
-              ),
-            );
-          }).toList(),
-          // if (command != null)
-          //   SpinnerWidget(
-          //     items: command!.getSpinnerItems,
-          //     onChanged: (spinnerItem) {
-          //       onChangePage?.call(command!..goToPage(spinnerItem.id));
-          //     },
-          //   ),
-          20.0.verticalSpace,
-        ],
-      ),
-    );
-  }
-}
-
 class SaedTableWidget1 extends StatelessWidget {
   const SaedTableWidget1(
       {super.key,
@@ -155,8 +39,8 @@ class SaedTableWidget1 extends StatelessWidget {
                   (i, e) {
                     final widget = e is String
                         ? DrawableText(
-                      maxLines: 1,
-                            size: 15.0.sp,
+                            maxLines: 1,
+                            size: 20.0.sp,
                             matchParent: true,
                             textAlign: TextAlign.center,
                             text: e,
@@ -205,13 +89,13 @@ class SaedTableWidget1 extends StatelessWidget {
                       (i, e) {
                         final widget = e is TableItem
                             ? DrawableText(
-                          maxLines: 1,
+                                maxLines: 1,
                                 padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                size: 15.0.sp,
+                                size: 18.0.sp,
                                 matchParent: !(fullSizeIndex?.contains(i) ?? true),
                                 textAlign: TextAlign.center,
                                 text: e.data.isEmpty ? '-' : e.data,
-                                color: e.background,
+                                color: AppColorManager.newsHeader,
                                 fontFamily: e.background != null
                                     ? FontManager.cairoBold.name
                                     : FontManager.cairo.name,
@@ -224,11 +108,11 @@ class SaedTableWidget1 extends StatelessWidget {
                                     child: DrawableText(
                                       maxLines: 1,
                                       padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                      size: 15.0.sp,
+                                      size: 18.0.sp,
                                       matchParent: !(fullSizeIndex?.contains(i) ?? true),
                                       textAlign: TextAlign.center,
                                       text: e.isEmpty ? '-' : e.replaceAll('spy', ''),
-                                      color: Colors.black,
+                                      color: AppColorManager.newsHeader,
                                     ),
                                   )
                                 : e is Widget
@@ -500,7 +384,7 @@ class Table3Item extends StatelessWidget {
                   Container(
                     width: 1.0.w,
                     height: 54.0.h,
-                    color: Color(0xFFD1D1D1),
+                    color: const Color(0xFFD1D1D1),
                   ),
                   Expanded(
                     child: DrawableText(
@@ -514,7 +398,7 @@ class Table3Item extends StatelessWidget {
                   Container(
                     width: 1.0.w,
                     height: 54.0.h,
-                    color: Color(0xFFD1D1D1),
+                    color: const Color(0xFFD1D1D1),
                   ),
                   Expanded(
                     child: DrawableText(

@@ -40,9 +40,8 @@ class _InventoryListPageState extends State<InventoryListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        decoration: MyStyle.roundBox,
+        color: AppColorManager.appBarColor,
         padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 19.0).r,
-        margin: const EdgeInsets.all(15.0).r,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +87,7 @@ class _InventoryListPageState extends State<InventoryListPage> {
               children: [
                 10.0.verticalSpace,
                 Container(
-                  decoration: MyStyle.roundBox,
+                  color: AppColorManager.appBarColor,
                   padding: const EdgeInsets.all(20.0).r,
                   child: DrawableText(
                     text: groupCubit.state.getNameByGuid(

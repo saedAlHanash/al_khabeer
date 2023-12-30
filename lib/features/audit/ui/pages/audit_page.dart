@@ -25,8 +25,7 @@ class AuditPage extends StatelessWidget {
       bottomNavigationBar: BlocBuilder<AccountByIdCubit, AccountByIdInitial>(
         builder: (context, state) {
           return Container(
-            decoration: MyStyle.roundBox,
-            margin: const EdgeInsets.all(30.0).r,
+            color: AppColorManager.appBarColor,
             padding: const EdgeInsets.all(20.0).r,
             child: DrawableText(
               text: S.of(context).total,

@@ -36,6 +36,7 @@ class _ExamTablePageState extends State<ExamTablePage> {
       ),
       body: SizedBox.expand(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0).r,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -58,7 +59,7 @@ class _ExamTablePageState extends State<ExamTablePage> {
                   if (state.statuses.loading) {
                     return MyStyle.loadingWidget();
                   }
-                  return SaedTableWidget(
+                  return SaedTableWidget1(
                     title: [
                       S.of(context).date,
                       S.of(context).day,
