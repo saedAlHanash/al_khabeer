@@ -87,9 +87,11 @@ class _InventoryListPageState extends State<InventoryListPage> {
               children: [
                 10.0.verticalSpace,
                 Container(
-                  color: AppColorManager.appBarColor,
+                  decoration: MyStyle.roundBox,
                   padding: const EdgeInsets.all(20.0).r,
                   child: DrawableText(
+                    color: AppColorManager.newsHeader,
+                    size: 16.0.sp,
                     text: groupCubit.state.getNameByGuid(
                       widget.state.request.groupGuid ?? '',
                     ),

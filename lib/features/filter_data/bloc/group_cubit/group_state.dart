@@ -26,7 +26,7 @@ class GroupInitial extends Equatable {
     for (var e in result) {
       if (e.guid == guId) return e.name;
     }
-    return 'الكل';
+    return 'لم يتم تحديد مجموعة';
   }
 
   List<SpinnerItem> getSpinnerItems({String? selectedId}) {

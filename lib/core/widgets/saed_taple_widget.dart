@@ -31,8 +31,11 @@ class SaedTableWidget1 extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(
-            height: 50.0.h,
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 10.0).r,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(12.0.r)),
+                color: AppColorManager.tableTitle),
             child: IntrinsicHeight(
               child: Row(
                 children: title.mapIndexed(
@@ -232,8 +235,12 @@ class Table2Item extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(
+          Container(
             height: 50.0.h,
+            padding: const EdgeInsets.symmetric(vertical: 10.0).r,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(12.0.r)),
+                color: AppColorManager.tableTitle),
             child: IntrinsicHeight(
               child: Row(
                 children: [
