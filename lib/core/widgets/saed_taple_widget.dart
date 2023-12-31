@@ -172,58 +172,6 @@ class SaedTableWidget1 extends StatelessWidget {
   }
 }
 
-class TableItem {
-  final String data;
-  final Color? background;
-
-  const TableItem({
-    required this.data,
-    required this.background,
-  });
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is TableItem &&
-          runtimeType == other.runtimeType &&
-          data == other.data &&
-          background == other.background);
-
-  @override
-  int get hashCode => data.hashCode ^ background.hashCode;
-
-  @override
-  String toString() {
-    return 'TableItem{' + ' data: $data,' + ' background: $background,' + '}';
-  }
-
-  TableItem copyWith({
-    String? data,
-    Color? background,
-  }) {
-    return TableItem(
-      data: data ?? this.data,
-      background: background ?? this.background,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'data': this.data,
-      'background': this.background,
-    };
-  }
-
-  factory TableItem.fromMap(Map<String, dynamic> map) {
-    return TableItem(
-      data: map['data'] as String,
-      background: map['background'] as Color,
-    );
-  }
-
-//</editor-fold>
-}
-
 class Table2Item extends StatelessWidget {
   const Table2Item({super.key, required this.title, required this.data});
 
@@ -303,12 +251,10 @@ class Table2Item extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: 82.0.w,
                       margin: EdgeInsetsDirectional.only(end: 20.0.w),
                       child: DrawableText(
                         maxLines: 1,
                         size: 18.0.sp,
-                        matchParent: true,
                         textAlign: TextAlign.end,
                         text: e.second.data.isEmpty ? '-' : e.second.data,
                         color: AppColorManager.newsHeader,
@@ -425,4 +371,56 @@ class Table3Item extends StatelessWidget {
       ),
     );
   }
+}
+
+class TableItem {
+  final String data;
+  final Color? background;
+
+  const TableItem({
+    required this.data,
+    required this.background,
+  });
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          (other is TableItem &&
+              runtimeType == other.runtimeType &&
+              data == other.data &&
+              background == other.background);
+
+  @override
+  int get hashCode => data.hashCode ^ background.hashCode;
+
+  @override
+  String toString() {
+    return 'TableItem{' + ' data: $data,' + ' background: $background,' + '}';
+  }
+
+  TableItem copyWith({
+    String? data,
+    Color? background,
+  }) {
+    return TableItem(
+      data: data ?? this.data,
+      background: background ?? this.background,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'data': this.data,
+      'background': this.background,
+    };
+  }
+
+  factory TableItem.fromMap(Map<String, dynamic> map) {
+    return TableItem(
+      data: map['data'] as String,
+      background: map['background'] as Color,
+    );
+  }
+
+//</editor-fold>
 }
