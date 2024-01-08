@@ -44,7 +44,7 @@ class MaterialCubit extends Cubit<MaterialInitial> {
     if (await network.isConnected) {
       final response = await APIService().getApi(
         url: GetUrl.getMaterial,
-        query: {'parent_guid': groupGuid},
+        query: {'material_group_guid': groupGuid},
       );
 
       if (response.statusCode == 200) {
