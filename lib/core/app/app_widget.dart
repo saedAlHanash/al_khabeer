@@ -75,7 +75,7 @@ class _MyAppState extends State<MyApp> {
     return ScreenUtilInit(
       designSize: const Size(412, 770),
       // designSize: const Size(14440, 972),
-      minTextAdapt: true,
+      minTextAdapt: false,
       splitScreenMode: true,
       builder: (context, child) {
         DrawableText.initial(
@@ -122,9 +122,9 @@ class _MyAppState extends State<MyApp> {
                   create: (_) => di.sl<MaterialCubit>()..getMaterials(_, groupGuid: null),
                 ),
               ],
-              child: Stack(
-                children: [child!, loading],
-              ),
+              child: MediaQuery(
+                  data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                  child: child!),
             );
           },
           scrollBehavior: MyCustomScrollBehavior(),

@@ -1,3 +1,4 @@
+import 'package:al_khabeer/core/api_manager/api_service.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
@@ -20,6 +21,7 @@ class EmployWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    loggerObject.w(MediaQuery.of(context).textScaleFactor);
     return MyCardWidget(
       margin: const EdgeInsets.symmetric(vertical: 10.0).h,
       withSideRed: true,
@@ -32,7 +34,7 @@ class EmployWidget extends StatelessWidget {
           ),
           DrawableText(
             fontFamily: FontManager.cairoBold.name,
-            size: 24.0.sp,
+            size: 24.0.r,
             text: data.name,
             color: AppColorManager.textColor1,
           ),
