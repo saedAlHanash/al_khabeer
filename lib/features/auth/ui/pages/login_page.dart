@@ -41,11 +41,11 @@ class _LoginPageState extends State<LoginPage> {
             padding: MyStyle.authPagesPadding,
             child: Column(
               children: [
-                140.verticalSpace,
+                25.0.verticalSpace,
                 ImageMultiType(
-                  url: Assets.iconsLogoWithoutText,
-                  height: 165.0.r,
-                  width: 165.0.r,
+                  url: Assets.iconsLogoLogin,
+                  height: 208.0.r,
+                  width: 241.0.r,
                 ),
                 50.0.verticalSpace,
                 MyTextFormOutLineWidget(

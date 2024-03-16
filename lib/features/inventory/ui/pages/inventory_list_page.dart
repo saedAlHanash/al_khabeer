@@ -51,11 +51,11 @@ class _InventoryListPageState extends State<InventoryListPage> {
               color: AppColorManager.newsHeader,
               matchParent: true,
               drawableAlin: DrawableAlin.between,
-              size: 16.0.sp,
+              size: 20.0.sp,
               drawableEnd: DrawableText(
                 text: S.of(context).quantities,
                 color: AppColorManager.newsHeader,
-                size: 16.0.sp,
+                size: 20.0.sp,
               ),
             ),
             DrawableText(

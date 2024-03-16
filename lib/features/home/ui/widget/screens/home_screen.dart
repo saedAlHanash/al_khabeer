@@ -15,20 +15,48 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: GridView(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0).w,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, mainAxisExtent: 140.0.h),
+    return SingleChildScrollView(
+padding: EdgeInsets.symmetric(horizontal: 30.0).w,
+      child: Column(
+
         children: [
-          ItemCardWidget(item: HomeCards.students),
-          ItemCardWidget(item: HomeCards.cashPayment),
-          ItemCardWidget(item: HomeCards.inventory),
-          ItemCardWidget(item: HomeCards.examTable),
-          ItemCardWidget(item: HomeCards.audit),
-          ItemCardWidget(item: HomeCards.debit),
-          ItemCardWidget(item: HomeCards.teachers),
-          ItemCardWidget(item: HomeCards.employees),
+          20.0.verticalSpace,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ItemCardWidget(item: HomeCards.students),
+              30.0.horizontalSpace,
+              ItemCardWidget(item: HomeCards.cashPayment),
+            ],
+          ),
+          30.0.verticalSpace,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ItemCardWidget(item: HomeCards.inventory),
+              30.0.horizontalSpace,
+              ItemCardWidget(item: HomeCards.examTable),
+            ],
+          ),
+          30.0.verticalSpace,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ItemCardWidget(item: HomeCards.audit),
+              30.0.horizontalSpace,
+              ItemCardWidget(item: HomeCards.debit),
+            ],
+          ),
+          30.0.verticalSpace,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ItemCardWidget(item: HomeCards.teachers),
+              30.0.horizontalSpace,
+              ItemCardWidget(item: HomeCards.employees),
+            ],
+          ),
+          30.0.verticalSpace,
         ],
       ),
     );
@@ -47,75 +75,75 @@ class ItemCardWidget extends StatefulWidget {
 class _ItemCardWidgetState extends State<ItemCardWidget> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        switch (widget.item) {
-          case HomeCards.students:
-            {
-              Navigator.pushNamed(context, RouteName.students);
-              break;
-            }
-          case HomeCards.cashPayment:
-            {
-              Navigator.pushNamed(context, RouteName.cashAccount);
-              break;
-            }
-          case HomeCards.inventory:
-            {
-              Navigator.pushNamed(context, RouteName.inventory);
-              break;
-            }
-          case HomeCards.examTable:
-            {
-              Navigator.pushNamed(context, RouteName.examTable);
-              break;
-            }
-          case HomeCards.audit:
-            {
-              Navigator.pushNamed(context, RouteName.audit);
-              break;
-            }
-          case HomeCards.debit:
-            {
-              Navigator.pushNamed(context, RouteName.debit);
-              break;
-            }
-          case HomeCards.teachers:
-            {
-              Navigator.pushNamed(context, RouteName.teachers);
-              break;
-            }
-          case HomeCards.employees:
-            {
-              Navigator.pushNamed(context, RouteName.employees);
-              break;
-            }
-        }
-      },
-      child: MyCardWidget(
-          elevation: 0.0,
-          padding: EdgeInsets.zero,
-          margin: const EdgeInsets.all(10.0).r,
-          child: SizedBox(
-            height: 152.0.h,
-            width: 170.0.w,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ImageMultiType(
-                  url: widget.item.icon,
-                  height: 70.0.r,
-                  width: 70.0.r,
-                ),
-                10.0.verticalSpace,
-                DrawableText(
-                  text: widget.item.arabicName,
-                  color: AppColorManager.mainColorDark,
-                  fontFamily: FontManager.cairoBold.name,
-                ),
-              ],
-            ),
-          )),
+    return Expanded(
+      child: InkWell(
+        onTap: () {
+          switch (widget.item) {
+            case HomeCards.students:
+              {
+                Navigator.pushNamed(context, RouteName.students);
+                break;
+              }
+            case HomeCards.cashPayment:
+              {
+                Navigator.pushNamed(context, RouteName.cashAccount);
+                break;
+              }
+            case HomeCards.inventory:
+              {
+                Navigator.pushNamed(context, RouteName.inventory);
+                break;
+              }
+            case HomeCards.examTable:
+              {
+                Navigator.pushNamed(context, RouteName.examTable);
+                break;
+              }
+            case HomeCards.audit:
+              {
+                Navigator.pushNamed(context, RouteName.audit);
+                break;
+              }
+            case HomeCards.debit:
+              {
+                Navigator.pushNamed(context, RouteName.debit);
+                break;
+              }
+            case HomeCards.teachers:
+              {
+                Navigator.pushNamed(context, RouteName.teachers);
+                break;
+              }
+            case HomeCards.employees:
+              {
+                Navigator.pushNamed(context, RouteName.employees);
+                break;
+              }
+          }
+        },
+        child: MyCardWidget(
+            elevation: 0.0,
+            margin: EdgeInsets.zero,
+            child: SizedBox(
+              height: 120.0.h,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ImageMultiType(
+                    url: widget.item.icon,
+                    height: 65.0.r,
+                    width: 65.0.r,
+                  ),
+                  10.0.verticalSpace,
+                  DrawableText(
+                    text: widget.item.arabicName,
+                    color: AppColorManager.mainColorDark,
+                    fontFamily: FontManager.cairoBold.name,
+                  ),
+                ],
+              ),
+            )),
+      ),
     );
   }
 }

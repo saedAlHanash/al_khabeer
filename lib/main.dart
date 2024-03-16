@@ -18,9 +18,7 @@ import 'core/injection/injection_container.dart';
 import 'core/util/shared_preferences.dart';
 import 'features/notifications/bloc/notification_count_cubit/notification_count_cubit.dart';
 
-
 import 'firebase_options.dart';
-
 
 final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
@@ -36,16 +34,16 @@ void main() async {
   });
 
   try {
-    if(Platform.isIOS) {
+    if (Platform.isIOS) {
       FirebaseMessaging.instance.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
+        alert: true,
+        announcement: false,
+        badge: true,
+        carPlay: false,
+        criticalAlert: false,
+        provisional: false,
+        sound: true,
+      );
     }
   } on Exception {
     loggerObject.e('error FCM ios ');
@@ -57,21 +55,38 @@ void main() async {
     // Error getting token.
   });
 
-
   sl<InsertFirebaseTokenCubit>().insertFirebaseToken();
 
+  try {
+    FirebaseMessaging.instance.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+  } on Exception {
+    loggerObject.e('error FCM ios ');
+  }
+
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onMessage.listen((message) {
+    final notification = message.notification;
+    String title = '';
+    String body = '';
 
-  // SystemChrome.setSystemUIOverlayStyle(
-  //   const SystemUiOverlayStyle(
-  //     statusBarColor: AppColorManager.mainColor,
-  //     statusBarIconBrightness: Brightness.light,
-  //     statusBarBrightness: Brightness.light,
-  //     systemNavigationBarIconBrightness: Brightness.light,
-  //   ),
-  // );
+    if (notification != null) {
+      title = notification.title ?? '';
+      body = notification.body ?? '';
+    } else {
+      title = message.data['title'] ?? '';
+      body = message.data['body'] ?? '';
+    }
 
-
+    showNotification(title, body);
+  });
 
   HttpOverrides.global = MyHttpOverrides();
 
@@ -109,7 +124,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
   final notification = message.notification;
 
-
   // // If you're going to use other Firebase services in the background, such as Firestore,
   // // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
@@ -126,15 +140,12 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   }
 
   showNotification(title, body);
-
 }
 
 void showNotification(String title, String body) {
-      Note.showBigTextNotification(title: title, body: body);
-
+  if (!AppSharedPreference.getActiveNotification()) return;
+  Note.showBigTextNotification(title: title, body: body);
 }
-
-
 
 class MyHttpOverrides extends HttpOverrides {
   @override

@@ -102,7 +102,7 @@ class _InventoryFilterWidgetState extends State<InventoryFilterWidget> {
               );
             },
           ),
-          20.0.verticalSpace,
+          50.0.verticalSpace,
           Row(
             children: [
               Expanded(

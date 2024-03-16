@@ -47,8 +47,8 @@ class _StudentsFilterWidgetState extends State<StudentsFilterWidget> {
           20.0.verticalSpace,
           ImageMultiType(
             url: Assets.iconsLogoWithoutText,
-            height: 160.0.r,
-            width: 160.0.r,
+            height: 159.0.r,
+            width: 159.0.r,
           ),
           BlocBuilder<ClassCubit, ClassInitial>(
             builder: (context, state) {

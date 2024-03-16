@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
     });
 
     return ScreenUtilInit(
-      designSize: const Size(412, 770),
+      designSize: const Size(430, 932),
       // designSize: const Size(14440, 972),
       minTextAdapt: false,
       splitScreenMode: true,

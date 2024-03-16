@@ -1,5 +1,6 @@
 import 'package:al_khabeer/core/app/app_widget.dart';
 import 'package:al_khabeer/core/extensions/extensions.dart';
+import 'package:al_khabeer/core/helper/launcher_helper.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
 import 'package:al_khabeer/core/util/shared_preferences.dart';
 import 'package:al_khabeer/core/widgets/app_bar/app_bar_widget.dart';
@@ -69,6 +70,7 @@ class _HomepageState extends State<Homepage> {
           title: DrawableText(
             text: NavItems.values[pageIndex].arabicName,
             size: 24.0.sp,
+            color: Color(0xff1B4B8D),
             fontFamily: FontManager.cairoBold.name,
           ),
           actions: [
@@ -170,15 +172,41 @@ class _HomepageState extends State<Homepage> {
                 ),
                 ListTile(
                   title: DrawableText(
-                    text: S.of(context).policy,
+                    text: S.of(context).notifications,
+                    color: Colors.white,
+                    drawableEnd: StatefulBuilder(
+                      builder: (context, mState) {
+                        return Switch(
+                          activeColor: Colors.white,
+                          activeTrackColor: Colors.green,
+                          value: AppSharedPreference.getActiveNotification(),
+                          onChanged: (value) => mState(
+                              () => AppSharedPreference.cashActiveNotification(value)),
+                        );
+                      },
+                    ),
+                    drawableAlin: DrawableAlin.between,
+                    matchParent: true,
+                  ),
+                  minLeadingWidth: 5.0.r,
+                  leading: ImageMultiType(
+                    url: Assets.iconsNotifications,
+                    color: Colors.white,
+                    height: 20.0.r,
+                    width: 20.0.r,
+                  ),
+                ),
+                ListTile(
+                  title: DrawableText(
+                    text: S.of(context).contact,
                     color: Colors.white,
                   ),
                   onTap: () {
-                    Navigator.pushNamed(context, RouteName.policy);
+                    LauncherHelper.openPage('https://khsites.com/');
                   },
                   minLeadingWidth: 5.0.r,
                   leading: ImageMultiType(
-                    url: Assets.iconsShiled,
+                    url: Assets.iconsContact,
                     height: 20.0.r,
                     width: 20.0.r,
                   ),
@@ -270,7 +298,6 @@ class _LanWidgetState extends State<LanWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250.0.h,
       width: 300.0.w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -370,7 +397,18 @@ class _LanWidgetState extends State<LanWidget> {
                 ),
               ),
             ],
-          )
+          ),
+          15.0.verticalSpace,
+          TextButton(
+            onPressed: () {
+              LauncherHelper.openPage('https://khsites.com/');
+            },
+            child: DrawableText(
+              text: 'www.khsites.com',
+              color: Color(0xFF0A5EAA),
+              size: 23.0.sp,
+            ),
+          ),  15.0.verticalSpace,
         ],
       ),
     );

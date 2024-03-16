@@ -19,6 +19,7 @@ class Assets {
   static const String iconsChangeName = 'assets/icons/change_name.svg';
   static const String iconsChangePass = 'assets/icons/change_pass.svg';
   static const String iconsChangePhone = 'assets/icons/change_phone.svg';
+  static const String iconsContact = 'assets/icons/contact.svg';
   static const String iconsDMRMq = 'assets/icons/dMRMq.png';
   static const String iconsDoneIcon = 'assets/icons/done_icon.svg';
   static const String iconsEmptyHart = 'assets/icons/empty_hart.svg';
@@ -29,6 +30,8 @@ class Assets {
   static const String iconsInfo = 'assets/icons/info.svg';
   static const String iconsLang = 'assets/icons/lang.svg';
   static const String iconsLocation = 'assets/icons/location.svg';
+  static const String iconsLogoLogin = 'assets/icons/logo_login.png';
+  static const String iconsLogoSplash = 'assets/icons/logo_splash.png';
   static const String iconsLogoWithoutText = 'assets/icons/logo_without_text.png';
   static const String iconsMenue = 'assets/icons/menue.svg';
   static const String iconsMenueIcon = 'assets/icons/menue_icon.svg';

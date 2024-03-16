@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,8 +21,7 @@ class SplashScreenPage extends StatefulWidget {
 class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom]);
+
 
     Future.delayed(
       const Duration(milliseconds: 1500),
@@ -36,9 +36,6 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void dispose() {
     super.dispose();
-
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: SystemUiOverlay.values); // to re-show bars
   }
 
   @override
@@ -49,10 +46,21 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
         height: 1.0.sh,
         padding: MyStyle.authPagesPadding,
         child: Center(
-          child: ImageMultiType(
-            height: 150.0.r,
-            width: 150.0.r,
-            url: Assets.iconsLogoWithoutText,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ImageMultiType(
+                height: 208.0.r,
+                width: 241.0.r,
+                url: Assets.iconsLogoSplash,
+              ),
+              115.0.verticalSpace,
+              DrawableText(
+                text: 'www.khsites.com',
+                color: Color(0xFF0A5EAA),
+                size:23.0.sp,
+              ),
+            ],
           ),
         ),
       ),
