@@ -24,6 +24,7 @@ import '../features/employees/ui/pages/employees_page.dart';
 import '../features/exam_table/bloc/exam_cubit/exam_cubit.dart';
 import '../features/exam_table/ui/pages/exam_table_page.dart';
 import '../features/home/bloc/slider_cubit/slider_cubit.dart';
+import '../features/home/ui/pages/contact_page.dart';
 import '../features/home/ui/pages/home_page.dart';
 import '../features/inventory/bloc/inventory_cubit/inventory_cubit.dart';
 import '../features/inventory/ui/pages/inventory_list_page.dart';
@@ -319,6 +320,15 @@ class AppRoutes {
 
       //endregion
 
+      case RouteName.contact:
+        //region
+
+        return CupertinoPageRoute(builder: (context) {
+          return const ContactPage();
+        });
+
+      //endregion
+
       //endregion
     }
 
@@ -357,4 +367,5 @@ class RouteName {
   static const policy = '/29';
   static const studentsList = '/30';
   static const inventoryList = '/31';
+  static const contact = '/32';
 }

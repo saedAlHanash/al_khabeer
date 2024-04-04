@@ -202,7 +202,7 @@ class _HomepageState extends State<Homepage> {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    LauncherHelper.openPage('https://khsites.com/');
+                    Navigator.pushNamed(context, RouteName.contact);
                   },
                   minLeadingWidth: 5.0.r,
                   leading: ImageMultiType(
@@ -298,117 +298,140 @@ class _LanWidgetState extends State<LanWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300.0.w,
+      height: .8.sh,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          DrawableText(
-            color: const Color(0xFF333333),
-            size: 18.0.sp,
-            padding: const EdgeInsets.symmetric(vertical: 30.0).h,
-            fontFamily: FontManager.cairoBold.name,
-            text: S.of(context).language,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  setState(() => select = 0);
-                  Navigator.pop(context, select);
-                },
-                child: Container(
-                  height: 130.0.r,
-                  width: 120.0.r,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0.r),
-                    border:
-                        select == 0 ? null : Border.all(color: const Color(0xFFE8F3F1)),
-                    color: select == 0 ? AppColorManager.mainColorDark : Colors.white,
-                  ),
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        height: 70.0.r,
-                        width: 70.0.r,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: DrawableText(
-                          text: 'EN',
-                          size: 20.0.sp,
-                          fontFamily: FontManager.cairoBold.name,
-                        ),
-                      ),
-                      6.0.verticalSpace,
-                      DrawableText(
-                        text: 'English',
-                        color:
-                            select == 0 ? AppColorManager.whit : const Color(0xFF333333),
-                      ),
-                    ],
-                  ),
-                ),
+          0.0.verticalSpace,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(20.0.r),
               ),
-              GestureDetector(
-                onTap: () {
-                  setState(() => select = 1);
-                  Navigator.pop(context, select);
-                },
-                child: Container(
-                  height: 130.0.r,
-                  width: 120.0.r,
-                  decoration: BoxDecoration(
-                    border:
-                        select == 1 ? null : Border.all(color: const Color(0xFFE8F3F1)),
-                    borderRadius: BorderRadius.circular(20.0.r),
-                    color: select != 0 ? AppColorManager.mainColorDark : Colors.white,
-                  ),
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        height: 70.0.r,
-                        width: 70.0.r,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColorManager.lightGray,
-                        ),
-                        child: DrawableText(
-                          text: 'ع',
-                          size: 20.0.sp,
-                          fontFamily: FontManager.cairoBold.name,
-                        ),
-                      ),
-                      DrawableText(
-                        text: 'العربية',
-                        color:
-                            select == 1 ? AppColorManager.whit : const Color(0xFF333333),
-                      ),
-                    ],
-                  ),
+              color: Colors.white,
+            ),
+            width: 300.0.w,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                DrawableText(
+                  color: const Color(0xFF333333),
+                  size: 18.0.sp,
+                  padding: const EdgeInsets.symmetric(vertical: 30.0).h,
+                  fontFamily: FontManager.cairoBold.name,
+                  text: S.of(context).language,
                 ),
-              ),
-            ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() => select = 0);
+                        Navigator.pop(context, select);
+                      },
+                      child: Container(
+                        height: 130.0.r,
+                        width: 120.0.r,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0.r),
+                          border: select == 0
+                              ? null
+                              : Border.all(color: const Color(0xFFE8F3F1)),
+                          color:
+                              select == 0 ? AppColorManager.mainColorDark : Colors.white,
+                        ),
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              height: 70.0.r,
+                              width: 70.0.r,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                              child: DrawableText(
+                                text: 'EN',
+                                size: 20.0.sp,
+                                fontFamily: FontManager.cairoBold.name,
+                              ),
+                            ),
+                            6.0.verticalSpace,
+                            DrawableText(
+                              text: 'English',
+                              color: select == 0
+                                  ? AppColorManager.whit
+                                  : const Color(0xFF333333),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() => select = 1);
+                        Navigator.pop(context, select);
+                      },
+                      child: Container(
+                        height: 130.0.r,
+                        width: 120.0.r,
+                        decoration: BoxDecoration(
+                          border: select == 1
+                              ? null
+                              : Border.all(color: const Color(0xFFE8F3F1)),
+                          borderRadius: BorderRadius.circular(20.0.r),
+                          color:
+                              select != 0 ? AppColorManager.mainColorDark : Colors.white,
+                        ),
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              height: 70.0.r,
+                              width: 70.0.r,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColorManager.lightGray,
+                              ),
+                              child: DrawableText(
+                                text: 'ع',
+                                size: 20.0.sp,
+                                fontFamily: FontManager.cairoBold.name,
+                              ),
+                            ),
+                            DrawableText(
+                              text: 'العربية',
+                              color: select == 1
+                                  ? AppColorManager.whit
+                                  : const Color(0xFF333333),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                32.0.verticalSpace,
+              ],
+            ),
           ),
-          15.0.verticalSpace,
           TextButton(
             onPressed: () {
               LauncherHelper.openPage('https://khsites.com/');
             },
             child: DrawableText(
               text: 'www.khsites.com',
-              color: Color(0xFF0A5EAA),
+              color: Colors.white,
+              fontFamily: FontManager.cairoBold.name,
+              fontWeight: FontWeight.bold,
               size: 23.0.sp,
             ),
-          ),  15.0.verticalSpace,
+          ),
         ],
       ),
     );

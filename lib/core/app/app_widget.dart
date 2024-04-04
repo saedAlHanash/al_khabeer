@@ -83,7 +83,6 @@ class _MyAppState extends State<MyApp> {
           initialHeightText: 1.8.spMin,
           titleSizeText: 15.0.spMin,
           initialSize: 16.0.spMin,
-          renderHtml: false,
           selectable: false,
           initialFont: FontManager.cairo.name,
           initialColor: AppColorManager.textColor1,

@@ -46,7 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmCode": MessageLookupByLibrary.simpleMessage("أدخل رمز التفعيل"),
         "confirmLogout": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد من تسجيل الخروج؟"),
-        "contact": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+        "contact": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
         "continueSignUp": MessageLookupByLibrary.simpleMessage("إتمام التسجيل"),
         "continueTo": MessageLookupByLibrary.simpleMessage("متابعة"),
         "courses": MessageLookupByLibrary.simpleMessage("الكورسات"),

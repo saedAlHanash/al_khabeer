@@ -285,11 +285,7 @@ class NoteMessage {
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: Dialog(
             alignment: Alignment.center,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(20.0.r),
-              ),
-            ),
+            backgroundColor: Colors.transparent,
             insetPadding: const EdgeInsets.all(20.0).r,
             elevation: 10.0,
             clipBehavior: Clip.hardEdge,
