@@ -100,36 +100,35 @@ class _NewNavState extends State<NewNav> {
                 ),
                 label: S.of(context).notification,
               ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.only(bottom: 7.0).h,
-                  child: ImageMultiType(
-                    url: Assets.iconsAsk,
-                    color: AppColorManager.gray,
-                    height: 28.0.r,
+              if (DateTime.now().isAfter(DateTime(2024, 4, 11)))
+                BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: const EdgeInsets.only(bottom: 7.0).h,
+                    child: ImageMultiType(
+                      url: Assets.iconsAsk,
+                      color: AppColorManager.gray,
+                      height: 28.0.r,
+                    ),
                   ),
-                ),
-                activeIcon: Padding(
-                  padding: const EdgeInsets.only(bottom: 7.0).h,
-                  child: ImageMultiType(
-                    url: Assets.iconsAsk,
-                    color: AppColorManager.selectedIconBarColor,
-                    height: 28.0.r,
+                  activeIcon: Padding(
+                    padding: const EdgeInsets.only(bottom: 7.0).h,
+                    child: ImageMultiType(
+                      url: Assets.iconsAsk,
+                      color: AppColorManager.selectedIconBarColor,
+                      height: 28.0.r,
+                    ),
                   ),
+                  label: S.of(context).news,
                 ),
-                label: S.of(context).news,
-              ),
             ],
             selectedLabelStyle: TextStyle(
-              color: AppColorManager.selectedIconBarColor,
-              fontFamily: FontManager.cairo.name,
-              fontSize: 12.0.sp
-            ),
+                color: AppColorManager.selectedIconBarColor,
+                fontFamily: FontManager.cairo.name,
+                fontSize: 12.0.sp),
             unselectedLabelStyle: TextStyle(
-              color: Colors.grey,
-              fontFamily: FontManager.cairo.name,
-              fontSize: 12.0.sp
-            ),
+                color: Colors.grey,
+                fontFamily: FontManager.cairo.name,
+                fontSize: 12.0.sp),
             fixedColor: AppColorManager.selectedIconBarColor,
             showSelectedLabels: true,
             showUnselectedLabels: true,
