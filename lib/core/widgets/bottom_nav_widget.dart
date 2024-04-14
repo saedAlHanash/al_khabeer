@@ -100,7 +100,7 @@ class _NewNavState extends State<NewNav> {
                 ),
                 label: S.of(context).notification,
               ),
-              if (DateTime.now().isAfter(DateTime(2024, 4, 11)))
+              if (DateTime.now().isAfter(DateTime(2024, 4, 16)))
                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: const EdgeInsets.only(bottom: 7.0).h,
