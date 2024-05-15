@@ -146,7 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("مجموع مبلغ الدفعات"),
         "totalSubjects": MessageLookupByLibrary.simpleMessage("مجموع المواد"),
         "unit": MessageLookupByLibrary.simpleMessage("الوحدة"),
-        "userName": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+        "userName": MessageLookupByLibrary.simpleMessage("رمز المدرسة"),
         "wrongEmail":
             MessageLookupByLibrary.simpleMessage("خطأ في البريد الاكتروني"),
         "wrongPhone": MessageLookupByLibrary.simpleMessage("خطأ في رقم الهاتف")

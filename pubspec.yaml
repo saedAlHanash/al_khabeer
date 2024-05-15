@@ -3,7 +3,7 @@ description: al_khabeer App
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.4+6
+version: 1.0.0+1
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
@@ -37,7 +37,7 @@ dependencies:
   lottie: any
   flutter_svg: any
   cached_network_image: ^3.3.1
-  flutter_screenutil: ^5.8.4
+  flutter_screenutil: ^5.9.0
   #  animated_snack_bar: ^0.3.0
   pinput: ^2.2.31
   #  flutter_rating_bar: ^4.0.1
