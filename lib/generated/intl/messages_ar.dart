@@ -96,7 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا يوجد إشعارات"),
         "noResults": MessageLookupByLibrary.simpleMessage("لا يوجد نتائج"),
         "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
-        "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+        "notification": MessageLookupByLibrary.simpleMessage("التبليغات"),
         "notifications": MessageLookupByLibrary.simpleMessage("التبليغات"),
         "paid": MessageLookupByLibrary.simpleMessage("مدفوع"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
