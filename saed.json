@@ -1,0 +1,74 @@
+{
+  "status": "Success",
+  "message": null,
+  "data": [
+    {
+      "id": 5,
+      "date": "2024-06-12",
+      "title": "???? ?????",
+      "note": "\u0633\u062a\u0628\u062f\u0623 \u0639\u0637\u0644\u0629 \u0627\u0644\u0639\u064a\u062f \u0645\u0646\u0630 \u064a\u0648\u0645 \u0627\u0644\u0633\u0628\u062a \u0623\u0646 \u0634\u0627\u0621 \u0627\u0644\u0644\u0647",
+      "uuid": "DACBC264-157B-4DE7-89EF-444360E88F2E",
+      "school": {
+        "id": 1,
+        "slug": "mdrs-alkhbyr-alnmothgy",
+        "name": "\u0645\u062f\u0631\u0633\u0629 \u0627\u0644\u062e\u0628\u064a\u0631 \u0627\u0644\u0646\u0645\u0648\u0630\u062c\u064a\u0629",
+        "code": "KH00",
+        "slogan": null,
+        "logo": "https:\/\/kh-sites.com\/storage\/schools\/6638deb222dfb-1715003058.png",
+        "phone": "09647710555151",
+        "phone2": "",
+        "email": "khabeer@khsite.net",
+        "website": "www.khsite.com",
+        "address": "",
+        "welcome_message": "\u062a\u0631\u062d\u0628 \u0628\u0643\u0645 \u0645\u062f\u0631\u0633\u0629 \u0627\u0644\u062e\u0628\u064a\u0631 \u0627\u0644\u0646\u0645\u0648\u0630\u062c\u064a\u0629 \u0648\u062a\u062a\u0645\u0646\u0649 \u0644\u0637\u0644\u0627\u0628\u0647\u0627 \u0627\u0644\u0645\u0648\u0641\u0642\u064a\u0629 \u0648\u0627\u0644\u0646\u062c\u0627\u062d",
+        "options": null,
+        "social_media": {
+          "facebook": "",
+          "instagram": "",
+          "snap": "",
+          "youtube": ""
+        },
+        "about_us": "",
+        "policies": null,
+        "vision": "",
+        "mission": "",
+        "gps_token": ""
+      },
+      "image": "https:\/\/kh-sites.com\/storage\/news\/default.png"
+    },
+    {
+      "id": 7,
+      "date": "2024-06-12",
+      "title": "???? ?????",
+      "note": "\u062a\u0645 \u062a\u0627\u062c\u064a\u0644 \u0627\u0645\u062a\u062d\u0627\u0646 \u0627\u0644\u0633\u0627\u062f\u0633 \u0627\u0644\u0627\u0639\u062f\u0627\u062f\u064a \u0628\u0639\u062f \u0627\u0644\u0639\u064a\u062f",
+      "uuid": "08AFD77D-9392-484A-A899-1061995395B8",
+      "school": {
+        "id": 1,
+        "slug": "mdrs-alkhbyr-alnmothgy",
+        "name": "\u0645\u062f\u0631\u0633\u0629 \u0627\u0644\u062e\u0628\u064a\u0631 \u0627\u0644\u0646\u0645\u0648\u0630\u062c\u064a\u0629",
+        "code": "KH00",
+        "slogan": null,
+        "logo": "https:\/\/kh-sites.com\/storage\/schools\/6638deb222dfb-1715003058.png",
+        "phone": "09647710555151",
+        "phone2": "",
+        "email": "khabeer@khsite.net",
+        "website": "www.khsite.com",
+        "address": "",
+        "welcome_message": "\u062a\u0631\u062d\u0628 \u0628\u0643\u0645 \u0645\u062f\u0631\u0633\u0629 \u0627\u0644\u062e\u0628\u064a\u0631 \u0627\u0644\u0646\u0645\u0648\u0630\u062c\u064a\u0629 \u0648\u062a\u062a\u0645\u0646\u0649 \u0644\u0637\u0644\u0627\u0628\u0647\u0627 \u0627\u0644\u0645\u0648\u0641\u0642\u064a\u0629 \u0648\u0627\u0644\u0646\u062c\u0627\u062d",
+        "options": null,
+        "social_media": {
+          "facebook": "",
+          "instagram": "",
+          "snap": "",
+          "youtube": ""
+        },
+        "about_us": "",
+        "policies": null,
+        "vision": "",
+        "mission": "",
+        "gps_token": ""
+      },
+      "image": "https:\/\/kh-sites.com\/storage\/news\/08AFD77D-9392-484A-A899-1061995395B8.jpg"
+    }
+  ]
+}

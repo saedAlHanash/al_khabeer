@@ -22,12 +22,14 @@ class NewsData {
   NewsData({
     required this.id,
     required this.date,
+    required this.title,
     required this.note,
     required this.image,
   });
 
   final int id;
   final String date;
+  final String title;
   final String note;
   final String image;
 
@@ -35,6 +37,7 @@ class NewsData {
     return NewsData(
       id: json["id"] ?? 0,
       date: json["date"] ?? "",
+      title: json["title"] ?? "",
       note: json["note"] ?? "",
       image: json["image"] ?? "",
     );
@@ -43,6 +46,7 @@ class NewsData {
   Map<String, dynamic> toJson() => {
         "id": id,
         "date": date,
+        "title": title,
         "note": note,
         "image": image,
       };

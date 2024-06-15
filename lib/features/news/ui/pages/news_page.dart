@@ -1,5 +1,6 @@
 import 'package:al_khabeer/core/extensions/extensions.dart';
 import 'package:al_khabeer/core/strings/app_color_manager.dart';
+import 'package:al_khabeer/core/util/snack_bar_message.dart';
 import 'package:drawable_text/drawable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +32,8 @@ class _NewsPageState extends State<NewsPage> {
           return GridView.builder(
             shrinkWrap: true,
             itemCount: state.result.length,
-            padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 25.0).r,
+            padding:
+                const EdgeInsets.symmetric(vertical: 50.0, horizontal: 25.0).r,
             itemBuilder: (_, i) => ItemNews(data: state.result[i]),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -53,30 +55,70 @@ class ItemNews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        RoundImageWidget(
-          url: data.image,
-          height: 70.0.h,
-          width: double.infinity,
-        ),
-        DrawableText(
-          text: data.note,
-          maxLines: 3,
-          matchParent: true,
-          color: AppColorManager.newsHeader,
-          size: 20.0.sp,
-          padding: const EdgeInsets.symmetric(vertical: 5.0).h,
-        ),
-        DrawableText(
-          text: data.date,
-          color: AppColorManager.newsHeader,
-          size: 16.0.sp,
-          matchParent: true,
-          textAlign: TextAlign.start,
-          padding: const EdgeInsets.symmetric(vertical: 5.0).h,
-        ),
-      ],
+    return InkWell(
+      onTap: () {
+        NoteMessage.showMyDialog(context,
+            child: Container(
+              color: Colors.white,
+              width: 0.9.sw,
+              padding: const EdgeInsets.all(20.0).r,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: RoundImageWidget(
+                      url: data.image,
+                      height: 150.0.r,
+                      width: 150.0.r,
+                    ),
+                  ),
+                  DrawableText(
+                    text: 'عنوان الخبر: ',
+                    fontFamily: FontManager.cairoBold.name,
+                  ),
+                  DrawableText(
+                    text: data.title,
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0).w,
+                  ),
+                  10.0.verticalSpace,
+                  DrawableText(
+                    text: ' الخبر: ',
+                    fontFamily: FontManager.cairoBold.name,
+                  ),
+                  DrawableText(
+                    text: '${data.note}\n${data.title}',
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0).w,
+                  ),
+                ],
+              ),
+            ));
+      },
+      child: Column(
+        children: [
+          RoundImageWidget(
+            url: data.image,
+            height: 70.0.h,
+            width: double.infinity,
+          ),
+          DrawableText(
+            text: data.title,
+            maxLines: 3,
+            matchParent: true,
+            color: AppColorManager.newsHeader,
+            size: 20.0.sp,
+            padding: const EdgeInsets.symmetric(vertical: 5.0).h,
+          ),
+          DrawableText(
+            text: data.note,
+            color: AppColorManager.newsHeader,
+            size: 16.0.sp,
+            maxLines: 2,
+            matchParent: true,
+            textAlign: TextAlign.start,
+            padding: const EdgeInsets.symmetric(vertical: 5.0).h,
+          ),
+        ],
+      ),
     );
   }
 }
